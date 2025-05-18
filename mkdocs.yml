@@ -3,11 +3,6 @@ site_description: >-
   My personal website, where I share my projects and ideas.
 site_author: Charles AZAM
 
-
-# Repository
-repo_name: pyforge
-repo_url: https://github.com/charles-azam
-
 theme:
   name: material
   features:
