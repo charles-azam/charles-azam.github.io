@@ -24,6 +24,8 @@ theme:
   # - navigation.expand
   - navigation.footer
   - navigation.indexes
+  - navigation.sections
+  - navigation.tabs
   # - navigation.instant
   # - navigation.instant.prefetch
   # - navigation.instant.progress
@@ -102,4 +104,3 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
   - codehilite
-
