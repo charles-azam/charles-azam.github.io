@@ -36,26 +36,20 @@ theme:
   - search.suggest
   - toc.follow
   # - toc.integrate
+  logo: assets/logo.drawio.svg
   font:
     text: Roboto
     code: Roboto Mono
-  favicon: assets/favicon.png
+  favicon: assets/logo.drawio.svg
   palette:
     - media: "(prefers-color-scheme)"
       toggle:
         icon: material/link
         name: Switch to light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: green
-      accent: green
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: green
-      accent: green
+      primary: light-blue
+      accent: light-blue
       toggle:
         icon: material/toggle-switch-off
         name: Switch to system preference
