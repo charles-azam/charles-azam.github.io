@@ -1,6 +1,6 @@
 # AIEngineer - AI-Assisted Engineering Design Framework
 
-AIEngineer is an open-source framework for iterative engineering design using large language models. It enables automated design iteration, simulation, and refinement for complex engineering projects.
+[AIEngineer](https://github.com/charles-azam/aiengineer)  is an open-source framework for iterative engineering design using large language models. It enables automated design iteration, simulation, and refinement for complex engineering projects.
 
 ## Installation
 

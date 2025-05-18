@@ -1,6 +1,6 @@
 # PyForge
 
-PyForge is a lightweight Python framework for writing technical documentation and system-engineering models as code. Its core philosophy is to maintain a single source of truth—your Python scripts—while enabling multiple output formats (Markdown, HTML, Streamlit, etc.).
+[PyForge](https://github.com/charles-azam/pyforge) is a lightweight Python framework for writing technical documentation and system-engineering models as code. Its core philosophy is to maintain a single source of truth—your Python scripts—while enabling multiple output formats (Markdown, HTML, Streamlit, etc.).
 
 ---
 
