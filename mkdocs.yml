@@ -6,7 +6,7 @@ site_author: Charles AZAM
 
 # Repository
 repo_name: pyforge
-repo_url: https://github.com/charloupioupiou/pyforge
+repo_url: https://github.com/charles-azam
 
 theme:
   name: material
