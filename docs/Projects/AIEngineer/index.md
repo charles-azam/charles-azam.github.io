@@ -2,6 +2,28 @@
 
 AIEngineer is an open-source framework for iterative engineering design using large language models. It enables automated design iteration, simulation, and refinement for complex engineering projects.
 
+## Installation
+
+This project is managed using the uv package manager.
+
+For regular users:
+
+```bash
+git clone https://github.com/charles-azam/aiengineer
+uv sync
+```
+
+For development mode:
+
+```bash
+cd .. # parent folder to aiengineer
+git clone https://github.com/charles-azam/aiengineer
+git clone https://github.com/charles-azam/pyforge.git
+git clone https://github.com/Aider-AI/aider.git
+git clone https://github.com/huggingface/smolagents.git
+export DEV_MODE=1
+```
+
 ## Overview
 
 AIEngineer creates a feedback loop between:
@@ -25,25 +47,6 @@ The agentic part is homemade for now but I am currently trying to leverage the p
 - Customizable for different engineering domains
 - Integration with various LLM providers
 
-## Installation
-
-This project is managed using the uv package manager.
-
-For regular users:
-
-```bash
-uv sync
-```
-
-For development mode:
-
-```bash
-cd .. # parent folder to aiengineer
-git clone https://github.com/charles-azam/pyforge.git
-git clone https://github.com/Aider-AI/aider.git
-git clone https://github.com/huggingface/smolagents.git
-export DEV_MODE=1
-```
 
 ## Usage
 
