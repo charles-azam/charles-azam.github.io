@@ -9,10 +9,11 @@ We are brilliant engineers—experts in thermodynamics, mechanics, simulations, 
 
 It’s time to reclaim our craft and transform how we work.
 
-Engineering should be about two things:
-
-- paper and pen thinking
-- convert your thought into code, build on top of other's work, **do everything once**
+Engineering should be about this:
+- Paper and Pen Thinking
+- Convert Your Thought into Code
+- Build on Top of Other's Work
+- **Do Everything Once**
 
 ---
 
