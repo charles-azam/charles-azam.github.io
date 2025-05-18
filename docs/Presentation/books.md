@@ -7,11 +7,11 @@ Here is a list of my favorite books:
 - The innovators, Walter Isaacson
 - Elon Musk, Walter Isaacson
 - Einstein, Walter Isaacson
+- Steve Jobs, Walter Isaacson
 - Conflict, David Petraeus
 - Shoe Dog, Phil Knight
 - A random walk down wall street, Burton G. Malkiel
 - Relectant Pioneer, Thomas Osborne
-- Steve Jobs, Walter Isaacson
 - Les Rois Maudits, Maurice Duron
 - Le Comte de Monte-Cristo, Alexandre Dumas
 - Ma Bataille d'Alger, Ted Morgan
@@ -22,5 +22,5 @@ Here is a list of my favorite books:
 - Rubicon, Tom Holland
 - The Reckoning, Jacob soll
 - Promised Land, Barack Omaba
-- La prochaine peste
-- Effrondrement
+- La prochaine peste, Serge Morand
+- Effrondrement, Jared Diamond
