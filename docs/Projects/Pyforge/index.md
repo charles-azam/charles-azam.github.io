@@ -1,4 +1,3 @@
-````markdown
 # PyForge
 
 PyForge is a lightweight Python framework for writing technical documentation and system-engineering models as code. Its core philosophy is to maintain a single source of truth—your Python scripts—while enabling multiple output formats (Markdown, HTML, Streamlit, etc.).
@@ -21,7 +20,7 @@ PyForge is a lightweight Python framework for writing technical documentation an
 **Using `uv`** (recommended for this repo):
 
 ```bash
-git clone https://github.com/charloupioupiou/pyforge.git
+git clone https://github.com/charles-azam/pyforge.git
 cd pyforge
 uv sync
 ````
@@ -29,7 +28,7 @@ uv sync
 **Or via `pip`:**
 
 ```bash
-git clone https://github.com/charloupioupiou/pyforge.git
+git clone https://github.com/charles-azam/pyforge.git
 cd pyforge
 pip install -e .
 ```
@@ -56,61 +55,54 @@ Organize your files by purpose. PyForge will discover and import them in this or
 
 ---
 
-## Usage: Defining Systems
+## Usage: Defining Systems and parameters
 
 ```python
-from pyforge import Parameters, System, Requirement, Quantity
+from pyforge import Parameters, Quantity
 
-class BridgeParameters(Parameters):
-    length: Quantity        = Quantity(120, "m")
-    height: Quantity        = Quantity(15, "m")
-    width: Quantity         = Quantity(12, "m")
-    deck_thickness: Quantity= Quantity(0.25, "m")
-    design_life: int        = 40  # years
+class HeatPumpParameters(Parameters):
+    """Define all the key parameters for our heat pump."""
+    heating_capacity: Quantity    = Quantity(10000, "W")   # thermal output
+    cop: float                    = 4.0                    # coefficient of performance
+    evaporator_temp: Quantity     = Quantity(-5, "°C")
+    condenser_temp: Quantity      = Quantity(35, "°C")
+    flow_rate: Quantity           = Quantity(0.05, "kg/s")
+    design_life: int              = 20                     # years
 
-BRIDGE = BridgeParameters()
+# single source of truth
+HEATPUMP_PARAMS = HeatPumpParameters()
+```
 
-# Root system
-bridge = System(name="Bridge")
 
-# Structural subsystem
-structural = System(
-    name="Structural System",
+```python
+from pyforge import System, Requirement
+from pyforge.examples.heat_pump.parameters_heatpump import HEATPUMP_PARAMS
+
+# Root “Heat Pump” system
+heat_pump = System(
+    name="Heat Pump System",
     description=(
-        f"Spans {BRIDGE.length.value}{BRIDGE.length.units}, "
-        f"{BRIDGE.height.value}{BRIDGE.height.units} high "
-        f"with a {BRIDGE.deck_thickness.value}{BRIDGE.deck_thickness.units} deck."
+        f"{HEATPUMP_PARAMS.heating_capacity.magnitude}{HEATPUMP_PARAMS.heating_capacity.units} "
+        f"heat output at COP {HEATPUMP_PARAMS.cop}"
     ),
     requirements=[
         Requirement(
-            name="Load Capacity",
+            name="Thermal Capacity",
             description=(
-                f"Carry traffic safely for {BRIDGE.design_life} years "
-                f"across a {BRIDGE.width.value}{BRIDGE.width.units} deck."
-            ),
+                f"Deliver {HEATPUMP_PARAMS.heating_capacity.magnitude}"
+                f"{HEATPUMP_PARAMS.heating_capacity.units} at "
+                f"{HEATPUMP_PARAMS.condenser_temp.magnitude}"
+                f"{HEATPUMP_PARAMS.condenser_temp.units}."
+            )
         ),
-    ],
-)
-
-# Safety subsystem
-safety = System(
-    name="Safety System",
-    description=(
-        f"Railing and walkways along the {BRIDGE.length.value}{BRIDGE.length.units} span."
-    ),
-    requirements=[
         Requirement(
-            name="Guardrail Height",
+            name="Minimum Efficiency",
             description=(
-                f"Minimum 1.2 m tall railing at "
-                f"{BRIDGE.height.value}{BRIDGE.height.units} above ground."
-            ),
-        ),
-    ],
+                f"COP ≥ {HEATPUMP_PARAMS.cop} under rated conditions."
+            )
+        )
+    ]
 )
-
-# Assemble hierarchy
-bridge.add_children(structural, safety)
 ```
 
 ---
