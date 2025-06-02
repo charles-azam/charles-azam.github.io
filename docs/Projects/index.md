@@ -6,7 +6,7 @@ Based on what I learned at Jimmy, I had an idea. We already managed to do engine
 
 Now, what if I could use an AI agent to create an engineering project automatically ?
 
-To do that, I had to develop two independant repositories:
+To do that, I had to develop two independent repositories:
 
-- [Pyforge](./pyforge.md): a minimalist python library to do engineering as code
-- [AIEngineer](./aiengineer.md): an ai agent to use pyforge
+- [Pyforge](https://github.com/charles-azam/aiengineer): a minimalist python library for engineering as code
+- [AIEngineer](ttps://github.com/charles-azam/aiengineer): since it is possible to do engineering as code, why not use an AI Agent to generate it ?
