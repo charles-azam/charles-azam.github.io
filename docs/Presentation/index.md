@@ -1,5 +1,5 @@
 # CV Charles AZAM
-**CIO & Digital Transformation Leader**  
+**CIO** 
 📱 +33 6 04 44 70 57  ✉️ azamcharles0@gmail.com  
 
 ---
