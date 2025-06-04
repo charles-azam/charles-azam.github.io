@@ -9,4 +9,4 @@ Now, what if I could use an AI agent to create an engineering project automatica
 To do that, I had to develop two independent repositories:
 
 - [Pyforge](https://github.com/charles-azam/aiengineer): a minimalist python library for engineering as code
-- [AIEngineer](ttps://github.com/charles-azam/aiengineer): since it is possible to do engineering as code, why not use an AI Agent to generate it ?
+- [AIEngineer](https://github.com/charles-azam/aiengineer): since it is possible to do engineering as code, why not use an AI Agent to generate it ?
