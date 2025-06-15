@@ -103,3 +103,7 @@ Digital transformation specialist with a proven track record in engineering and 
 - **Cloud Architecture**: Architect scalable AWS solutions (EKS, Lambda, S3, IAM)  
 - **Team Enablement**: Define roadmaps, governance & best practices to upskill teams  
 
+---
+
+## 🚀 Achievements
+- Third place at the HuggingFace x Anthropic 2025 AI agents hackathon !

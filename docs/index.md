@@ -34,3 +34,5 @@ Hi, I’m **Charles Azam**, CIO & Software Engineer at **Jimmy Energy**. I build
 ## 🏕️ Hobbies
 
 I’m passionate about bivouac and outdoor adventures—always planning the next escape into nature!
+
+Also, I won third place at the HuggingFace x Anthropic AI Agent Hackathon !!!
