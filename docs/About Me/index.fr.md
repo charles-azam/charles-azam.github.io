@@ -1,6 +1,6 @@
 # À propos de moi
 
-Bonjour, je suis **Charles Azam**, DSI et Ingénieur Logiciel chez **Jimmy Energy**. Je construis des plateformes d'ingénierie pilotées par le code, j'exploite les technologies de l'IA et du cloud, et je rationalise les flux de travail pour autonomiser les équipes.
+Bonjour, je suis **Charles Azam**, CIO et Ingénieur Logiciel chez **Jimmy Energy**. Je construis des plateformes d'ingénierie pilotées par le code, j'exploite les technologies de l'IA et du cloud, et je rationalise les flux de travail pour autonomiser les équipes.
 
 
 !!! success "Étude de cas : Jimmy Energy"
