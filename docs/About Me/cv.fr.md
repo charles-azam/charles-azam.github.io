@@ -1,5 +1,5 @@
 # CV Charles AZAM
-**DSI**
+**CIO**
 📱 +33 6 04 44 70 57  ✉️ azamcharles0@gmail.com
 
 ---
@@ -20,7 +20,7 @@ Spécialiste de la transformation numérique avec une expérience avérée dans 
 
 ## 💼 Expériences professionnelles
 
-### DSI & Responsable de la transformation numérique
+### CIO & Responsable de la transformation numérique
 **Jimmy Energy**, Paris, France
 *Sep. 2023 – Aujourd'hui*
 - Diriger une équipe de 4 ingénieurs pour définir la feuille de route technologique et la gouvernance des initiatives numériques.
