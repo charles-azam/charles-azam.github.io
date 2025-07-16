@@ -3,6 +3,17 @@ site_description: >-
   My personal website, where I share my projects and ideas.
 site_author: Charles AZAM
 
+plugins:
+  - search
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          name: English
+          default: true
+        - locale: fr
+          name: Français
+
 theme:
   name: material
   features:
