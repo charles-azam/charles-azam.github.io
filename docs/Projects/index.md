@@ -8,6 +8,6 @@ Now, what if I could use an AI agent to create an engineering project automatica
 
 To do that, I had to develop two independent repositories:
 
+- [DeepDraft](https://www.deepdraft.dev): (work in progress) trying to implementing a deepsearch specialized in scientific questions
 - [Pyforge](https://github.com/charles-azam/pyforge): a minimalist python library for engineering as code
-- [DeepEngineer](https://github.com/charles-azam/deepengineer): (work in progress) trying to implementing a deepsearch specialized in scientific questions
-- [AIEngineer](https://github.com/charles-azam/aiengineer): since it is possible to do engineering as code, why not use an AI Agent to generate it ?
+- [AIEngineer](https://github.com/charles-azam/aiengineer): since it is possible to do engineering as code, why not use an AI Agent to generate it ? I tried to use Aider to programmatically generate code. 
