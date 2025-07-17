@@ -48,5 +48,3 @@ Bonjour, je suis **Charles Azam**, CIO et Ingénieur Logiciel chez **Jimmy Energ
 ## 🏕️ Loisirs
 
 Je suis passionné de bivouac et d'aventures en plein air—toujours en train de planifier la prochaine évasion dans la nature !
-
-De plus, j'ai remporté la troisième place au Hackathon AI Agent de HuggingFace x Anthropic !!!
