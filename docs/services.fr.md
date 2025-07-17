@@ -1,5 +1,7 @@
 # Services
 
+Je propose des services de conseil en IA et d'automatisation pour les PME.
+
 ## Pourquoi l’IA pour votre PME ?
 
 Les PME sont confrontées à de nombreux freins :
