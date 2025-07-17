@@ -47,6 +47,4 @@ Most projects can be completed in just a few weeks. The real challenge isn’t t
 
 ---
 
-📧 [charles.azam@example.com](mailto:charles.azam@example.com) | 📱 +33 6 12 34 56 78
-
-Let me know if you'd like this formatted for a landing page, brochure, or pitch deck.
+📧 [azamcharles0@gmail.com](mailto:azamcharles0@gmail.com)
