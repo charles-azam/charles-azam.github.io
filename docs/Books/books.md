@@ -20,7 +20,7 @@ Here is a list of my favorite books:
 - Forgotten voices of the great war, Max Arthur
 - Persian Fire, Tom Holland
 - Rubicon, Tom Holland
-- The Reckoning, Jacob soll
-- Promised Land, Barack Omaba
+- The Reckoning, Jacob Soll
+- Promised Land, Barack Obama
 - La prochaine peste, Serge Morand
 - Effrondrement, Jared Diamond
