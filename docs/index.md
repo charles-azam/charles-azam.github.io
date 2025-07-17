@@ -1,4 +1,4 @@
-# About Me
+# Welcome
 
 Hi, I’m **Charles Azam**, CIO & Software Engineer at **Jimmy Energy**. I build code-driven engineering platforms, harness AI & cloud technologies, and streamline workflows to empower teams. 
 
