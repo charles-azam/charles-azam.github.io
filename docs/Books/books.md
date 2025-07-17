@@ -1,26 +1,26 @@
-# My books
+# My Books
 
-Here is a list of my favorite books:
+Here is a curated list of my favorite books:
 
-- Churchill: Walking with Destiny, Andrew Roberts
-- Destiny Disrupted: A history of the world through islamic eyes, Tamim Ansary
-- The innovators, Walter Isaacson
-- Elon Musk, Walter Isaacson
-- Einstein, Walter Isaacson
-- Steve Jobs, Walter Isaacson
-- Conflict, David Petraeus
-- Shoe Dog, Phil Knight
-- A random walk down wall street, Burton G. Malkiel
-- Relectant Pioneer, Thomas Osborne
-- Les Rois Maudits, Maurice Duron
-- Le Comte de Monte-Cristo, Alexandre Dumas
-- Ma Bataille d'Alger, Ted Morgan
-- From Zero to One, Peter Thiel
-- Le chant du départ, Max Gallo
-- Forgotten voices of the great war, Max Arthur
-- Persian Fire, Tom Holland
-- Rubicon, Tom Holland
-- The Reckoning, Jacob Soll
-- Promised Land, Barack Obama
-- La prochaine peste, Serge Morand
-- Effrondrement, Jared Diamond
+- *Churchill: Walking with Destiny*, Andrew Roberts
+- *Destiny Disrupted: A History of the World Through Islamic Eyes*, Tamim Ansary
+- *The Innovators*, Walter Isaacson
+- *Elon Musk*, Walter Isaacson
+- *Einstein*, Walter Isaacson
+- *Steve Jobs*, Walter Isaacson
+- *Conflict*, David Petraeus
+- *Shoe Dog*, Phil Knight
+- *A Random Walk Down Wall Street*, Burton G. Malkiel
+- *Reluctant Pioneer*, Thomas Osborne
+- *Les Rois Maudits* (The Accursed Kings), Maurice Druon
+- *Le Comte de Monte-Cristo* (The Count of Monte Cristo), Alexandre Dumas
+- *Ma Bataille d'Alger* (My Battle of Algiers), Ted Morgan
+- *Zero to One*, Peter Thiel
+- *Le Chant du Départ*, Max Gallo
+- *Forgotten Voices of the Great War*, Max Arthur
+- *Persian Fire*, Tom Holland
+- *Rubicon*, Tom Holland
+- *The Reckoning*, Jacob Soll
+- *A Promised Land*, Barack Obama
+- *La Prochaine Peste* (The Next Plague), Serge Morand
+- *Collapse*, Jared Diamond
