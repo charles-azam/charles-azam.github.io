@@ -1,4 +1,4 @@
-# Manifeste de l'Ingénierie en tant que Code
+# Manifeste
 
 Nous sommes des ingénieurs brillants—experts en thermodynamique, mécanique, simulations et conception. Pourtant, jour après jour, nous nous débattons avec des documents Word, des feuilles de calcul Excel et des chaînes d'e-mails sans fin. Nous dupliquons des fichiers, perdons la trace des révisions et passons plus de temps à suivre les demandes de modification qu'à innover.
 

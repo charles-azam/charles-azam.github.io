@@ -1,4 +1,4 @@
-# Bienvenue
+# Présentation
 
 Bonjour, je suis **Charles Azam**, DSI et Ingénieur Logiciel chez **Jimmy Energy**. Passionné par la technologie, l'automatisation, l'IA, mais aussi par l'industrie, le génie civil et les calculs à la main, je passe mon temps à développer des outils.
 
