@@ -1,7 +1,3 @@
-Here is the English translation of your services page, keeping a professional and engaging tone:
-
----
-
 # Services
 
 I offer consulting services in AI and automation for SMEs.
