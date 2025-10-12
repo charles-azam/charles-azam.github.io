@@ -9,8 +9,6 @@ Bonjour, je suis **Charles Azam**, DSI et Ingénieur Logiciel chez **Jimmy Energ
 !!! success "Étude de cas : Jimmy Energy"
     Mon équipe et moi avons organisé toute l'ingénierie de l'entreprise sur un seul monorepo Git. En recodant les outils de nos ingénieurs à partir de zéro, nous bénéficions désormais de données plus propres et d'une intégration transparente de l'IA.
 
-!!! success "Hackathon AI Agent"
-    J'ai remporté la troisième place au Hackathon AI Agent de HuggingFace x Anthropic !
 
 !!! info "Développement d'un outil d'IA pour l'ingénierie"
     [DeepDraft](https://deepdraft.dev) est un outil d'IA pour l'ingénierie en cours de développement. Il permet de générer des documents de conception, des rapports, des schémas, des plans, etc.
@@ -23,6 +21,8 @@ Bonjour, je suis **Charles Azam**, DSI et Ingénieur Logiciel chez **Jimmy Energ
     [Webportal](https://webportal-468213.web.app) est une plateforme web pour aider les agents à utiliser le web.
     [Code](https://github.com/aymeric-roucher/webportal)
 
+!!! success "Hackathon AI Agent HuggingFace x Anthropic"
+    J'ai remporté la troisième place au Hackathon AI Agent de HuggingFace x Anthropic !
 ---
 
 

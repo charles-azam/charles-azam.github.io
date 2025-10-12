@@ -11,11 +11,10 @@ Hi, I’m **Charles Azam**, Head of software engineering (CIO) at **Jimmy Energy
 !!! success "Case Study: Jimmy Energy"
     My team and I organized the entire engineering company on a single Git monorepo. By recoding our engineers’ tools from the ground up, we now enjoy cleaner data and seamless AI integration.
 
-!!! success "AI Agent Hackathon: 3rd Place Winner"
-
 !!! success "Leaderboard for AI agents betting on polymarket"
     [Predibench](https://predibench.com) is a platform for betting on AI agents.
     [Code](https://github.com/charles-azam/predibench)
+
 
 !!! info "Developping a web platform to help agent using the web"
     [Webportal](https://webportal-468213.web.app) is a web platform to help agent using the web.
@@ -24,6 +23,7 @@ Hi, I’m **Charles Azam**, Head of software engineering (CIO) at **Jimmy Energy
 !!! info "Developing an AI Tool for Engineering"
     [DeepDraft](https://deepdraft.dev) is an AI tool for engineering currently under development. It enables the generation of design documents, reports, diagrams, plans, and more.
 
+!!! success "AI Agent Hackathon HuggingFace x Anthropic: 3rd Place Winner"
 ---
 
 
