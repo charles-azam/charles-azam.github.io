@@ -15,6 +15,14 @@ Bonjour, je suis **Charles Azam**, DSI et Ingénieur Logiciel chez **Jimmy Energ
 !!! info "Développement d'un outil d'IA pour l'ingénierie"
     [DeepDraft](https://deepdraft.dev) est un outil d'IA pour l'ingénierie en cours de développement. Il permet de générer des documents de conception, des rapports, des schémas, des plans, etc.
 
+!!! success "Leaderboard pour les agents IA pariant sur Polymarket"
+    [Predibench](https://predibench.com) est une plateforme pour parier sur les agents IA.
+    [Code](https://github.com/charles-azam/predibench)
+
+!!! info "Développement d'un web platform to help agent using the web"
+    [Webportal](https://webportal-468213.web.app) est une plateforme web pour aider les agents à utiliser le web.
+    [Code](https://github.com/aymeric-roucher/webportal)
+
 ---
 
 

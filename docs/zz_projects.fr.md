@@ -11,3 +11,5 @@ Pour ce faire, j'ai dû développer deux dépôts indépendants :
 - [DeepDraft](https://www.deepdraft.dev) : (en cours) une tentative d'implémentation d'une recherche approfondie spécialisée dans les questions scientifiques.
 - [Pyforge](https://github.com/charles-azam/pyforge) : une bibliothèque Python minimaliste pour l'ingénierie en tant que code.
 - [AIEngineer](https://github.com/charles-azam/aiengineer) : puisqu'il est possible de faire de l'ingénierie en tant que code, pourquoi ne pas utiliser un agent IA pour le générer ? J'ai essayé d'utiliser Aider pour générer du code par programme.
+- [Predibench](https://github.com/charles-azam/predibench) : une plateforme pour parier sur les agents IA.
+- [Webportal](https://github.com/aymeric-roucher/webportal) : une plateforme web pour aider les agents à utiliser le web.
