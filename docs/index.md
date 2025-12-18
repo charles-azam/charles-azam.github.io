@@ -1,5 +1,3 @@
-# Charles Azam
-
 I build AI systems for complex engineering and technical problems.
 
 Currently building open-source tools for AI agents, prediction markets, and technical search. Previously led engineering teams at Jimmy Energy, transforming traditional workflows into code-driven systems.
@@ -22,7 +20,11 @@ Live platform benchmarking AI models on real-world prediction markets using Poly
 **[Webportal](https://webportal-468213.web.app)** • [Code](https://github.com/charles-azam/webportal)
 Web platform for AI agent interaction. Follow up of the project at HuggingFace x Anthropic hackathon (**3rd place winner**).
 
+**[Pyforge](https://github.com/charles-azam/pyforge)**
+Minimalist Python library for engineering-as-code. Version control for engineering artifacts—models, simulations, docs.
 
+**[AIEngineer](https://github.com/charles-azam/aiengineer)**
+AI agent that scaffolds engineering projects following Pyforge conventions. Experimental. I knew nothing about AI when I started this project.
 
 ---
 
@@ -34,7 +36,7 @@ A critical look at RAG evaluation and why standard best practices don't always w
 [**PrediBench: Testing AI Models on Prediction Markets**](https://huggingface.co/blog/charles-azam/predibench)
 Benchmarking AI models using real-world forecasting on Polymarket.
 
-[**Engineering-as-Code Manifesto**](zzz_manifesto.md)
+[**Engineering-as-Code Manifesto**](manifesto.md)
 Transforming traditional engineering with version control, automation, and AI.
 
 ---

@@ -1,5 +1,3 @@
-# Charles Azam
-
 Je construis des systèmes d'IA pour des problèmes d'ingénierie et techniques complexes.
 
 Actuellement, je développe des outils open-source pour les agents IA, les marchés de prédiction et la recherche technique. Auparavant, j'ai dirigé des équipes d'ingénierie chez Jimmy Energy, transformant les workflows traditionnels en systèmes pilotés par le code.
@@ -8,7 +6,7 @@ Actuellement, je développe des outils open-source pour les agents IA, les march
 
 ---
 
-## Projets
+## Projets Principaux
 
 **[Jimmy Energy: Transformation Engineering-as-Code](#)**
 Direction de la transformation d'une entreprise d'ingénierie traditionnelle vers un workflow Git. Remplacement du PLM legacy par des outils Python, permettant l'intégration IA et un contrôle de version propre.
@@ -22,7 +20,11 @@ Plateforme live pour évaluer les modèles IA sur des marchés de prédiction r�
 **[Webportal](https://webportal-468213.web.app)** • [Code](https://github.com/aymeric-roucher/webportal)
 Plateforme web pour l'interaction des agents IA. Suite du projet au hackathon HuggingFace x Anthropic (**3ème place**).
 
+**[Pyforge](https://github.com/charles-azam/pyforge)**
+Bibliothèque Python minimaliste pour l'engineering-as-code. Contrôle de version pour les artefacts d'ingénierie—modèles, simulations, docs.
 
+**[AIEngineer](https://github.com/charles-azam/aiengineer)**
+Agent IA qui échafaude des projets d'ingénierie suivant les conventions Pyforge. Expérimental.
 
 ---
 
@@ -34,7 +36,7 @@ Analyse critique de l'évaluation RAG et pourquoi les meilleures pratiques stand
 [**PrediBench: Testing AI Models on Prediction Markets**](https://huggingface.co/blog/charles-azam/predibench)
 Évaluation des modèles IA via des prédictions réelles sur Polymarket.
 
-[**Manifeste Engineering-as-Code**](zzz_manifesto.fr.md)
+[**Manifeste Engineering-as-Code**](manifesto.fr.md)
 Transformer l'ingénierie traditionnelle avec le contrôle de version, l'automatisation et l'IA.
 
 ---
