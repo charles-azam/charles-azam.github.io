@@ -1,53 +1,58 @@
-# Manifeste
+# Manifeste Engineering-as-Code
 
-Nous sommes des ingénieurs brillants—experts en thermodynamique, mécanique, simulations et conception. Pourtant, jour après jour, nous nous débattons avec des documents Word, des feuilles de calcul Excel et des chaînes d'e-mails sans fin. Nous dupliquons des fichiers, perdons la trace des révisions et passons plus de temps à suivre les demandes de modification qu'à innover.
+Nous sommes des ingénieurs brillants—experts en thermodynamique, mécanique, simulations, conception. Pourtant nous nous débattons avec des documents Word, des feuilles Excel, des chaînes d'e-mails infinies. Nous dupliquons des fichiers, perdons la trace des révisions, passons plus de temps à suivre les changements qu'à innover.
 
 ??? note "Le cauchemar de l'ingénieur"
     ![Mauvais dossier](./bad_folder.png)
 
     Bouuh !
 
-Il est temps de nous réapproprier notre métier et de transformer notre façon de travailler.
+Il est temps de nous réapproprier notre métier.
 
-L'ingénierie devrait être à propos de :
-- Penser avec un papier et un stylo
-- Convertir cette pensée en code
+**L'ingénierie devrait être:**
+- Penser avec papier et stylo
+- Convertir ces pensées en code
 - S'appuyer sur le travail des autres
 - **Ne tout faire qu'une seule fois**
 
 ---
 
-## Adoptez la collaboration versionnée
+## Versionner tout
 
-* **Arrêtez d'envoyer par e-mail “rapport_v2_final_rev.xlsx”**
-  Au lieu de cela, centralisez les fichiers de conception, les scripts et la documentation dans un dépôt Git.
-* **Chaque changement est traçable.**
-  Les Pull Requests deviennent nos revues par les pairs—fini de deviner qui a modifié quoi, quand et pourquoi.
+**Arrêtez d'envoyer "rapport_v2_final_rev.xlsx"**
+Fichiers de conception, scripts, docs ensemble dans Git.
 
-## Ingénierie avec du code
+**Chaque changement traçable**
+Pull requests = revues par les pairs. Fini de deviner qui a changé quoi, quand, pourquoi.
 
-* **Paramétrez tout.**
-  Passez des mises à jour manuelles de tableaux à des modèles pilotés par le code. Modifiez un paramètre de simulation une seule fois et laissez les pipelines automatisés régénérer les résultats, les diagrammes et les rapports.
-* **Automatisez le banal.**
-  Créez des flux de travail CI/CD avec GitHub Actions : exécutez des tests, générez de la documentation, notifiez les parties prenantes—sans lever le petit doigt.
+## Coder tout
 
-## Tirez parti de l'IA de pointe
+**Paramétrer**
+Modèles pilotés par le code, pas tableaux manuels. Changer une fois, les pipelines régénèrent résultats, diagrammes, rapports.
 
-* **Des assistants intelligents à vos côtés.**
-  Utilisez des agents IA (RAG, LangChain, SmolAgents) pour rédiger des scripts de simulation, valider les conditions aux limites ou résumer les résultats d'analyse.
-* **La perspicacité plutôt que la boîte de réception.**
-  Plutôt que de passer au crible des dizaines de fils de discussion, demandez à un agent IA le dernier état du projet et obtenez un briefing consolidé et instantané.
+**Automatiser**
+CI/CD avec GitHub Actions: tests, docs, notifications—automatique.
 
-## Gardez les données pures et réutilisables
+## Utiliser l'IA
 
-* **Un monorepo pour les modèles et la documentation.**
-  Centralisez tous les actifs—simulations, exportations CAO, rapports—en un seul endroit. Des données propres et versionnées signifient moins d'erreurs et une intégration plus rapide.
-* **Interopérabilité par conception.**
-  Créez des connecteurs personnalisés qui alimentent directement vos sorties de simulation dans les flux de travail IA, les tableaux de bord et les outils en aval.
+**Assistants intelligents**
+Agents IA (RAG, LangChain, SmolAgents) rédigent scripts, valident conditions, résument résultats.
 
-## Favorisez une culture d'amélioration continue
+**Perspicacité plutôt que boîte mail**
+Demander à l'IA l'état du projet. Briefing instantané.
 
-* **Apprenez en partageant.**
-  Chaque ingénieur contribue aux bibliothèques partagées—scripts pour le maillage, routines de post-traitement ou modèles de visualisation de données.
-* **Itérez rapidement.**
-  Avec des pipelines légers, lancez de nouvelles idées en quelques minutes, pas en quelques jours. Échouez vite, apprenez plus vite et repoussez les limites du possible.
+## Données propres
+
+**Monorepo**
+Simulations, CAO, rapports—un seul endroit. Données propres et versionnées = moins d'erreurs, intégration plus rapide.
+
+**Interopérabilité**
+Connecteurs personnalisés alimentent sorties de simulation vers IA, tableaux de bord, outils.
+
+## Amélioration continue
+
+**Bibliothèques partagées**
+Chacun contribue: scripts de maillage, post-traitement, visualisations.
+
+**Itérer vite**
+Pipelines légers. Nouvelles idées en minutes. Échouer vite, apprendre plus vite.
