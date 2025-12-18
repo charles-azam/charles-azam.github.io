@@ -1,57 +1,47 @@
 # About me
 
-Hi, I’m **Charles Azam**, Head of software engineering (CIO) at **Jimmy Energy**. I build code-driven engineering platforms, harness AI and cloud technologies, and streamline workflows to empower teams.
+Hi, I'm **Charles Azam**. I build AI systems for complex engineering and technical problems.
 
-**My specialization: organizing a hardware engineering company.**
+I'm currently building open-source tools to push AI capabilities in complex domains: autonomous coding agents, prediction market evaluation, and scientific deep search. Previously, I led engineering teams at Jimmy Energy, transforming traditional engineering workflows into modern, code-driven systems.
+
+**What drives me:** Most AI works on easy problems. I'm interested in making AI succeed at real engineering, scientific reasoning, and production systems.
 
 - [LinkedIn](https://www.linkedin.com/in/charles-azam-a4223b135/)
 - [GitHub](https://github.com/charles-azam)
+- [HuggingFace](https://huggingface.co/charles-azam)
 
-
-!!! success "Case Study: Jimmy Energy"
-    My team and I organized the entire engineering company on a single Git monorepo. By recoding our engineers’ tools from the ground up, we now enjoy cleaner data and seamless AI integration.
-
-!!! success "Leaderboard for AI agents betting on polymarket"
-    [Predibench](https://predibench.com) is a platform for betting on AI agents.
-    [Code](https://github.com/charles-azam/predibench)
-
-
-!!! info "Developping a web platform to help agent using the web"
-    [Webportal](https://webportal-468213.web.app) is a web platform to help agent using the web.
-    [Code](https://github.com/aymeric-roucher/webportal)
-
-!!! info "Developing an AI Tool for Engineering"
-    [DeepDraft](https://deepdraft.dev) is an AI tool for engineering currently under development. It enables the generation of design documents, reports, diagrams, plans, and more.
-
-!!! success "AI Agent Hackathon HuggingFace x Anthropic: 3rd Place Winner"
 ---
 
+## Featured Projects
 
-## 💼 What I Can Do
+!!! success "**Jimmy Energy: Engineering-as-Code Transformation**"
+    As CIO, I led my team to reorganize an entire engineering company on a single Git monorepo. We rebuilt our engineers' tools from scratch, enabling cleaner data, version control, and seamless AI integration. Traditional PLM replaced with Python + Git. Also did a great RAG system to help our engineers find the information they need.
 
-!!! tip "Specialization"
-    Implementing cutting-edge tech tools in industries that aren’t used to them—bridging the gap between traditional engineering and modern software practices.
+!!! info "**[OmniAgents](https://github.com/charles-azam/OmniAgents): Unified AI Coding Agent Interface**"
+    A unified interface for building AI coding agents across multiple execution environments (Local, Docker, E2B) and AI frameworks (smolagents, Pydantic-AI, LangChain). Solves the fragmentation problem in AI agent development.
 
-- **Engineering-as-Code**: Design and deploy custom code-driven platforms (like PyJimmy) to replace legacy PLM systems.
-- **AI & Automation**: Build RAG workflows, agentic processes, and ML pipelines for smart decision support.
-- **DevOps & CI/CD**: Implement full-lifecycle pipelines with GitHub Actions, Docker, and AWS.
-- **Data Integration**: Unify simulations, models, and docs in a single repo for pure, reusable data.
-- **Cloud Architecture**: Architect scalable, cost-efficient AWS solutions.
-- **Team Enablement**: Define roadmaps, governance, and best practices to upskill engineering teams.
+!!! info "**[Predibench](https://predibench.com): AI Agents on Prediction Markets**"
+    A live platform benchmarking AI models on real-world forecasting using Polymarket. Tests whether AI can beat humans at predicting events. [Code](https://github.com/charles-azam/predibench)
+
+!!! info "**[Webportal](https://webportal-468213.web.app): Web Interface for AI Agents**"
+    Built during the HuggingFace x Anthropic hackathon (3rd place). A web platform designed to help AI agents interact with the web more effectively. [Code](https://github.com/aymeric-roucher/webportal)
 
 
-## 🔧 Open Source Projects
 
-- **Pyforge**
-  A minimalist Engineering-as-Code library for managing models, simulations, and docs in a Git workflow.
-- **AIEngineer**
-  An AI agent that scaffolds engineering projects based on Pyforge conventions.
-- **DeepDraft**
-  A follow-up to AIEngineer in my quest to understand AI.
-- **Predibench**
-  A platform for betting on AI agents.
-- **Webportal**
-  A web platform to help agent using the web.
+---
+
+## Writing & Research
+
+
+- [**Evaluate Your Own RAG: Why Best Practices Failed Us**](https://huggingface.co/blog/charles-azam/rag)
+  *HuggingFace Blog* - A critical look at RAG evaluation and why standard best practices don't always work.
+
+- [**PrediBench: Testing AI Models on Prediction Markets**](https://huggingface.co/blog/charles-azam/predibench)
+  *HuggingFace Blog* - How we benchmark AI models using real-world forecasting on Polymarket.
+
+- [**Engineering-as-Code Manifesto**](zzz_manifesto.md)
+  My vision for transforming traditional engineering with modern software practices—version control, automation, and AI integration.
+
 ---
 
 ## 🏕️ Hobbies

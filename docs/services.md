@@ -1,46 +1,48 @@
-# Services
+# Consulting
 
-I offer consulting services in AI and automation for SMEs.
+I occasionally work with companies on AI and automation projects, particularly in traditional industries looking to modernize their technical workflows.
 
-## Why AI for Your Business?
+## What I Bring
 
-SMEs face many challenges:
+**Real experience transforming engineering workflows.** As CIO at Jimmy Energy, I led the transition from legacy PLM systems to a modern, code-driven engineering platform. I understand both the technical challenges and organizational dynamics of adopting AI in traditional industries.
 
-* **Repetitive and time-consuming tasks**
-* **Decisions based on gut feeling**, due to lack of reliable data
-* **Strong competitive pressure and shrinking margins**
-* **Lack of real-time visibility over operations**
-* **Unstructured information** that is hard to analyze, yet full of value
+**Focus on production systems, not demos.** My projects (Predibench, Webportal, OmniAgents) are live systems with real users. I build for production, not proof-of-concept.
 
-In the past, automation meant deploying ERP systems — complex, expensive, and high-risk. GIFI, for instance, collapsed after a poorly managed ERP migration.
-
-> ✅ **Today, AI enables **non-invasive automation** — fast to implement, efficient, and easy to maintain.**
-
-Most projects can be completed in just a few weeks. The real challenge isn’t technical — it’s strategic: knowing **what’s possible**, **what creates impact**, and **how to implement it with minimal risk**. That’s exactly what I bring to the table.
+**Expertise in:**
+- AI agent infrastructure and deployment
+- Engineering-as-Code transformations
+- RAG systems for technical domains
+- DevOps, CI/CD, and cloud architecture
+- Team leadership and technical roadmapping
 
 ---
 
-## My Offer: Simple, Actionable, and Results-Oriented
+## Approach
 
-### 1. Operational Diagnosis
+### 1. Understand the Real Problem
 
-* Rapid immersion in your workflows
-* Identification of **bottlenecks**
-* Selection of **high-impact use cases**
+* Immersion in your actual workflows
+* Identify high-impact opportunities
+* Focus on what creates measurable value
 
-### 2. One-Week Sprint Prototypes
+### 2. Iterative Development
 
-* Agile development with weekly concrete deliverables
-* Ideally **on-site collaboration** to stay grounded in real operational needs
+* Ship working prototypes quickly
+* Weekly deliverables and feedback loops
+* On-site collaboration when needed
 
-### 3. Deployment & Training
+### 3. Production Deployment
 
-* Production rollout **without disrupting your business**
-* Short training sessions tailored to all user profiles
-* **Illustrated user manual** + **post-deployment support**
+* Deploy without disrupting operations
+* Train your team to own the system
+* Documentation and post-deployment support
 
-🎯 **Goal: a solution that’s useful, well-understood, and owned by your team.**
+**Philosophy:** Build solutions your team actually uses and understands.
 
 ---
+
+## Current Focus
+
+I'm primarily focused on building open-source tools and working on hard technical problems in AI. Consulting engagements are selective—I work with projects that align with my interest in making AI succeed at complex engineering and technical tasks.
 
 📧 [azamcharles0@gmail.com](mailto:azamcharles0@gmail.com)
