@@ -1,54 +1,59 @@
 # Engineering-as-Code Manifesto
 
-We are brilliant engineers—experts in thermodynamics, mechanics, simulations, and design. Yet day after day, we wrestle with Word documents, Excel spreadsheets, and endless email chains. We duplicate files, lose track of revisions, and spend more time tracking change requests than innovating.
+We're brilliant engineers—experts in thermodynamics, mechanics, simulations, design. Yet we wrestle with Word docs, Excel sheets, endless email chains. We duplicate files, lose track of revisions, spend more time tracking changes than innovating.
 
 ??? note "The Engineer's Nightmare"
     ![Bad folder](./bad_folder.png)
 
     Boo!
 
-It’s time to reclaim our craft and transform how we work.
+Time to reclaim our craft.
 
-Engineering should be about:
+**Engineering should be:**
 - Paper-and-pen thinking
-- Converting thoughts into code
-- Building on the work of others
+- Converting thoughts to code
+- Building on others' work
 - **Doing everything once**
 
 ---
 
-## Embrace Versioned Collaboration
+## Version Everything
 
-* **Stop emailing “report_v2_final_rev.xlsx”**
-  Instead, keep design files, scripts, and documentation together in a Git repository.
-* **Every change is traceable.**
-  Pull requests become our peer reviews—no more guessing who changed what, when, and why.
+**Stop emailing "report_v2_final_rev.xlsx"**
+Design files, scripts, docs together in Git.
 
-## Engineer with Code
+**Every change traceable**
+Pull requests = peer reviews. No guessing who changed what, when, why.
 
-* **Parameterize everything.**
-  Shift from manual table updates to code-driven models. Change a simulation parameter once, and let automated pipelines regenerate results, diagrams, and reports.
-* **Automate the mundane.**
-  Build CI/CD workflows with GitHub Actions: run tests, generate documentation, and notify stakeholders—without lifting a finger.
+## Code Everything
 
-## Leverage State-of-the-Art AI
+**Parameterize**
+Code-driven models, not manual tables. Change once, pipelines regenerate results, diagrams, reports.
 
-* **Smart assistants at your side.**
-  Use AI agents (RAG, LangChain, SmolAgents) to draft simulation scripts, validate boundary conditions, or summarize analysis results.
-* **Insight over inbox.**
-  Instead of sifting through dozens of email threads, ask an AI agent for the latest project status and get an instant, consolidated briefing.
+**Automate**
+CI/CD with GitHub Actions: tests, docs, notifications—automatic.
 
-## Keep Data Pure & Reusable
+## Use AI
 
-* **Monorepo for models & docs.**
-  Centralize all assets—simulations, CAD exports, reports—in one place. Clean, versioned data means fewer errors and faster onboarding.
-* **Interoperability by design.**
-  Build custom connectors that feed your simulation outputs straight into AI workflows, dashboards, and downstream tools.
+**Smart assistants**
+AI agents (RAG, LangChain, SmolAgents) draft scripts, validate conditions, summarize results.
 
-## Foster a Culture of Continuous Improvement
+**Insight over inbox**
+Ask AI for project status. Get instant briefing.
 
-* **Learn by sharing.**
-  Every engineer contributes to shared libraries—scripts for meshing, post-processing routines, or data-visualization templates.
-* **Iterate rapidly.**
-  With lightweight pipelines, spin up new ideas in minutes, not days. Fail fast, learn faster, and push the boundaries of what’s possible.
+## Clean Data
+
+**Monorepo**
+Simulations, CAD, reports—one place. Clean, versioned data = fewer errors, faster onboarding.
+
+**Interoperability**
+Custom connectors feed simulation outputs to AI, dashboards, tools.
+
+## Continuous Improvement
+
+**Shared libraries**
+Everyone contributes: meshing scripts, post-processing, visualizations.
+
+**Iterate fast**
+Lightweight pipelines. New ideas in minutes. Fail fast, learn faster.
 

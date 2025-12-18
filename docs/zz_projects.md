@@ -1,144 +1,80 @@
 # Projects
 
-My work focuses on **making AI succeed in complex engineering and technical tasks**. This theme connects all my projects—from transforming traditional engineering workflows to building infrastructure for AI agents.
+Making AI work for complex engineering and technical problems.
 
 ---
 
-## Jimmy Energy: Engineering-as-Code Transformation
+## Jimmy Energy
+**CIO (2022-2025)** • Engineering-as-Code transformation
 
-**Role:** CIO (2022-2024)
+Transformed traditional engineering company to Git-based workflow. Replaced legacy PLM with custom Python tools (PyJimmy). Entire engineering team now works from unified codebase with version control, CI/CD, and AI integration.
 
-**Challenge:** Traditional engineering companies rely on legacy PLM systems, siloed tools, and manual document management. Engineers spend more time managing files than doing engineering.
+**Impact:** Engineers spend time engineering instead of managing files. Clean, versioned data enables AI workflows.
 
-**Solution:** Led my team to rebuild the entire engineering workflow from scratch:
-- Migrated all engineering data to a single Git monorepo
-- Built custom Python tools (PyJimmy) to replace legacy PLM
-- Enabled version control for all engineering artifacts (models, simulations, docs)
-- Integrated AI capabilities directly into engineering workflows
-
-**Impact:**
-- Entire engineering team working from a unified codebase
-- Cleaner, versioned data enabling AI integration
-- Engineers spending more time on actual engineering
-
-**Tech:** Python, Git, AWS, CI/CD, GitHub Actions
+**Stack:** Python, Git, AWS, GitHub Actions
 
 ---
 
-## OmniAgents: Unified AI Coding Agent Interface
+## OmniAgents
+[GitHub](https://github.com/charles-azam/OmniAgents) • **Active development**
 
-[GitHub](https://github.com/charles-azam/OmniAgents) | **Status:** Active development
+Unified interface for AI coding agents across execution environments (Local, Docker, E2B) and frameworks (smolagents, Pydantic-AI, LangChain).
 
-**Problem:** Building AI coding agents requires choosing between fragmented execution environments (local, Docker, E2B) and AI frameworks (smolagents, Pydantic-AI, LangChain). Each combination requires different code.
+**Problem:** AI agent infrastructure is fragmented. Every environment/framework combination needs different code.
 
-**Solution:** A unified interface that abstracts away execution environments and AI frameworks, letting developers focus on agent logic instead of infrastructure.
+**Solution:** Abstract it away. Write agent logic once, run anywhere.
 
-**Features:**
-- Support for multiple execution environments (Local, Docker, E2B)
-- Compatible with multiple AI frameworks (smolagents, Pydantic-AI, LangChain)
-- Clean API for building production-grade AI coding agents
-- Easy switching between environments for development and production
-
-**Why it matters:** AI agent development is held back by infrastructure fragmentation. OmniAgents solves this.
-
-**Tech:** Python, Docker, E2B, smolagents, Pydantic-AI, LangChain
+**Stack:** Python, Docker, E2B
 
 ---
 
-## Predibench: AI Agents on Prediction Markets
+## Predibench
+[Platform](https://predibench.com) • [GitHub](https://github.com/charles-azam/predibench) • [Article](https://huggingface.co/blog/charles-azam/predibench)
 
-[Live Platform](https://predibench.com) | [GitHub](https://github.com/charles-azam/predibench) | [HuggingFace Article](https://huggingface.co/blog/charles-azam/predibench)
+Benchmark AI models on real-world prediction markets. Live platform testing if AI can beat humans at forecasting.
 
-**Concept:** Can AI models beat humans at forecasting real-world events? Test them on Polymarket.
+**Why it matters:** Most benchmarks use static datasets. Prediction markets provide real-time, real-stakes evaluation.
 
-**What it does:**
-- Benchmarks AI models on real-world prediction markets
-- Agents make forecasts on Polymarket events
-- Tracks performance against human forecasters
-- Public leaderboard showing which models perform best
-
-**Why it matters:** Most AI benchmarks use static datasets. Prediction markets provide real-time, real-stakes evaluation of AI reasoning capabilities.
-
-**Status:** Live platform with active testing
-
-**Tech:** Python, Polymarket API, RAG, LLM agents
+**Stack:** Python, Polymarket API, RAG
 
 ---
 
-## Webportal: Web Interface for AI Agents
+## Webportal
+[Platform](https://webportal-468213.web.app) • [GitHub](https://github.com/aymeric-roucher/webportal)
 
-[Live Platform](https://webportal-468213.web.app) | [GitHub](https://github.com/aymeric-roucher/webportal)
+Web interface for AI agents. Built at HuggingFace x Anthropic hackathon (3rd place).
 
-**Achievement:** 3rd place at HuggingFace x Anthropic AI Agent Hackathon
-
-**Problem:** AI agents struggle with web interaction—they need better tools to navigate, extract, and interact with web content.
-
-**Solution:** A web platform designed specifically for AI agent interaction with the web.
-
-**Tech:** Firebase, Web APIs, AI agents
+**Stack:** Firebase, Web APIs
 
 ---
 
-## DeepDraft: AI for Technical Documentation
+## DeepDraft
+[Website](https://deepdraft.dev) • **Work in progress**
 
-[Website](https://deepdraft.dev) | **Status:** Work in progress
+AI tool for technical documentation—design docs, reports, diagrams, plans. Deep search specialized in scientific questions.
 
-**Vision:** AI tools that can generate engineering design documents, technical reports, diagrams, and plans.
+**Challenge:** Most AI writing tools work for blog posts. Technical documentation needs engineering and scientific reasoning.
 
-**Challenge:** Most AI writing tools work for blog posts and marketing copy. Technical documentation requires understanding of engineering concepts, scientific reasoning, and domain expertise.
-
-**Approach:** Deep search specialized in scientific and technical questions, combined with document generation capabilities.
-
-**Tech:** Python, RAG, LLM agents, technical document processing
+**Stack:** Python, RAG, LLM agents
 
 ---
 
-## Pyforge: Engineering-as-Code Library
-
+## Pyforge
 [GitHub](https://github.com/charles-azam/pyforge)
 
-**What it is:** A minimalist Python library for managing engineering projects using Git workflows.
+Minimalist Python library for engineering-as-code. Version control for engineering artifacts—models, simulations, docs.
 
-**Philosophy:** Engineering should be code. Models, simulations, and documentation should be versioned, tested, and automated like software.
+Born from Jimmy Energy transformation. Codifies patterns for treating engineering like software.
 
-**Use case:** Born from the Jimmy Energy transformation, Pyforge codifies the patterns we developed for engineering-as-code.
-
-**Features:**
-- Git-based version control for engineering artifacts
-- Python API for managing models and simulations
-- Integration with standard engineering tools
-- Lightweight and focused on simplicity
-
-**Tech:** Python, Git
+**Stack:** Python, Git
 
 ---
 
-## AIEngineer: AI Agent for Engineering Projects
-
+## AIEngineer
 [GitHub](https://github.com/charles-azam/aiengineer)
 
-**Concept:** If engineering can be code (Pyforge), can AI generate it automatically?
+AI agent that scaffolds engineering projects following Pyforge conventions. Uses Aider to programmatically generate code.
 
-**What it does:** An AI agent that scaffolds engineering projects following Pyforge conventions.
+**Status:** Experimental—testing what AI can handle for complex engineering tasks.
 
-**Approach:** Uses Aider to programmatically generate code for engineering projects.
-
-**Status:** Experimental—learning what AI can and can't do for complex engineering tasks.
-
-**Tech:** Python, Aider, Pyforge, LLM agents
-
----
-
-## The Unifying Thread
-
-All these projects stem from one question: **How do we make AI work for hard, technical problems?**
-
-- **Jimmy Energy** proved traditional engineering can become code-driven
-- **Pyforge** codified those patterns
-- **AIEngineer** tested if AI could generate engineering code
-- **OmniAgents** builds infrastructure for production AI agents
-- **Predibench** evaluates AI on real-world reasoning tasks
-- **Webportal** improves AI agent capabilities
-- **DeepDraft** pushes AI into technical documentation
-
-This isn't just about demos—it's about pushing AI to handle the complexity of real engineering and scientific work.
+**Stack:** Python, Aider, Pyforge

@@ -1,49 +1,44 @@
-# About me
+# Charles Azam
 
-Hi, I'm **Charles Azam**. I build AI systems for complex engineering and technical problems.
+I build AI systems for complex engineering and technical problems.
 
-I'm currently building open-source tools to push AI capabilities in complex domains: autonomous coding agents, prediction market evaluation, and scientific deep search. Previously, I led engineering teams at Jimmy Energy, transforming traditional engineering workflows into modern, code-driven systems.
+Currently building open-source tools for AI agents, prediction markets, and technical search. Previously led engineering teams at Jimmy Energy, transforming traditional workflows into code-driven systems.
 
-**What drives me:** Most AI works on easy problems. I'm interested in making AI succeed at real engineering, scientific reasoning, and production systems.
-
-- [LinkedIn](https://www.linkedin.com/in/charles-azam-a4223b135/)
-- [GitHub](https://github.com/charles-azam)
-- [HuggingFace](https://huggingface.co/charles-azam)
+[LinkedIn](https://www.linkedin.com/in/charles-azam-a4223b135/) • [GitHub](https://github.com/charles-azam) • [HuggingFace](https://huggingface.co/charles-azam)
 
 ---
 
 ## Featured Projects
 
-!!! success "**Jimmy Energy: Engineering-as-Code Transformation**"
-    As CIO, I led my team to reorganize an entire engineering company on a single Git monorepo. We rebuilt our engineers' tools from scratch, enabling cleaner data, version control, and seamless AI integration. Traditional PLM replaced with Python + Git. Also did a great RAG system to help our engineers find the information they need.
+**[Jimmy Energy: Engineering-as-Code Transformation](#)**
+Led transformation of traditional engineering company to Git-based workflow. Replaced legacy PLM with Python tools, enabling AI integration and clean version control.
 
-!!! info "**[OmniAgents](https://github.com/charles-azam/OmniAgents): Unified AI Coding Agent Interface**"
-    A unified interface for building AI coding agents across multiple execution environments (Local, Docker, E2B) and AI frameworks (smolagents, Pydantic-AI, LangChain). Solves the fragmentation problem in AI agent development.
+**[OmniAgents](https://github.com/charles-azam/OmniAgents)**
+Unified interface for building AI coding agents across multiple environments (Local, Docker, E2B) and frameworks (smolagents, Pydantic-AI, LangChain).
 
-!!! info "**[Predibench](https://predibench.com): AI Agents on Prediction Markets**"
-    A live platform benchmarking AI models on real-world forecasting using Polymarket. Tests whether AI can beat humans at predicting events. [Code](https://github.com/charles-azam/predibench)
+**[Predibench](https://predibench.com)** • [Code](https://github.com/charles-azam/predibench)
+Live platform benchmarking AI models on real-world prediction markets using Polymarket.
 
-!!! info "**[Webportal](https://webportal-468213.web.app): Web Interface for AI Agents**"
-    Built during the HuggingFace x Anthropic hackathon (3rd place). A web platform designed to help AI agents interact with the web more effectively. [Code](https://github.com/aymeric-roucher/webportal)
-
-
-
----
-
-## Writing & Research
+**[Webportal](https://webportal-468213.web.app)** • [Code](https://github.com/charles-azam/webportal)
+Web platform for AI agent interaction. Follow up of the project at HuggingFace x Anthropic hackathon (**3rd place winner**).
 
 
-- [**Evaluate Your Own RAG: Why Best Practices Failed Us**](https://huggingface.co/blog/charles-azam/rag)
-  *HuggingFace Blog* - A critical look at RAG evaluation and why standard best practices don't always work.
-
-- [**PrediBench: Testing AI Models on Prediction Markets**](https://huggingface.co/blog/charles-azam/predibench)
-  *HuggingFace Blog* - How we benchmark AI models using real-world forecasting on Polymarket.
-
-- [**Engineering-as-Code Manifesto**](zzz_manifesto.md)
-  My vision for transforming traditional engineering with modern software practices—version control, automation, and AI integration.
 
 ---
 
-## 🏕️ Hobbies
+## Writing
 
-I’m passionate about bivouac and outdoor adventures—always planning the next escape into nature!
+[**Evaluate Your Own RAG: Why Best Practices Failed Us**](https://huggingface.co/blog/charles-azam/rag)
+A critical look at RAG evaluation and why standard best practices don't always work.
+
+[**PrediBench: Testing AI Models on Prediction Markets**](https://huggingface.co/blog/charles-azam/predibench)
+Benchmarking AI models using real-world forecasting on Polymarket.
+
+[**Engineering-as-Code Manifesto**](zzz_manifesto.md)
+Transforming traditional engineering with version control, automation, and AI.
+
+---
+
+## Hobbies
+
+Bivouac and outdoor adventures.
