@@ -1,0 +1,168 @@
+/* ===================================
+   Custom Theme
+   Navigation + Header + Colors
+   =================================== */
+
+:root {
+  --primary: #0a0a0a;
+  --accent: #ff6b35;
+  --accent-soft: #ffb088;
+  --text: #1a1a1a;
+  --text-light: #666;
+  --bg-subtle: #fafafa;
+  --border: #e5e5e5;
+}
+
+[data-md-color-scheme="slate"] {
+  --primary: #f5f5f5;
+  --bg-subtle: #1a1a1a;
+  --border: #2a2a2a;
+  --text: #e0e0e0;
+  --text-light: #999;
+}
+
+/* Material theme color variables */
+:root {
+  --md-primary-fg-color: #ff6b35;
+  --md-accent-fg-color: #ff6b35;
+}
+
+/* ===================================
+   Typography - Compact Sizes
+   =================================== */
+
+.md-typeset {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.md-typeset h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.md-typeset h2 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--accent);
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.md-typeset h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* ===================================
+   Navigation - Clean Sidebar
+   =================================== */
+
+.md-nav {
+  font-size: 0.9rem;
+}
+
+.md-nav__item {
+  margin: 0.2rem 0;
+}
+
+.md-nav__link {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.md-nav__link:hover {
+  border-left-color: var(--accent-soft);
+  background: transparent;
+  padding-left: 1rem;
+}
+
+.md-nav__link--active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 600;
+  background: transparent;
+}
+
+/* ===================================
+   Header - Minimal
+   =================================== */
+
+.md-header {
+  background: transparent;
+  box-shadow: none;
+  border-bottom: 1px solid var(--border);
+  height: 3rem;
+}
+
+.md-header__title {
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Hide site name in sidebar */
+.md-nav--primary .md-nav__title {
+  display: none;
+}
+
+.md-header-nav__button {
+  color: var(--primary);
+}
+
+/* ===================================
+   Footer - Minimal
+   =================================== */
+
+.md-footer {
+  background: transparent;
+  border-top: 1px solid var(--border);
+  color: var(--text-light);
+}
+
+/* ===================================
+   Dividers
+   =================================== */
+
+.md-typeset hr {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: 4rem 0;
+}
+
+/* ===================================
+   Table of Contents
+   =================================== */
+
+.md-nav--secondary .md-nav__link {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.md-nav--secondary .md-nav__link--active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ===================================
+   Focus States - Accessibility
+   =================================== */
+
+a:focus,
+button:focus,
+.md-nav__link:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

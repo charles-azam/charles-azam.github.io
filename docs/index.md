@@ -8,7 +8,7 @@ Currently building open-source tools for AI agents, prediction markets, and tech
 
 ## Featured Projects
 
-**[Jimmy Energy: Engineering-as-Code Transformation](#)**
+**[Jimmy Energy: Engineering-as-Code Transformation](https://www.jimmy-energy.eu)**
 Led transformation of traditional engineering company to Git-based workflow. Replaced legacy PLM with Python tools, enabling AI integration and clean version control.
 
 **[OmniAgents](https://github.com/charles-azam/OmniAgents)**

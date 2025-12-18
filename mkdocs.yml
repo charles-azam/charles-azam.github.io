@@ -114,3 +114,6 @@ nav:
   - Manifesto: manifesto.md
   - Consulting: consulting.md
   - Books: books.md
+
+extra_css:
+  - stylesheets/custom.css
