@@ -6,7 +6,6 @@ interface FemCanvasProps {
   model: FrameModel
   modalResult: ModalResult
   selectedMode: number
-  showAnnotations?: boolean
   excitationMode?: 'free' | 'excitation'
   excitationFrequency?: number
   amplitudeFactor?: number
@@ -33,7 +32,6 @@ export function FemCanvas({
   model,
   modalResult,
   selectedMode,
-  showAnnotations = false,
   excitationMode = 'free',
   excitationFrequency = 2.0,
   amplitudeFactor = 1.0,
@@ -183,30 +181,28 @@ export function FemCanvas({
       }
 
       // Draw hatched ground line
-      if (showAnnotations) {
-        const [groundLeftX, groundY] = toCanvas(0, 0)
-        const [groundRightX] = toCanvas(maxX, 0)
-        const extend = 20
-        const hatchY = groundY + 16
+      const [groundLeftX, groundY] = toCanvas(0, 0)
+      const [groundRightX] = toCanvas(maxX, 0)
+      const extend = 20
+      const hatchY = groundY + 16
 
-        ctx.strokeStyle = '#555'
-        ctx.lineWidth = 1.5
-        ctx.setLineDash([])
+      ctx.strokeStyle = '#555'
+      ctx.lineWidth = 1.5
+      ctx.setLineDash([])
+      ctx.beginPath()
+      ctx.moveTo(groundLeftX - extend, hatchY)
+      ctx.lineTo(groundRightX + extend, hatchY)
+      ctx.stroke()
+
+      // Hatching below ground line
+      ctx.lineWidth = 0.8
+      const hatchSpacing = 6
+      const hatchLength = 8
+      for (let x = groundLeftX - extend; x <= groundRightX + extend; x += hatchSpacing) {
         ctx.beginPath()
-        ctx.moveTo(groundLeftX - extend, hatchY)
-        ctx.lineTo(groundRightX + extend, hatchY)
+        ctx.moveTo(x, hatchY)
+        ctx.lineTo(x - hatchLength * 0.7, hatchY + hatchLength)
         ctx.stroke()
-
-        // Hatching below ground line
-        ctx.lineWidth = 0.8
-        const hatchSpacing = 6
-        const hatchLength = 8
-        for (let x = groundLeftX - extend; x <= groundRightX + extend; x += hatchSpacing) {
-          ctx.beginPath()
-          ctx.moveTo(x, hatchY)
-          ctx.lineTo(x - hatchLength * 0.7, hatchY + hatchLength)
-          ctx.stroke()
-        }
       }
 
       // Draw fixed supports (triangles at ground nodes)
@@ -219,17 +215,6 @@ export function FemCanvas({
         ctx.lineTo(cx, cy)
         ctx.closePath()
         ctx.fill()
-
-        if (!showAnnotations) {
-          // Simple ground line when annotations are off
-          ctx.strokeStyle = '#444'
-          ctx.lineWidth = 1
-          ctx.setLineDash([])
-          ctx.beginPath()
-          ctx.moveTo(cx - 14, cy + 16)
-          ctx.lineTo(cx + 14, cy + 16)
-          ctx.stroke()
-        }
       }
 
       // Draw undeformed structure (dim, dashed)
@@ -328,37 +313,22 @@ export function FemCanvas({
         ctx.fill()
       }
 
-      // Annotations
-      if (showAnnotations) {
-        ctx.font = '10px Inter, sans-serif'
-        ctx.textBaseline = 'middle'
+      // Floor labels
+      const storyHeight = maxY / numStories
+      const labels = ['Ground']
+      for (let i = 1; i < numStories; i++) labels.push(`Level ${i}`)
+      labels.push('Roof')
 
-        // Node numbers
-        for (const node of model.nodes) {
-          const [cx, cy] = toCanvas(node.x, node.y)
-          const labelX = node.x === 0 ? cx - 14 : cx + 14
-          ctx.fillStyle = '#888'
-          ctx.textAlign = node.x === 0 ? 'right' : 'left'
-          ctx.fillText(`${node.id}`, labelX, cy)
-        }
+      ctx.fillStyle = '#666'
+      ctx.font = '9px Inter, sans-serif'
+      ctx.textAlign = 'right'
 
-        // Floor labels
-        const storyHeight = maxY / numStories
-        const labels = ['Ground']
-        for (let i = 1; i < numStories; i++) labels.push(`Level ${i}`)
-        labels.push('Roof')
-
-        ctx.fillStyle = '#666'
-        ctx.font = '9px Inter, sans-serif'
-        ctx.textAlign = 'right'
-
-        for (let i = 0; i <= numStories; i++) {
-          const [, cy] = toCanvas(0, i * storyHeight)
-          ctx.fillText(labels[i], offsetX - 25, cy)
-        }
+      for (let i = 0; i <= numStories; i++) {
+        const [, cy] = toCanvas(0, i * storyHeight)
+        ctx.fillText(labels[i], offsetX - 25, cy)
       }
     },
-    [model, modalResult, selectedMode, showAnnotations, excitationMode, excitationFrequency, amplitudeFactor, maxX, maxY, numStories],
+    [model, modalResult, selectedMode, excitationMode, excitationFrequency, amplitudeFactor, maxX, maxY, numStories],
   )
 
   // ResizeObserver for responsive canvas

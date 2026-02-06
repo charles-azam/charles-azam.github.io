@@ -1,4 +1,5 @@
-import type { FrameConfig, SteelSection } from '../../fem/types'
+import type { ReactNode } from 'react'
+import type { FrameConfig, StoryConfig, SteelSection } from '../../fem/types'
 import { COLUMN_SECTIONS, BEAM_SECTIONS } from '../../fem/types'
 import { useState } from 'react'
 
@@ -22,7 +23,7 @@ function SectionSelect({
 }) {
   return (
     <div>
-      <label className="block text-[10px] text-[var(--color-text-muted)] mb-1 uppercase tracking-wider">
+      <label className="block text-[10px] text-[var(--color-text-muted)] mb-0.5 uppercase tracking-wider">
         {label}
       </label>
       <select
@@ -57,7 +58,7 @@ function SliderControl({
   min: number
   max: number
   step: number
-  unit: string
+  unit: ReactNode
   onChange: (v: number) => void
 }) {
   return (
@@ -90,19 +91,102 @@ function formatSI(value: number, unit: string): string {
   return `${value.toExponential(2)} ${unit}`
 }
 
-function SectionProperties({ label, section }: { label: string; section: SteelSection }) {
+function StoryRow({
+  index,
+  story,
+  numStories,
+  bayWidth,
+  tributaryDepth,
+  onChange,
+}: {
+  index: number
+  story: StoryConfig
+  numStories: number
+  bayWidth: number
+  tributaryDepth: number
+  onChange: (updated: StoryConfig) => void
+}) {
+  const levelLabel = index === numStories - 1 ? 'Roof' : `Level ${index + 1}`
+  const floorMass = story.floorLoadKgPerM2 * bayWidth * tributaryDepth
+
   return (
-    <div className="text-[10px] text-[var(--color-text-muted)] font-mono space-y-0.5">
-      <div className="text-[9px] uppercase tracking-wider text-[var(--color-text-muted)] opacity-60 mb-0.5">{label}: {section.name}</div>
-      <div>E = <span className="text-[var(--color-text)]">200 GPa</span></div>
-      <div>A = <span className="text-[var(--color-text)]">{formatSI(section.A, 'm\u00B2')}</span></div>
-      <div>I = <span className="text-[var(--color-text)]">{formatSI(section.I, 'm\u2074')}</span></div>
+    <div className="border border-[var(--color-border)] rounded p-3 space-y-2">
+      {/* Story header */}
+      <div className="flex items-center justify-between">
+        <span className="text-[11px] font-semibold text-white">
+          Story {index + 1}
+          <span className="text-[var(--color-text-muted)] font-normal ml-1.5">
+            {'\u2192'} {levelLabel}
+          </span>
+        </span>
+        {tributaryDepth > 0 && story.floorLoadKgPerM2 > 0 && (
+          <span className="text-[10px] font-mono text-[var(--color-text-muted)]">
+            {(floorMass / 1000).toFixed(1)}t
+          </span>
+        )}
+      </div>
+
+      {/* Sections */}
+      <div className="grid grid-cols-2 gap-2">
+        <SectionSelect
+          label="Columns (stiffness)"
+          sections={COLUMN_SECTIONS}
+          selected={story.columnSection}
+          onChange={(s) => onChange({ ...story, columnSection: s })}
+        />
+        <SectionSelect
+          label="Beam (floor)"
+          sections={BEAM_SECTIONS}
+          selected={story.beamSection}
+          onChange={(s) => onChange({ ...story, beamSection: s })}
+        />
+      </div>
+
+      {/* Properties compact view */}
+      <div className="grid grid-cols-2 gap-2 text-[9px] font-mono text-[var(--color-text-muted)]">
+        <div>
+          I<sub>col</sub> = <span className="text-[var(--color-text)]">{formatSI(story.columnSection.I, 'm\u2074')}</span>
+        </div>
+        <div>
+          I<sub>beam</sub> = <span className="text-[var(--color-text)]">{formatSI(story.beamSection.I, 'm\u2074')}</span>
+        </div>
+      </div>
+
+      {/* Floor mass slider */}
+      <SliderControl
+        label="Floor mass"
+        value={story.floorLoadKgPerM2}
+        min={0}
+        max={1200}
+        step={50}
+        unit={<> kg/m<sup>2</sup></>}
+        onChange={(v) => onChange({ ...story, floorLoadKgPerM2: v })}
+      />
     </div>
   )
 }
 
 export function FrameControls({ config, onChange, totalMass, defaultExpanded = false }: FrameControlsProps) {
   const [collapsed, setCollapsed] = useState(!defaultExpanded)
+  const numStories = config.stories.length
+
+  function updateStory(index: number, updated: StoryConfig) {
+    const newStories = [...config.stories]
+    newStories[index] = updated
+    onChange({ ...config, stories: newStories })
+  }
+
+  function addStory() {
+    if (numStories >= 6) return
+    // Copy the top story's config for the new one
+    const topStory = config.stories[numStories - 1]
+    onChange({ ...config, stories: [...config.stories, { ...topStory }] })
+  }
+
+  function removeStory() {
+    if (numStories <= 2) return
+    onChange({ ...config, stories: config.stories.slice(0, -1) })
+  }
 
   return (
     <div className="border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)]">
@@ -116,16 +200,8 @@ export function FrameControls({ config, onChange, totalMass, defaultExpanded = f
 
       {!collapsed && (
         <div className="px-4 pb-4 space-y-3 border-t border-[var(--color-border)]">
+          {/* Global geometry */}
           <div className="pt-3 grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <SliderControl
-              label="Stories"
-              value={config.numStories}
-              min={2}
-              max={6}
-              step={1}
-              unit=""
-              onChange={(v) => onChange({ ...config, numStories: v })}
-            />
             <SliderControl
               label="Story height"
               value={config.storyHeight}
@@ -144,64 +220,67 @@ export function FrameControls({ config, onChange, totalMass, defaultExpanded = f
               unit="m"
               onChange={(v) => onChange({ ...config, bayWidth: v })}
             />
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            <SectionSelect
-              label="Column section"
-              sections={COLUMN_SECTIONS}
-              selected={config.columnSection}
-              onChange={(s) => onChange({ ...config, columnSection: s })}
-            />
-            <SectionSelect
-              label="Beam section"
-              sections={BEAM_SECTIONS}
-              selected={config.beamSection}
-              onChange={(s) => onChange({ ...config, beamSection: s })}
+            <SliderControl
+              label="Tributary depth"
+              value={config.tributaryDepth}
+              min={0}
+              max={8}
+              step={0.5}
+              unit="m"
+              onChange={(v) => onChange({ ...config, tributaryDepth: v })}
             />
           </div>
 
-          {/* Floor mass (depth / tributary) */}
+          {/* Add / remove floors */}
           <div className="border-t border-[var(--color-border)] pt-3">
-            <div className="text-[9px] uppercase tracking-wider text-[var(--color-text-muted)] opacity-60 mb-2">
-              Floor mass (3D {'\u2192'} 2D reduction)
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <SliderControl
-                label="Floor load"
-                value={config.floorLoadKgPerM2}
-                min={0}
-                max={1200}
-                step={50}
-                unit=" kg/m\u00B2"
-                onChange={(v) => onChange({ ...config, floorLoadKgPerM2: v })}
-              />
-              <SliderControl
-                label="Tributary depth"
-                value={config.tributaryDepth}
-                min={0}
-                max={8}
-                step={0.5}
-                unit="m"
-                onChange={(v) => onChange({ ...config, tributaryDepth: v })}
-              />
-            </div>
-            {config.floorLoadKgPerM2 > 0 && config.tributaryDepth > 0 && (
-              <div className="mt-2 text-[10px] text-[var(--color-text-muted)] font-mono">
-                m<sub>floor</sub> = {config.floorLoadKgPerM2} {'\u00D7'} {config.bayWidth.toFixed(1)} {'\u00D7'} {config.tributaryDepth.toFixed(1)} = <span className="text-[var(--color-text)]">{(config.floorLoadKgPerM2 * config.bayWidth * config.tributaryDepth / 1000).toFixed(1)} t/level</span>
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wider">
+                Floors ({numStories} stories)
+              </span>
+              <div className="flex gap-1.5">
+                <button
+                  onClick={removeStory}
+                  disabled={numStories <= 2}
+                  className="px-2 py-0.5 text-xs rounded border border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer transition-colors"
+                >
+                  Remove floor
+                </button>
+                <button
+                  onClick={addStory}
+                  disabled={numStories >= 6}
+                  className="px-2 py-0.5 text-xs rounded border border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer transition-colors"
+                >
+                  Add floor
+                </button>
               </div>
-            )}
+            </div>
+
+            {/* Per-story configs — top to bottom (roof first) */}
+            <div className="space-y-2">
+              {config.stories.map((_, i) => {
+                const displayIndex = numStories - 1 - i
+                return (
+                  <StoryRow
+                    key={displayIndex}
+                    index={displayIndex}
+                    story={config.stories[displayIndex]}
+                    numStories={numStories}
+                    bayWidth={config.bayWidth}
+                    tributaryDepth={config.tributaryDepth}
+                    onChange={(updated) => updateStory(displayIndex, updated)}
+                  />
+                )
+              })}
+            </div>
           </div>
 
-          {/* Mechanical properties */}
+          {/* Total mass summary */}
           <div className="border-t border-[var(--color-border)] pt-3">
-            <div className="grid grid-cols-3 gap-3">
-              <SectionProperties label="Columns" section={config.columnSection} />
-              <SectionProperties label="Beams" section={config.beamSection} />
-              <div className="text-[10px] text-[var(--color-text-muted)] font-mono space-y-0.5">
-                <div className="text-[9px] uppercase tracking-wider text-[var(--color-text-muted)] opacity-60 mb-0.5">Structure</div>
-                <div>{'\u03C1'} = <span className="text-[var(--color-text)]">7850 kg/m{'\u00B3'}</span></div>
-                <div>M<sub>tot</sub> = <span className="text-[var(--color-accent)]">{totalMass >= 1000 ? `${(totalMass / 1000).toFixed(2)} t` : `${totalMass.toFixed(0)} kg`}</span></div>
-              </div>
+            <div className="flex items-center justify-between text-[10px] font-mono">
+              <span className="text-[var(--color-text-muted)]">{'\u03C1'}<sub>steel</sub> = 7850 kg/m{'\u00B3'}</span>
+              <span className="text-[var(--color-text-muted)]">
+                M<sub>tot</sub> = <span className="text-[var(--color-accent)] font-semibold">{totalMass >= 1000 ? `${(totalMass / 1000).toFixed(2)} t` : `${totalMass.toFixed(0)} kg`}</span>
+              </span>
             </div>
           </div>
         </div>

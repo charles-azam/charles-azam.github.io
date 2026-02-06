@@ -5,7 +5,7 @@ import { applyBoundaryConditions } from './boundary-conditions'
 import { solveEigenvalueProblem } from './eigenvalue-solver'
 
 /**
- * Create a parametric single-bay steel frame with N stories.
+ * Create a parametric single-bay steel frame with per-story sections.
  *
  * Node layout (example for 3 stories):
  *   7 -------- 8     (roof,   y=3*h)
@@ -20,7 +20,8 @@ import { solveEigenvalueProblem } from './eigenvalue-solver'
  * Total DOFs = 6*(N+1), fixed DOFs = [0,1,2,3,4,5] (nodes 1 & 2)
  */
 export function createParametricFrame(config: FrameConfig): FrameModel {
-  const { numStories, storyHeight, bayWidth, columnSection, beamSection } = config
+  const { storyHeight, bayWidth, stories } = config
+  const numStories = stories.length
 
   const E = 200e9     // Pa (200 GPa)
   const rho = 7850    // kg/m^3
@@ -37,13 +38,16 @@ export function createParametricFrame(config: FrameConfig): FrameModel {
   let elemId = 1
   const elements = []
 
-  // Columns: connect each level to the one above
+  // Columns and beams per story, each with its own section
   for (let story = 0; story < numStories; story++) {
+    const { columnSection, beamSection } = stories[story]
+
     const bottomLeft = 2 * story + 1
     const topLeft = 2 * (story + 1) + 1
     const bottomRight = 2 * story + 2
     const topRight = 2 * (story + 1) + 2
 
+    // Left column
     elements.push({
       id: elemId++,
       nodeI: bottomLeft,
@@ -53,6 +57,7 @@ export function createParametricFrame(config: FrameConfig): FrameModel {
       I: columnSection.I,
       rho,
     })
+    // Right column
     elements.push({
       id: elemId++,
       nodeI: bottomRight,
@@ -62,16 +67,11 @@ export function createParametricFrame(config: FrameConfig): FrameModel {
       I: columnSection.I,
       rho,
     })
-  }
-
-  // Beams: connect left and right nodes at each level above ground
-  for (let story = 1; story <= numStories; story++) {
-    const left = 2 * story + 1
-    const right = 2 * story + 2
+    // Beam at top of this story
     elements.push({
       id: elemId++,
-      nodeI: left,
-      nodeJ: right,
+      nodeI: topLeft,
+      nodeJ: topRight,
       E,
       A: beamSection.A,
       I: beamSection.I,
@@ -91,43 +91,34 @@ export function createParametricFrame(config: FrameConfig): FrameModel {
 }
 
 /**
- * Add lumped floor masses to the global mass matrix.
+ * Add lumped floor masses to the global mass matrix (per-story floor loads).
  *
- * In a real building, the seismic mass comes mostly from floor slabs, not the frame itself.
- * The 2D frame model represents one frame slice; the tributary depth defines how much
- * floor area feeds mass into this frame.
- *
- * At each floor level (above ground), the total floor mass is:
- *   m_floor = q × L_bay × D_trib
- * where q = floor load (kg/m²), L_bay = bay width, D_trib = tributary depth.
- *
- * This mass is split equally between the two nodes at that level and added
- * to the translational DOFs (u and v). Rotational DOF gets no lumped mass.
- *
- * The stiffness matrix K is NOT modified — the frame provides all lateral stiffness.
- * Only M changes: M_total = M_frame + M_floor
+ * At each floor level, the mass is:
+ *   m_floor = q_i × L_bay × D_trib
+ * split equally between the two nodes at that level.
  */
 export function addFloorMasses(
   M: number[][],
   config: FrameConfig,
 ): void {
-  const { floorLoadKgPerM2, tributaryDepth, bayWidth, numStories } = config
+  const { tributaryDepth, bayWidth, stories } = config
 
-  if (floorLoadKgPerM2 <= 0 || tributaryDepth <= 0) return
+  if (tributaryDepth <= 0) return
 
-  const floorMassTotal = floorLoadKgPerM2 * bayWidth * tributaryDepth // kg per floor level
-  const massPerNode = floorMassTotal / 2 // split between left and right nodes
+  for (let story = 0; story < stories.length; story++) {
+    const q = stories[story].floorLoadKgPerM2
+    if (q <= 0) continue
 
-  // Floor levels are at y = storyHeight, 2*storyHeight, ..., numStories*storyHeight
-  // (not ground level — ground nodes are fixed anyway)
-  for (let level = 1; level <= numStories; level++) {
+    const floorMassTotal = q * bayWidth * tributaryDepth
+    const massPerNode = floorMassTotal / 2
+
+    const level = story + 1 // floor level (1-indexed, above ground)
     const leftNodeId = 2 * level + 1
     const rightNodeId = 2 * level + 2
 
-    // Add lumped mass to u and v DOFs (horizontal and vertical translation)
     for (const nodeId of [leftNodeId, rightNodeId]) {
-      const dofU = (nodeId - 1) * 3     // horizontal
-      const dofV = (nodeId - 1) * 3 + 1 // vertical
+      const dofU = (nodeId - 1) * 3
+      const dofV = (nodeId - 1) * 3 + 1
       M[dofU][dofU] += massPerNode
       M[dofV][dofV] += massPerNode
     }
@@ -149,8 +140,6 @@ export function computeParticipationFactors(
 ): ParticipationData {
   const n = freeDOFs.length
 
-  // Influence vector r: 1 for horizontal DOFs (index % 3 === 0), 0 otherwise
-  // In the free DOF space
   const r = new Array(n).fill(0)
   for (let i = 0; i < n; i++) {
     if (freeDOFs[i] % 3 === 0) {
@@ -158,7 +147,6 @@ export function computeParticipationFactors(
     }
   }
 
-  // Compute total mass: r^T M r
   let totalMass = 0
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < n; j++) {
@@ -170,7 +158,6 @@ export function computeParticipationFactors(
   const effectiveMassRatios: number[] = []
 
   for (const phi of modeShapes) {
-    // phi^T M phi
     let phiMphi = 0
     for (let i = 0; i < n; i++) {
       for (let j = 0; j < n; j++) {
@@ -178,7 +165,6 @@ export function computeParticipationFactors(
       }
     }
 
-    // phi^T M r
     let phiMr = 0
     for (let i = 0; i < n; i++) {
       for (let j = 0; j < n; j++) {
@@ -208,18 +194,15 @@ export function solveFrameModal(
   const model = createParametricFrame(config)
   const { K, M } = assembleGlobalMatrices(model)
 
-  // Add lumped floor masses: M_total = M_frame + M_floor
   addFloorMasses(M, config)
 
   const { Kff, Mff, freeDOFs } = applyBoundaryConditions(K, M, model.fixedDOFs, model.totalDOFs)
 
   const { eigenvalues, eigenvectors } = solveEigenvalueProblem(Kff, Mff)
 
-  // Convert eigenvalues to frequencies
   const angularFrequencies = eigenvalues.map((lambda) => Math.sqrt(lambda))
   const frequencies = angularFrequencies.map((omega) => omega / (2 * Math.PI))
 
-  // Expand mode shapes to full DOF vector (including zeros at fixed DOFs)
   const fullModeShapes = eigenvectors.map((modeShape) => {
     const full = new Array(model.totalDOFs).fill(0)
     for (let i = 0; i < freeDOFs.length; i++) {
@@ -228,7 +211,6 @@ export function solveFrameModal(
     return full
   })
 
-  // Limit to requested number of modes
   const n = Math.min(numModes, frequencies.length)
 
   const limitedModeShapes = eigenvectors.slice(0, n)

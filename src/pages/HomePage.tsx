@@ -33,7 +33,6 @@ const featuredProjects = [
 export function HomePage() {
   const [selectedMode, setSelectedMode] = useState(0)
   const [frameConfig, setFrameConfig] = useState<FrameConfig>(DEFAULT_FRAME_CONFIG)
-  const [showAnnotations, setShowAnnotations] = useState(false)
   const [showOverlay, setShowOverlay] = useState(false)
   const [showDrawer, setShowDrawer] = useState(false)
   const [excitationMode, setExcitationMode] = useState<'free' | 'excitation'>('free')
@@ -103,17 +102,6 @@ export function HomePage() {
               Equations
             </button>
             <button
-              onClick={() => setShowAnnotations(!showAnnotations)}
-              className={`px-2 py-1 text-[10px] rounded border cursor-pointer transition-colors ${
-                showAnnotations
-                  ? 'border-[var(--color-accent)] text-[var(--color-accent)]'
-                  : 'border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]'
-              }`}
-              title="Show annotations"
-            >
-              Annotations
-            </button>
-            <button
               onClick={() => setShowDrawer(true)}
               className="px-2.5 py-1 text-[10px] rounded border cursor-pointer transition-colors border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white"
               title="Seismic analysis details & structure parameters"
@@ -131,7 +119,6 @@ export function HomePage() {
                 model={model}
                 modalResult={modalResult}
                 selectedMode={selectedMode}
-                showAnnotations={showAnnotations}
                 excitationMode={excitationMode}
                 excitationFrequency={excitationFrequency}
                 amplitudeFactor={amplitudeFactor}

@@ -44,14 +44,24 @@ export interface SteelSection {
   I: number   // m^4
 }
 
-export interface FrameConfig {
-  numStories: number       // 2-6
-  storyHeight: number      // m (2.5-4.5)
-  bayWidth: number         // m (3-6)
+/**
+ * Per-story configuration.
+ * Story i connects level i (bottom) to level i+1 (top).
+ * - columnSection: the two columns in this story (lateral stiffness)
+ * - beamSection: the beam at the top of this story (floor stiffness)
+ * - floorLoadKgPerM2: mass at the top level of this story
+ */
+export interface StoryConfig {
   columnSection: SteelSection
   beamSection: SteelSection
-  floorLoadKgPerM2: number // kg/m² — slab self-weight + superimposed dead load (0 = frame only)
-  tributaryDepth: number   // m — depth of building tributary to this frame (0 = frame only)
+  floorLoadKgPerM2: number  // kg/m²
+}
+
+export interface FrameConfig {
+  storyHeight: number      // m (2.5-4.5) — uniform for simplicity
+  bayWidth: number         // m (3-6)
+  tributaryDepth: number   // m — depth of building tributary to this frame
+  stories: StoryConfig[]   // one entry per story (length = numStories)
 }
 
 export const COLUMN_SECTIONS: SteelSection[] = [
@@ -68,12 +78,19 @@ export const BEAM_SECTIONS: SteelSection[] = [
   { name: 'IPE 400', A: 84.5e-4, I: 23130e-8 },
 ]
 
-export const DEFAULT_FRAME_CONFIG: FrameConfig = {
-  numStories: 3,
-  storyHeight: 3.0,
-  bayWidth: 4.0,
+export const DEFAULT_STORY_CONFIG: StoryConfig = {
   columnSection: COLUMN_SECTIONS[1], // HEB 200
   beamSection: BEAM_SECTIONS[1],     // IPE 300
   floorLoadKgPerM2: 500,             // ~20cm concrete slab + finishes + live load
-  tributaryDepth: 4.0,               // m — typical frame spacing
+}
+
+export const DEFAULT_FRAME_CONFIG: FrameConfig = {
+  storyHeight: 3.0,
+  bayWidth: 4.0,
+  tributaryDepth: 4.0,
+  stories: [
+    { ...DEFAULT_STORY_CONFIG },
+    { ...DEFAULT_STORY_CONFIG },
+    { ...DEFAULT_STORY_CONFIG },
+  ],
 }

@@ -62,9 +62,9 @@ export function ExcitationControls({
         </div>
         <input
           type="range"
-          min={0.2}
-          max={5.0}
-          step={0.1}
+          min={1}
+          max={10}
+          step={0.5}
           value={amplitudeFactor}
           onChange={(e) => onAmplitudeChange(parseFloat(e.target.value))}
           className="w-full h-1 bg-[var(--color-border)] rounded appearance-none cursor-pointer accent-[var(--color-accent)]"

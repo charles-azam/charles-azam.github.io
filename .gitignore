@@ -19,8 +19,3 @@ dist/
 .firebase/
 
 
-
-#   This is an open problem and it should stay simple while being appealing to a sismic engineer ("it really works",
-#   instead of "looks great but it is false"
- 
-#   ALso, it is not clear to the public that this is used to simulate a building under a seism, maybe we can do that to
