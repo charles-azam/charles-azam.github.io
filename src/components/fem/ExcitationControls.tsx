@@ -85,7 +85,7 @@ export function ExcitationControls({
           <input
             type="range"
             min={0.5}
-            max={15}
+            max={30}
             step={0.1}
             value={excitationFrequency}
             onChange={(e) => onFrequencyChange(parseFloat(e.target.value))}
@@ -94,7 +94,7 @@ export function ExcitationControls({
           {/* Frequency markers for natural frequencies */}
           <div className="relative h-2 mt-0.5">
             {naturalFrequencies.map((f, i) => {
-              const pos = ((f - 0.5) / (15 - 0.5)) * 100
+              const pos = ((f - 0.5) / (30 - 0.5)) * 100
               if (pos < 0 || pos > 100) return null
               return (
                 <div

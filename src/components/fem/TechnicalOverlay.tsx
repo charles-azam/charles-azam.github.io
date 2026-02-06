@@ -3,59 +3,35 @@ import type { FrameModel, ModalResult } from '../../fem/types'
 interface TechnicalOverlayProps {
   model: FrameModel
   modalResult: ModalResult
-  visible: boolean
 }
 
-export function TechnicalOverlay({ model, modalResult, visible }: TechnicalOverlayProps) {
-  if (!visible) return null
-
+export function TechnicalOverlay({ model, modalResult }: TechnicalOverlayProps) {
   const numFreeDOFs = model.totalDOFs - model.fixedDOFs.length
   const numElements = model.elements.length
 
   return (
-    <div className="absolute top-2 left-2 bg-black/85 backdrop-blur-sm rounded-lg px-3 py-2 text-[10px] font-mono text-[var(--color-text-muted)] space-y-1.5 pointer-events-none max-w-[260px]">
+    <div className="border border-t-0 border-[var(--color-border)] rounded-b-lg bg-[var(--color-bg-secondary)] px-3 py-2 font-mono text-[var(--color-text-muted)] flex items-center justify-between gap-4 flex-wrap">
       {/* Stats */}
-      <div>
+      <div className="text-[10px]">
         <span className="text-white">{numFreeDOFs}</span> DOFs |{' '}
         <span className="text-white">{numElements}</span> elements |{' '}
         Solved in <span className="text-[var(--color-accent)]">{modalResult.solveTimeMs.toFixed(1)}ms</span>
       </div>
 
-      {/* Separator */}
-      <div className="border-t border-white/10" />
-
-      {/* Equations */}
-      <div className="space-y-1 text-[9px] leading-relaxed">
-        <div>
-          <span className="text-[var(--color-text-muted)] opacity-60">Eigenvalue problem:</span>
-          <br />
-          <span className="text-white/80">K{'\u03C6'} = {'\u03C9'}{'\u00B2'}M{'\u03C6'}</span>
-        </div>
-        <div>
-          <span className="text-[var(--color-text-muted)] opacity-60">Participation factor:</span>
-          <br />
-          <span className="text-white/80">{'\u03B3'}<sub>i</sub> = {'\u03C6'}<sub>i</sub><sup>T</sup>Mr / {'\u03C6'}<sub>i</sub><sup>T</sup>M{'\u03C6'}<sub>i</sub></span>
-        </div>
-        <div>
-          <span className="text-[var(--color-text-muted)] opacity-60">Effective modal mass:</span>
-          <br />
-          <span className="text-white/80">M<sub>eff,i</sub> = ({'\u03C6'}<sub>i</sub><sup>T</sup>Mr){'\u00B2'} / {'\u03C6'}<sub>i</sub><sup>T</sup>M{'\u03C6'}<sub>i</sub></span>
-        </div>
-        <div>
-          <span className="text-[var(--color-text-muted)] opacity-60">Floor lumped mass (2D reduction):</span>
-          <br />
-          <span className="text-white/80">M = M<sub>frame</sub> + {'\u03A3'} q{'\u00B7'}L{'\u00B7'}D<sub>trib</sub></span>
-        </div>
-        <div>
-          <span className="text-[var(--color-text-muted)] opacity-60">Amplification (excitation):</span>
-          <br />
-          <span className="text-white/80">D<sub>i</sub> = 1 / |1 {'\u2212'} (f<sub>exc</sub>/f<sub>i</sub>){'\u00B2'}|</span>
-        </div>
-        <div>
-          <span className="text-[var(--color-text-muted)] opacity-60">Hermite interpolation:</span>
-          <br />
-          <span className="text-white/80">v({'\u03BE'}) = N<sub>1</sub>v<sub>i</sub> + N<sub>2</sub>{'\u03B8'}<sub>i</sub> + N<sub>3</sub>v<sub>j</sub> + N<sub>4</sub>{'\u03B8'}<sub>j</sub></span>
-        </div>
+      {/* Equations — compact inline */}
+      <div className="flex flex-wrap gap-x-4 gap-y-0.5 text-[9px]">
+        <span>
+          <span className="opacity-50">Eigenvalue</span>{' '}
+          <span className="text-white/70">K{'\u03C6'} = {'\u03C9'}{'\u00B2'}M{'\u03C6'}</span>
+        </span>
+        <span>
+          <span className="opacity-50">{'\u03B3'}<sub>i</sub></span>{' '}
+          <span className="text-white/70">= {'\u03C6'}<sup>T</sup>Mr / {'\u03C6'}<sup>T</sup>M{'\u03C6'}</span>
+        </span>
+        <span>
+          <span className="opacity-50">D<sub>i</sub></span>{' '}
+          <span className="text-white/70">= 1/|1{'\u2212'}(f<sub>exc</sub>/f<sub>i</sub>){'\u00B2'}|</span>
+        </span>
       </div>
     </div>
   )

@@ -33,7 +33,6 @@ const featuredProjects = [
 export function HomePage() {
   const [selectedMode, setSelectedMode] = useState(0)
   const [frameConfig, setFrameConfig] = useState<FrameConfig>(DEFAULT_FRAME_CONFIG)
-  const [showOverlay, setShowOverlay] = useState(false)
   const [showDrawer, setShowDrawer] = useState(false)
   const [excitationMode, setExcitationMode] = useState<'free' | 'excitation'>('free')
   const [excitationFrequency, setExcitationFrequency] = useState(2.0)
@@ -85,36 +84,16 @@ export function HomePage() {
       {/* Hero section */}
       <section className="mx-auto max-w-5xl px-6 py-8">
         {/* Title bar */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="mb-4">
           <h2 className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-widest">
             Earthquake Modal Analysis
           </h2>
-          <div className="flex gap-2">
-            <button
-              onClick={() => setShowOverlay(!showOverlay)}
-              className={`px-2 py-1 text-[10px] rounded border cursor-pointer transition-colors ${
-                showOverlay
-                  ? 'border-[var(--color-accent)] text-[var(--color-accent)]'
-                  : 'border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]'
-              }`}
-              title="Technical info"
-            >
-              Equations
-            </button>
-            <button
-              onClick={() => setShowDrawer(true)}
-              className="px-2.5 py-1 text-[10px] rounded border cursor-pointer transition-colors border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white"
-              title="Seismic analysis details & structure parameters"
-            >
-              Engineering Details
-            </button>
-          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* FEM Canvas */}
           <div>
-            <div className="relative border border-[var(--color-border)] rounded-lg overflow-hidden bg-[var(--color-bg-secondary)] h-[380px]">
+            <div className="relative border border-[var(--color-border)] rounded-t-lg overflow-hidden bg-[var(--color-bg-secondary)] h-[380px]">
               <FemCanvas
                 model={model}
                 modalResult={modalResult}
@@ -123,21 +102,28 @@ export function HomePage() {
                 excitationFrequency={excitationFrequency}
                 amplitudeFactor={amplitudeFactor}
               />
-              <TechnicalOverlay
-                model={model}
-                modalResult={modalResult}
-                visible={showOverlay}
-              />
             </div>
+            <TechnicalOverlay model={model} modalResult={modalResult} />
 
             {/* Controls below canvas */}
             <div className="mt-3 space-y-3">
-              <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+              <div className="flex items-center gap-3">
                 <ModeSelector
                   numModes={Math.min(NUM_MODES, modalResult.frequencies.length)}
                   selectedMode={selectedMode}
+                  frequencies={modalResult.frequencies}
                   onSelectMode={setSelectedMode}
                 />
+                <button
+                  onClick={() => setShowDrawer(true)}
+                  className="ml-auto flex items-center gap-1.5 px-3 py-1.5 text-[11px] rounded border cursor-pointer transition-colors border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+                  title="Configure structure & view seismic analysis"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
+                    <path fillRule="evenodd" d="M8.34 1.804A1 1 0 019.32 1h1.36a1 1 0 01.98.804l.295 1.473c.497.144.971.342 1.416.587l1.25-.834a1 1 0 011.262.125l.962.962a1 1 0 01.125 1.262l-.834 1.25c.245.445.443.919.587 1.416l1.473.295a1 1 0 01.804.98v1.361a1 1 0 01-.804.98l-1.473.295a6.95 6.95 0 01-.587 1.416l.834 1.25a1 1 0 01-.125 1.262l-.962.962a1 1 0 01-1.262.125l-1.25-.834a6.953 6.953 0 01-1.416.587l-.295 1.473a1 1 0 01-.98.804H9.32a1 1 0 01-.98-.804l-.295-1.473a6.957 6.957 0 01-1.416-.587l-1.25.834a1 1 0 01-1.262-.125l-.962-.962a1 1 0 01-.125-1.262l.834-1.25a6.957 6.957 0 01-.587-1.416l-1.473-.295A1 1 0 011 11.18V9.82a1 1 0 01.804-.98l1.473-.295c.144-.497.342-.971.587-1.416l-.834-1.25a1 1 0 01.125-1.262l.962-.962A1 1 0 015.38 3.53l1.25.834a6.957 6.957 0 011.416-.587l.295-1.473zM13 10a3 3 0 11-6 0 3 3 0 016 0z" clipRule="evenodd" />
+                  </svg>
+                  Configure structure
+                </button>
               </div>
               <ExcitationControls
                 mode={excitationMode}
