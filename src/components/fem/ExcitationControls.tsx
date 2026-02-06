@@ -33,7 +33,7 @@ export function ExcitationControls({
           className={`px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer ${
             mode === 'free'
               ? 'bg-[var(--color-accent)] text-white'
-              : 'bg-transparent text-[var(--color-text-muted)] hover:text-white'
+              : 'bg-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
           }`}
         >
           Free Vibration
@@ -43,7 +43,7 @@ export function ExcitationControls({
           className={`px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer ${
             mode === 'excitation'
               ? 'bg-[var(--color-accent)] text-white'
-              : 'bg-transparent text-[var(--color-text-muted)] hover:text-white'
+              : 'bg-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
           }`}
         >
           Base Excitation
@@ -111,7 +111,7 @@ export function ExcitationControls({
             })}
           </div>
           {nearResonance >= 0 && (
-            <div className="text-[10px] text-amber-400 mt-1 font-medium">
+            <div className="text-[10px] text-amber-600 mt-1 font-medium">
               Near resonance with Mode {nearResonance + 1}!
             </div>
           )}

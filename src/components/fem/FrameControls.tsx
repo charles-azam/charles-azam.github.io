@@ -113,7 +113,7 @@ function StoryRow({
     <div className="border border-[var(--color-border)] rounded p-3 space-y-2">
       {/* Story header */}
       <div className="flex items-center justify-between">
-        <span className="text-[11px] font-semibold text-white">
+        <span className="text-[11px] font-semibold text-[var(--color-text)]">
           Story {index + 1}
           <span className="text-[var(--color-text-muted)] font-normal ml-1.5">
             {'\u2192'} {levelLabel}
@@ -192,7 +192,7 @@ export function FrameControls({ config, onChange, totalMass, defaultExpanded = f
     <div className="border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)]">
       <button
         onClick={() => setCollapsed(!collapsed)}
-        className="w-full flex items-center justify-between px-4 py-2.5 text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider hover:text-white transition-colors cursor-pointer"
+        className="w-full flex items-center justify-between px-4 py-2.5 text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider hover:text-[var(--color-text)] transition-colors cursor-pointer"
       >
         <span>Structure Parameters</span>
         <span className="text-sm">{collapsed ? '\u25BC' : '\u25B2'}</span>

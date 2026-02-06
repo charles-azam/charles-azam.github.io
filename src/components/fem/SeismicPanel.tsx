@@ -14,7 +14,7 @@ export function SeismicPanel({ modalResult, selectedMode, onSelectMode }: Seismi
   return (
     <div className="border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] p-4">
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-sm font-semibold text-white uppercase tracking-wider">
+        <h3 className="text-sm font-semibold text-[var(--color-text)] uppercase tracking-wider">
           Seismic Modal Analysis
         </h3>
         <span className="text-xs text-[var(--color-text-muted)]">
@@ -50,14 +50,14 @@ export function SeismicPanel({ modalResult, selectedMode, onSelectMode }: Seismi
                   className={`cursor-pointer transition-colors ${
                     isSelected
                       ? 'bg-[var(--color-accent)]/10'
-                      : 'hover:bg-white/5'
+                      : 'hover:bg-[var(--color-accent)]/5'
                   }`}
                 >
                   <td className="py-1.5 pr-2">
                     <span
                       className={`inline-block w-5 h-5 rounded text-center leading-5 text-xs font-medium ${
                         isSelected
-                          ? 'bg-[var(--color-accent)] text-white'
+                          ? 'bg-[var(--color-accent)] text-white '
                           : 'bg-[var(--color-border)] text-[var(--color-text-muted)]'
                       }`}
                     >

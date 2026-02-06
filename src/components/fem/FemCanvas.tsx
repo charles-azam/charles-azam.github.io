@@ -65,15 +65,16 @@ export function FemCanvas({
 
       ctx.clearRect(0, 0, width, height)
 
-      // Dynamic coordinate scaling based on actual structure dimensions
+      // Dynamic coordinate scaling — leave room on the left for the overlay
+      const leftPadding = 130
       const padding = 50
       const structWidth = maxX
       const structHeight = maxY
-      const scaleX = (width - 2 * padding) / structWidth
+      const scaleX = (width - leftPadding - padding) / structWidth
       const scaleY = (height - 2 * padding) / structHeight
       const scale = Math.min(scaleX, scaleY)
 
-      const offsetX = (width - structWidth * scale) / 2
+      const offsetX = leftPadding + (width - leftPadding - padding - structWidth * scale) / 2
       const offsetY = height - padding
 
       function toCanvas(x: number, y: number): [number, number] {
@@ -144,7 +145,7 @@ export function FemCanvas({
         const groundShift = phase * 3 // small visual shift for ground
 
         // Draw ground motion arrows
-        ctx.strokeStyle = '#ff6b35'
+        ctx.strokeStyle = '#2d6374'
         ctx.lineWidth = 1.5
         ctx.setLineDash([2, 2])
         const [, groundY] = toCanvas(0, 0)
@@ -174,8 +175,8 @@ export function FemCanvas({
         ctx.stroke()
 
         // Label
-        ctx.fillStyle = '#ff6b35'
-        ctx.font = '9px Inter, sans-serif'
+        ctx.fillStyle = '#2d6374'
+        ctx.font = '9px Manrope, sans-serif'
         ctx.textAlign = 'center'
         ctx.fillText('ground motion', offsetX + maxX * scale / 2, arrowY + 12)
       }
@@ -186,7 +187,7 @@ export function FemCanvas({
       const extend = 20
       const hatchY = groundY + 16
 
-      ctx.strokeStyle = '#555'
+      ctx.strokeStyle = '#8da4b3'
       ctx.lineWidth = 1.5
       ctx.setLineDash([])
       ctx.beginPath()
@@ -195,6 +196,7 @@ export function FemCanvas({
       ctx.stroke()
 
       // Hatching below ground line
+      ctx.strokeStyle = '#b9c7d1'
       ctx.lineWidth = 0.8
       const hatchSpacing = 6
       const hatchLength = 8
@@ -206,7 +208,7 @@ export function FemCanvas({
       }
 
       // Draw fixed supports (triangles at ground nodes)
-      ctx.fillStyle = '#444'
+      ctx.fillStyle = '#cfdae2'
       for (let nodeId = 1; nodeId <= 2; nodeId++) {
         const [cx, cy] = toCanvas(model.nodes[nodeId - 1].x, model.nodes[nodeId - 1].y)
         ctx.beginPath()
@@ -228,7 +230,7 @@ export function FemCanvas({
 
         // Different visual weight for columns vs beams
         const isColumn = Math.abs(nodeJ.y - nodeI.y) > Math.abs(nodeJ.x - nodeI.x)
-        ctx.strokeStyle = isColumn ? '#333' : '#2a2a2a'
+        ctx.strokeStyle = isColumn ? '#bdc9d1' : '#cdd7de'
         ctx.lineWidth = isColumn ? 1 : 0.8
 
         ctx.beginPath()
@@ -251,7 +253,7 @@ export function FemCanvas({
         const sinA = dy / L
 
         const isColumn = Math.abs(dy) > Math.abs(dx)
-        ctx.strokeStyle = '#ff6b35'
+        ctx.strokeStyle = '#153544'
         ctx.lineWidth = isColumn ? 2.5 : 2
 
         // Get DOF values for this element
@@ -305,12 +307,15 @@ export function FemCanvas({
       }
 
       // Draw deformed nodes
-      ctx.fillStyle = '#ff6b35'
       for (let nodeId = 1; nodeId <= model.nodes.length; nodeId++) {
         const [cx, cy] = getDisplaced(nodeId)
         ctx.beginPath()
         ctx.arc(cx, cy, 3, 0, Math.PI * 2)
+        ctx.fillStyle = '#ffffff'
         ctx.fill()
+        ctx.strokeStyle = '#153544'
+        ctx.lineWidth = 1.5
+        ctx.stroke()
       }
 
       // Floor labels
@@ -319,8 +324,8 @@ export function FemCanvas({
       for (let i = 1; i < numStories; i++) labels.push(`Level ${i}`)
       labels.push('Roof')
 
-      ctx.fillStyle = '#666'
-      ctx.font = '9px Inter, sans-serif'
+      ctx.fillStyle = '#5e7382'
+      ctx.font = '9px Manrope, sans-serif'
       ctx.textAlign = 'right'
 
       for (let i = 0; i <= numStories; i++) {

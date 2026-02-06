@@ -102,11 +102,11 @@ export function HomePage() {
                 excitationFrequency={excitationFrequency}
                 amplitudeFactor={amplitudeFactor}
               />
+              <TechnicalOverlay model={model} modalResult={modalResult} selectedMode={selectedMode} />
             </div>
-            <TechnicalOverlay model={model} modalResult={modalResult} />
 
-            {/* Controls below canvas */}
-            <div className="mt-3 space-y-3">
+            {/* Controls inside the white box */}
+            <div className="border border-t-0 border-[var(--color-border)] rounded-b-lg bg-[var(--color-bg-secondary)] px-3 py-3 space-y-3">
               <div className="flex items-center gap-3">
                 <ModeSelector
                   numModes={Math.min(NUM_MODES, modalResult.frequencies.length)}
@@ -140,7 +140,7 @@ export function HomePage() {
 
           {/* Intro text */}
           <div className="lg:pl-4">
-            <h1 className="text-4xl font-bold text-white mb-4">Charles AZAM</h1>
+            <h1 className="text-4xl font-bold text-[var(--color-text)] mb-4">Charles AZAM</h1>
             <p className="text-[15px] leading-relaxed mb-4 text-[var(--color-text)]">
               Structural engineer turned AI builder. The frame on the left is a real finite element
               solver running in your browser — assembling stiffness matrices, solving eigenvalue
@@ -183,7 +183,7 @@ export function HomePage() {
 
       {/* Featured Projects */}
       <section className="mx-auto max-w-5xl px-6 py-10 border-t border-[var(--color-border)]">
-        <h2 className="text-2xl font-semibold text-white mb-6">Featured Projects</h2>
+        <h2 className="text-2xl font-semibold text-[var(--color-text)] mb-6">Featured Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featuredProjects.map((project) => (
             <a
@@ -193,7 +193,7 @@ export function HomePage() {
               rel={project.url.startsWith('/') ? undefined : 'noopener noreferrer'}
               className="block p-5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-accent)] transition-colors group"
             >
-              <h3 className="text-white font-medium mb-2 group-hover:text-[var(--color-accent)] transition-colors">
+              <h3 className="text-[var(--color-text)] font-medium mb-2 group-hover:text-[var(--color-accent)] transition-colors">
                 {project.title}
               </h3>
               <p className="text-sm text-[var(--color-text-muted)]">{project.description}</p>
@@ -212,7 +212,7 @@ export function HomePage() {
 
       {/* Writing */}
       <section className="mx-auto max-w-5xl px-6 py-10 border-t border-[var(--color-border)]">
-        <h2 className="text-2xl font-semibold text-white mb-6">Writing</h2>
+        <h2 className="text-2xl font-semibold text-[var(--color-text)] mb-6">Writing</h2>
         <div className="space-y-4">
           <Link
             to="/blog/rag"
@@ -246,12 +246,12 @@ export function HomePage() {
           {/* Panel */}
           <div className="absolute top-0 right-0 h-full w-full max-w-lg bg-[var(--color-bg)] border-l border-[var(--color-border)] shadow-2xl overflow-y-auto animate-slide-in">
             <div className="sticky top-0 z-10 flex items-center justify-between px-5 py-4 bg-[var(--color-bg)] border-b border-[var(--color-border)]">
-              <h2 className="text-sm font-semibold text-white uppercase tracking-wider">
+              <h2 className="text-sm font-semibold text-[var(--color-text)] uppercase tracking-wider">
                 Engineering Details
               </h2>
               <button
                 onClick={() => setShowDrawer(false)}
-                className="text-[var(--color-text-muted)] hover:text-white transition-colors text-lg cursor-pointer px-2"
+                className="text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors text-lg cursor-pointer px-2"
                 title="Close (Esc)"
               >
                 {'\u2715'}

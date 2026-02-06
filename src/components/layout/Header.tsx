@@ -18,7 +18,7 @@ export function Header() {
       <div className="mx-auto max-w-5xl px-6 py-4 flex items-center justify-between">
         <Link
           to="/"
-          className="text-lg font-semibold text-white hover:text-[var(--color-accent)] transition-colors"
+          className="text-sm font-medium font-mono text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors"
         >
           Charles AZAM
         </Link>
@@ -44,7 +44,7 @@ export function Header() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-[var(--color-text-muted)] hover:text-white transition-colors"
+          className="md:hidden text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >

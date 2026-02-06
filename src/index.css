@@ -2,13 +2,13 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-bg: #0a0a0a;
-  --color-bg-secondary: #141414;
-  --color-accent: #ff6b35;
-  --color-accent-hover: #ff8555;
-  --color-text: #e0e0e0;
-  --color-text-muted: #888888;
-  --color-border: #2a2a2a;
+  --color-bg: #f5f8fa;
+  --color-bg-secondary: #ffffff;
+  --color-accent: #0e7f80;
+  --color-accent-hover: #0a6667;
+  --color-text: #10212c;
+  --color-text-muted: #5e7382;
+  --color-border: #d5e0e8;
 }
 
 html {
@@ -17,16 +17,16 @@ html {
 }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family: "Manrope", system-ui, -apple-system, sans-serif;
   min-height: 100vh;
 }
 
-/* Prose overrides for dark theme */
+/* Prose overrides for light theme */
 .prose {
   --tw-prose-body: var(--color-text);
-  --tw-prose-headings: #ffffff;
+  --tw-prose-headings: var(--color-text);
   --tw-prose-links: var(--color-accent);
-  --tw-prose-bold: #ffffff;
+  --tw-prose-bold: var(--color-text);
   --tw-prose-code: var(--color-accent);
   --tw-prose-quotes: var(--color-text-muted);
   --tw-prose-quote-borders: var(--color-accent);

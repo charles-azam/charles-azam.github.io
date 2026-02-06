@@ -3,7 +3,7 @@ import { books } from '../content/books'
 export function BooksPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
-      <h1 className="text-3xl font-bold text-white mb-2">Books</h1>
+      <h1 className="text-3xl font-bold text-[var(--color-text)] mb-2">Books</h1>
       <p className="text-[var(--color-text-muted)] mb-10">A curated list of my favorite books.</p>
 
       <ul className="space-y-3">
@@ -11,7 +11,7 @@ export function BooksPage() {
           <li key={book.title} className="flex items-baseline gap-2">
             <span className="text-[var(--color-accent)]">-</span>
             <span>
-              <em className="text-white">{book.title}</em>
+              <em className="text-[var(--color-text)]">{book.title}</em>
               {book.originalTitle && (
                 <span className="text-[var(--color-text-muted)]"> ({book.originalTitle})</span>
               )}

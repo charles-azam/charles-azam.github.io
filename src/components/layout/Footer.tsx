@@ -10,7 +10,7 @@ export function Footer() {
             href="https://www.linkedin.com/in/charles-azam-a4223b135/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors"
+            className="text-sm font-mono text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
           >
             LinkedIn
           </a>
@@ -18,7 +18,7 @@ export function Footer() {
             href="https://github.com/charles-azam"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors"
+            className="text-sm font-mono text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
           >
             GitHub
           </a>
@@ -26,13 +26,13 @@ export function Footer() {
             href="https://huggingface.co/charles-azam"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors"
+            className="text-sm font-mono text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
           >
             HuggingFace
           </a>
           <a
             href="mailto:azamcharles0@gmail.com"
-            className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors"
+            className="text-sm font-mono text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
           >
             Email
           </a>

@@ -9,7 +9,7 @@ export function BlogPostPage() {
   if (!post) {
     return (
       <div className="mx-auto max-w-3xl px-6 py-12">
-        <h1 className="text-3xl font-bold text-white mb-4">Post not found</h1>
+        <h1 className="text-3xl font-bold text-[var(--color-text)] mb-4">Post not found</h1>
         <Link
           to="/blog"
           className="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
@@ -30,7 +30,7 @@ export function BlogPostPage() {
       </Link>
 
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2">{post.title}</h1>
+        <h1 className="text-3xl font-bold text-[var(--color-text)] mb-2">{post.title}</h1>
         <time className="text-sm text-[var(--color-text-muted)]">
           {new Date(post.date).toLocaleDateString('en-US', {
             year: 'numeric',
