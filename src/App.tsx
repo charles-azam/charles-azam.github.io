@@ -6,7 +6,6 @@ import { ConsultingPage } from './pages/ConsultingPage'
 import { BlogListPage } from './pages/BlogListPage'
 import { BlogPostPage } from './pages/BlogPostPage'
 import { BooksPage } from './pages/BooksPage'
-import { ManifestoPage } from './pages/ManifestoPage'
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
         <Route path="/blog" element={<BlogListPage />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="/books" element={<BooksPage />} />
-        <Route path="/manifesto" element={<ManifestoPage />} />
       </Route>
     </Routes>
   )
