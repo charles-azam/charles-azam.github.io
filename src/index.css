@@ -2,23 +2,30 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-bg: #f5f8fa;
+  --color-bg: #f0f4f7;
   --color-bg-secondary: #ffffff;
   --color-accent: #0e7f80;
   --color-accent-hover: #0a6667;
+  --color-accent-light: #e6f3f3;
   --color-text: #10212c;
   --color-text-muted: #5e7382;
   --color-border: #d5e0e8;
+  --font-display: "DM Serif Display", Georgia, serif;
 }
 
 html {
   background-color: var(--color-bg);
   color: var(--color-text);
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: "Manrope", system-ui, -apple-system, sans-serif;
   min-height: 100vh;
+  background-image:
+    radial-gradient(circle, #c8d6e0 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  background-attachment: fixed;
 }
 
 /* Prose overrides for light theme */
@@ -37,30 +44,83 @@ body {
   --tw-prose-td-borders: var(--color-border);
 }
 
+.prose h1,
+.prose h2,
+.prose h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.prose a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
 .prose a:hover {
   color: var(--color-accent-hover);
 }
 
 .prose code {
-  background-color: var(--color-bg-secondary);
-  padding: 0.15em 0.35em;
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+  padding: 0.15em 0.4em;
   border-radius: 0.25rem;
-  font-size: 0.875em;
+  font-size: 0.85em;
+  font-family: "IBM Plex Mono", monospace;
 }
 
 .prose pre code {
   background-color: transparent;
+  color: inherit;
   padding: 0;
 }
 
 .prose pre {
-  background-color: var(--color-bg-secondary);
+  background-color: #1a2332;
   border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  color: #d4dce4;
+}
+
+.prose blockquote {
+  border-left-width: 3px;
+  border-left-color: var(--color-accent);
+  font-style: italic;
+}
+
+.prose img {
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border);
+}
+
+.prose table {
+  font-size: 0.9em;
+}
+
+.prose th {
+  font-weight: 600;
 }
 
 /* Highlight.js overrides */
 .hljs {
-  background: var(--color-bg-secondary) !important;
+  background: #1a2332 !important;
+}
+
+/* Page transition */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-page-in {
+  animation: fade-in-up 0.4s ease-out;
 }
 
 /* Drawer slide-in animation */
@@ -75,4 +135,30 @@ body {
 
 .animate-slide-in {
   animation: slide-in-right 0.25s ease-out;
+}
+
+/* Link underline animation */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.2s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--color-accent);
+  color: white;
 }
