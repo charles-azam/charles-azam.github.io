@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { getCollection, render } from 'astro:content'
+import 'highlight.js/styles/github-dark-dimmed.css'
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog')
+  return posts.map((post) => ({
+    params: { slug: post.id.replace('.md', '') },
+    props: { post },
+  }))
+}
+
+const { post } = Astro.props
+const { Content } = await render(post)
+
+function readingTime(content: string): string {
+  const words = content.trim().split(/\s+/).length
+  const minutes = Math.max(1, Math.round(words / 230))
+  return `${minutes} min read`
+}
+---
+
+<BaseLayout title={`${post.data.title} - Charles AZAM`} description={post.data.description}>
+  <div class="mx-auto max-w-3xl px-6 py-12 animate-page-in">
+    <a
+      href="/blog"
+      class="inline-flex items-center gap-1 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors mb-8"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M10 12L6 8l4-4" />
+      </svg>
+      Blog
+    </a>
+
+    <header class="mb-10">
+      <h1 class="font-[var(--font-display)] text-4xl lg:text-[2.75rem] leading-tight text-[var(--color-text)] mb-4">
+        {post.data.title}
+      </h1>
+      <div class="flex items-center gap-3 text-sm font-mono text-[var(--color-text-muted)]">
+        <time>
+          {new Date(post.data.date).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </time>
+        <span class="text-[var(--color-border)]">/</span>
+        <span>{readingTime(post.body ?? '')}</span>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+      <Content />
+    </div>
+  </div>
+</BaseLayout>

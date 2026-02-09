@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { FemHeroSection } from '../components/FemHeroSection'
+import { getCollection } from 'astro:content'
+
+const featuredProjects = [
+  {
+    title: 'Jimmy Energy',
+    tag: 'CIO',
+    url: '/projects',
+    description: 'Led transformation of traditional engineering company to Git-based workflow.',
+  },
+  {
+    title: 'OmniAgents',
+    tag: 'Open Source',
+    url: 'https://github.com/charles-azam/OmniAgents',
+    description: 'Unified interface for building AI coding agents across multiple environments.',
+  },
+  {
+    title: 'Predibench',
+    tag: 'Live',
+    url: 'https://predibench.com',
+    description: 'Live platform benchmarking AI models on real-world prediction markets.',
+  },
+]
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3)
+---
+
+<BaseLayout>
+  <div class="animate-page-in">
+    <FemHeroSection client:load />
+
+    <!-- Featured Projects -->
+    <section class="mx-auto max-w-5xl px-6 py-12">
+      <div class="flex items-baseline justify-between mb-8">
+        <h2 class="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Projects</h2>
+        <a
+          href="/projects"
+          class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] link-underline transition-colors"
+        >
+          View all
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {featuredProjects.map((project) => (
+          <a
+            href={project.url}
+            target={project.url.startsWith('/') ? undefined : '_blank'}
+            rel={project.url.startsWith('/') ? undefined : 'noopener noreferrer'}
+            class="group block p-5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-accent)] hover:shadow-md transition-all"
+          >
+            <div class="flex items-center gap-2 mb-3">
+              <h3 class="font-semibold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
+                {project.title}
+              </h3>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--color-accent-light)] text-[var(--color-accent)]">
+                {project.tag}
+              </span>
+            </div>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{project.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Writing -->
+    <section class="mx-auto max-w-5xl px-6 py-12">
+      <div class="flex items-baseline justify-between mb-8">
+        <h2 class="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Writing</h2>
+        <a
+          href="/blog"
+          class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] link-underline transition-colors"
+        >
+          All posts
+        </a>
+      </div>
+      <div class="space-y-0 divide-y divide-[var(--color-border)]">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.id.replace('.md', '')}`}
+            class="group flex items-baseline justify-between py-4 gap-4"
+          >
+            <span class="text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors font-medium">
+              {post.data.title}
+            </span>
+            <span class="text-xs text-[var(--color-text-muted)] whitespace-nowrap font-mono shrink-0">
+              {new Date(post.data.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

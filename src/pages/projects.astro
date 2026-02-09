@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { projects } from '../content/projects'
+---
+
+<BaseLayout title="Projects - Charles AZAM" description="Making AI work for complex engineering and technical problems.">
+  <div class="mx-auto max-w-5xl px-6 py-12 animate-page-in">
+    <p class="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3">
+      Portfolio
+    </p>
+    <h1 class="font-[var(--font-display)] text-4xl text-[var(--color-text)] mb-3">
+      Projects
+    </h1>
+    <p class="text-[var(--color-text-muted)] mb-12 max-w-lg">
+      Making AI work for complex engineering and technical problems.
+    </p>
+
+    <div class="space-y-6">
+      {projects.map((project) => (
+        <article class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+          <div class="flex items-center gap-3 mb-2 flex-wrap">
+            <h2 class="text-lg font-semibold text-[var(--color-text)]">{project.title}</h2>
+            {project.role && project.period && (
+              <span class="text-xs font-mono text-[var(--color-text-muted)]">
+                {project.role} ({project.period})
+              </span>
+            )}
+            {project.status && (
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--color-accent-light)] text-[var(--color-accent)]">
+                {project.status}
+              </span>
+            )}
+          </div>
+          <p class="text-sm text-[var(--color-text-muted)] italic mb-3">{project.tagline}</p>
+          <p class="text-sm mb-3 leading-relaxed">{project.description}</p>
+          {project.impact && (
+            <p class="text-sm text-[var(--color-text-muted)] mb-3">
+              <span class="text-[var(--color-text)] font-medium">Impact:</span> {project.impact}
+            </p>
+          )}
+          <div class="flex items-center justify-between flex-wrap gap-2 pt-3 border-t border-[var(--color-border)]">
+            <p class="text-xs font-mono text-[var(--color-text-muted)]">
+              {project.stack}
+            </p>
+            <div class="flex gap-3">
+              {project.links.map((link) => (
+                <a
+                  href={link.url}
+                  target={link.url.startsWith('/') ? undefined : '_blank'}
+                  rel={link.url.startsWith('/') ? undefined : 'noopener noreferrer'}
+                  class="text-sm font-mono text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] link-underline transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

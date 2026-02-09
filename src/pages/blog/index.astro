@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { getCollection } from 'astro:content'
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+)
+
+function readingTime(content: string): string {
+  const words = content.trim().split(/\s+/).length
+  const minutes = Math.max(1, Math.round(words / 230))
+  return `${minutes} min read`
+}
+---
+
+<BaseLayout title="Blog - Charles AZAM" description="Thoughts on AI systems, engineering culture, and building things that work.">
+  <div class="mx-auto max-w-3xl px-6 py-12 animate-page-in">
+    <p class="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3">
+      Blog
+    </p>
+    <h1 class="font-[var(--font-display)] text-4xl text-[var(--color-text)] mb-3">
+      Writing
+    </h1>
+    <p class="text-[var(--color-text-muted)] mb-12 max-w-lg">
+      Thoughts on AI systems, engineering culture, and building things that work.
+    </p>
+
+    <div class="space-y-0 divide-y divide-[var(--color-border)]">
+      {posts.map((post) => (
+        <article>
+          <a href={`/blog/${post.id.replace('.md', '')}`} class="group block py-6">
+            <div class="flex items-center gap-3 mb-2">
+              <time class="text-xs font-mono text-[var(--color-text-muted)]">
+                {new Date(post.data.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })}
+              </time>
+              <span class="text-[var(--color-border)]">/</span>
+              <span class="text-xs font-mono text-[var(--color-text-muted)]">
+                {readingTime(post.body ?? '')}
+              </span>
+            </div>
+            <h2 class="text-xl font-semibold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors mb-2">
+              {post.data.title}
+            </h2>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{post.data.description}</p>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

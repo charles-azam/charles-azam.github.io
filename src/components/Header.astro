@@ -1,0 +1,93 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/consulting', label: 'Consulting' },
+  { href: '/books', label: 'Books' },
+]
+
+const pathname = Astro.url.pathname
+---
+
+<header class="bg-[var(--color-bg-secondary)] border-b border-[var(--color-border)]">
+  <div class="mx-auto max-w-5xl px-6 py-3 flex items-center justify-between">
+    <a href="/" class="group flex items-center gap-2 transition-colors">
+      <span class="inline-flex items-center justify-center w-7 h-7 rounded bg-[var(--color-accent)] text-white text-xs font-bold font-mono leading-none">
+        CA
+      </span>
+      <span class="text-sm font-medium text-[var(--color-text-muted)] group-hover:text-[var(--color-text)] transition-colors hidden sm:inline">
+        Charles Azam
+      </span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex gap-1">
+      {navLinks.map(({ href, label }) => {
+        const isActive = pathname === href || (href !== '/' && pathname.startsWith(href))
+        return (
+          <a
+            href={href}
+            class:list={[
+              'px-3 py-1.5 rounded text-sm transition-colors',
+              isActive
+                ? 'text-[var(--color-accent)] bg-[var(--color-accent-light)] font-medium'
+                : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg)]',
+            ]}
+          >
+            {label}
+          </a>
+        )
+      })}
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="menu-toggle"
+      class="md:hidden text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors p-1"
+      aria-label="Toggle menu"
+    >
+      <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M4 7h16M4 12h16M4 17h16" />
+      </svg>
+      <svg id="menu-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden">
+        <path d="M6 6l12 12M6 18L18 6" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <nav id="mobile-menu" class="md:hidden border-t border-[var(--color-border)] px-6 py-3 space-y-1 bg-[var(--color-bg-secondary)] hidden">
+    {navLinks.map(({ href, label }) => {
+      const isActive = pathname === href || (href !== '/' && pathname.startsWith(href))
+      return (
+        <a
+          href={href}
+          class:list={[
+            'block px-3 py-2 rounded text-sm transition-colors',
+            isActive
+              ? 'text-[var(--color-accent)] bg-[var(--color-accent-light)] font-medium'
+              : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg)]',
+          ]}
+        >
+          {label}
+        </a>
+      )
+    })}
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle')!
+  const menu = document.getElementById('mobile-menu')!
+  const iconOpen = document.getElementById('menu-icon-open')!
+  const iconClose = document.getElementById('menu-icon-close')!
+
+  toggle.addEventListener('click', () => {
+    const isOpen = !menu.classList.contains('hidden')
+    menu.classList.toggle('hidden')
+    iconOpen.classList.toggle('hidden')
+    iconClose.classList.toggle('hidden')
+    toggle.setAttribute('aria-expanded', String(!isOpen))
+  })
+</script>

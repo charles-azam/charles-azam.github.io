@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { books } from '../content/books'
+---
+
+<BaseLayout title="Books - Charles AZAM" description="A curated list of books that shaped my thinking.">
+  <div class="mx-auto max-w-3xl px-6 py-12 animate-page-in">
+    <p class="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3">
+      Reading
+    </p>
+    <h1 class="font-[var(--font-display)] text-4xl text-[var(--color-text)] mb-3">
+      Books
+    </h1>
+    <p class="text-[var(--color-text-muted)] mb-12 max-w-lg">
+      A curated list of books that shaped my thinking.
+    </p>
+
+    <div class="space-y-3">
+      {books.map((book) => (
+        <div class="flex items-baseline gap-3 py-2">
+          <span class="w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0 relative top-[-2px]" />
+          <span class="leading-relaxed">
+            <em class="text-[var(--color-text)] font-medium not-italic font-[var(--font-display)]">
+              {book.title}
+            </em>
+            {book.originalTitle && (
+              <span class="text-sm text-[var(--color-text-muted)]"> ({book.originalTitle})</span>
+            )}
+            <span class="text-sm text-[var(--color-text-muted)]"> — {book.author}</span>
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
