@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout lang="fr" title="Consulting - Charles AZAM" description="Projets sélectifs en IA et automatisation, particulièrement pour les industries traditionnelles modernisant leurs flux de travail techniques.">
+  <div class="mx-auto max-w-3xl px-6 py-12 animate-page-in">
+    <p class="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3">
+      Services
+    </p>
+    <h1 class="font-[var(--font-display)] text-4xl text-[var(--color-text)] mb-3">
+      Consulting
+    </h1>
+    <p class="text-[var(--color-text-muted)] mb-12 max-w-lg">
+      Projets sélectifs en IA et automatisation, particulièrement pour les industries traditionnelles modernisant leurs flux de travail techniques.
+    </p>
+
+    <div class="space-y-10">
+      <section class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+        <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Expérience</h2>
+        <p class="mb-4 leading-relaxed">
+          <span class="text-[var(--color-text)] font-semibold">Jimmy Energy (CIO, 2022-2024)</span>
+          <br />
+          Direction de la transition d’un PLM hérité vers une plateforme d’ingénierie pilotée par le code. 
+          Compréhension des défis techniques et des dynamiques organisationnelles de l’adoption de l’IA dans les industries traditionnelles.
+        </p>
+        <p class="mb-4 leading-relaxed">
+          <span class="text-[var(--color-text)] font-semibold">Focus production :</span> Construction de systèmes 
+          en production (Predibench, Webportal, OmniAgents), pas seulement des preuves de concept.
+        </p>
+        <ul class="space-y-1.5 text-sm text-[var(--color-text-muted)]">
+          {[
+            'Infrastructure d’agents IA',
+            'Transformations Engineering-as-Code',
+            'Systèmes RAG pour les domaines techniques',
+            'DevOps, CI/CD, architecture cloud',
+            'Leadership d’équipe et roadmapping',
+          ].map((item) => (
+            <li class="flex items-center gap-2">
+              <span class="w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+        <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Approche</h2>
+        <p class="text-[var(--color-text)] font-semibold mb-2">Comprendre le vrai problème</p>
+        <p class="mb-4 leading-relaxed">Immersion dans les flux de travail. Identification des opportunités à fort impact.</p>
+        <p class="leading-relaxed text-[var(--color-text-muted)]">
+          La plupart des entreprises essaieront de vous vendre leur solution très généraliste. 
+          Mais chaque entreprise a une situation très spécifique et pour obtenir les meilleurs résultats, 
+          nous devons comprendre cette situation spécifique et adapter la solution en conséquence.
+        </p>
+      </section>
+
+      <section class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+        <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Disponibilité</h2>
+        <p class="mb-4 leading-relaxed">
+          Principalement concentré sur les outils open-source et les problèmes techniques complexes. 
+          Engagements de conseil sélectifs — projets alignés sur la réussite de l’IA dans les tâches d’ingénierie complexes.
+        </p>
+        <a
+          href="mailto:azamcharles0@gmail.com"
+          class="inline-flex items-center gap-2 font-mono text-sm text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] link-underline transition-colors"
+        >
+          azamcharles0@gmail.com
+        </a>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

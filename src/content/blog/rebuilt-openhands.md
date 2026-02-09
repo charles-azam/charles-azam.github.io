@@ -1,7 +1,9 @@
 ---
 title: "I Accidentally Rebuilt OpenHands From Scratch -- Here's What I Learned"
+title_fr: "J'ai accidentellement reconstruit OpenHands à partir de zéro — voici ce que j'ai appris"
 date: "2026-01-02"
 description: "Building omniagents, a ~2000-line Python framework for multi-tenant AI coding agents, only to discover OpenHands already existed. Lessons on agent architecture, isolation, persistence, and costs."
+description_fr: "Comment j'ai construit omniagents, un framework Python de ~2000 lignes pour des agents de codage IA multi-tenants, pour découvrir qu'OpenHands existait déjà. Leçons sur l'architecture des agents, l'isolation, la persistance et les coûts."
 slug: "rebuilt-openhands"
 ---
 

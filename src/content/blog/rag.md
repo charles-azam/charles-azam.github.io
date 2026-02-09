@@ -1,7 +1,9 @@
 ---
 title: "Evaluate Your Own RAG: Why Best Practices Failed Us"
+title_fr: "Évaluez votre propre RAG : Pourquoi les meilleures pratiques nous ont fait défaut"
 date: "2025-11-05"
 description: "We benchmarked our production RAG system across embedding models, chunk sizes, chunking strategies, and retrieval modes. The results contradicted common wisdom."
+description_fr: "Nous avons benchmarké notre système RAG de production sur plusieurs modèles d'embedding, tailles de chunks, stratégies de découpage et modes de recherche. Les résultats contredisent la sagesse populaire."
 slug: "rag"
 ---
 

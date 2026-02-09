@@ -1,7 +1,9 @@
 ---
 title: "Engineering-as-Code Manifesto"
+title_fr: "Manifeste de l'Ingénierie-as-Code"
 date: "2025-06-01"
 description: "We're brilliant engineers — yet we wrestle with Word docs, Excel sheets, endless email chains. Time to reclaim our craft."
+description_fr: "Nous sommes de brillants ingénieurs — pourtant nous luttons avec des docs Word, des fichiers Excel et des chaînes d'e-mails sans fin. Il est temps de reprendre le contrôle de notre métier."
 slug: "engineering-as-code-manifesto"
 ---
 

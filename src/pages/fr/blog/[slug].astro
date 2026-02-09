@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro'
+import BaseLayout from '../../../layouts/BaseLayout.astro'
 import { getCollection, render } from 'astro:content'
 import 'highlight.js/styles/github-dark-dimmed.css'
 
@@ -17,14 +17,14 @@ const { Content } = await render(post)
 function readingTime(content: string): string {
   const words = content.trim().split(/\s+/).length
   const minutes = Math.max(1, Math.round(words / 230))
-  return `${minutes} min read`
+  return `${minutes} min de lecture`
 }
 ---
 
-<BaseLayout lang="en" title={`${post.data.title} - Charles AZAM`} description={post.data.description}>
+<BaseLayout lang="fr" title={`${post.data.title_fr || post.data.title} - Charles AZAM`} description={post.data.description_fr || post.data.description}>
   <div class="mx-auto max-w-3xl px-6 py-12 animate-page-in">
     <a
-      href="/blog"
+      href="/fr/blog"
       class="inline-flex items-center gap-1 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors mb-8"
     >
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -35,11 +35,11 @@ function readingTime(content: string): string {
 
     <header class="mb-10">
       <h1 class="font-[var(--font-display)] text-4xl lg:text-[2.75rem] leading-tight text-[var(--color-text)] mb-4">
-        {post.data.title}
+        {post.data.title_fr || post.data.title}
       </h1>
       <div class="flex items-center gap-3 text-sm font-mono text-[var(--color-text-muted)]">
         <time>
-          {new Date(post.data.date).toLocaleDateString('en-US', {
+          {new Date(post.data.date).toLocaleDateString('fr-FR', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
