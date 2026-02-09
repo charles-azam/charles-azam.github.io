@@ -3,13 +3,17 @@ interface ModeSelectorProps {
   selectedMode: number
   frequencies: number[]
   onSelectMode: (mode: number) => void
+  lang?: string
 }
 
-export function ModeSelector({ numModes, selectedMode, frequencies, onSelectMode }: ModeSelectorProps) {
+export function ModeSelector({ numModes, selectedMode, frequencies, onSelectMode, lang = 'en' }: ModeSelectorProps) {
+  const t = {
+    mode: lang === 'fr' ? 'Mode' : 'Mode',
+  }
   return (
     <div className="flex items-center gap-2">
       <label className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wider whitespace-nowrap">
-        Mode
+        {t.mode}
       </label>
       <select
         value={selectedMode}
@@ -18,7 +22,7 @@ export function ModeSelector({ numModes, selectedMode, frequencies, onSelectMode
       >
         {Array.from({ length: numModes }, (_, i) => (
           <option key={i} value={i}>
-            Mode {i + 1} — {frequencies[i]?.toFixed(2)} Hz
+            {t.mode} {i + 1} — {frequencies[i]?.toFixed(2)} Hz
           </option>
         ))}
       </select>

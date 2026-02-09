@@ -7,6 +7,7 @@ interface ExcitationControlsProps {
   selectedMode: number
   amplitudeFactor: number
   onAmplitudeChange: (factor: number) => void
+  lang?: string
 }
 
 export function ExcitationControls({
@@ -18,7 +19,17 @@ export function ExcitationControls({
   selectedMode,
   amplitudeFactor,
   onAmplitudeChange,
+  lang = 'en',
 }: ExcitationControlsProps) {
+  const t = {
+    freeVibration: lang === 'fr' ? 'Vibration Libre' : 'Free Vibration',
+    baseExcitation: lang === 'fr' ? 'Excitation à la Base' : 'Base Excitation',
+    displacementScale: lang === 'fr' ? 'Échelle de déplacement' : 'Displacement scale',
+    excitationFrequency: lang === 'fr' ? "Fréquence d'excitation" : 'Excitation frequency',
+    nearResonance: lang === 'fr' ? 'Résonance proche du Mode' : 'Near resonance with Mode',
+    showingMode: lang === 'fr' ? 'Affichage du Mode' : 'Showing Mode',
+  }
+
   // Check if excitation frequency is near any natural frequency
   const nearResonance = naturalFrequencies.findIndex(
     (f) => Math.abs(excitationFrequency - f) / f < 0.08,
@@ -36,7 +47,7 @@ export function ExcitationControls({
               : 'bg-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
           }`}
         >
-          Free Vibration
+          {t.freeVibration}
         </button>
         <button
           onClick={() => onModeChange('excitation')}
@@ -46,7 +57,7 @@ export function ExcitationControls({
               : 'bg-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
           }`}
         >
-          Base Excitation
+          {t.baseExcitation}
         </button>
       </div>
 
@@ -54,7 +65,7 @@ export function ExcitationControls({
       <div>
         <div className="flex items-center justify-between mb-1">
           <label className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wider">
-            Displacement scale
+            {t.displacementScale}
           </label>
           <span className="text-xs font-mono text-[var(--color-accent)]">
             {'\u00D7'}{amplitudeFactor.toFixed(1)}
@@ -76,7 +87,7 @@ export function ExcitationControls({
         <div>
           <div className="flex items-center justify-between mb-1">
             <label className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wider">
-              Excitation frequency
+              {t.excitationFrequency}
             </label>
             <span className="text-xs font-mono text-[var(--color-accent)]">
               {excitationFrequency.toFixed(1)} Hz
@@ -112,7 +123,7 @@ export function ExcitationControls({
           </div>
           {nearResonance >= 0 && (
             <div className="text-[10px] text-amber-600 mt-1 font-medium">
-              Near resonance with Mode {nearResonance + 1}!
+              {t.nearResonance} {nearResonance + 1}!
             </div>
           )}
         </div>
@@ -121,7 +132,7 @@ export function ExcitationControls({
       {/* Mode selector for free vibration */}
       {mode === 'free' && (
         <div className="text-[10px] text-[var(--color-text-muted)]">
-          Showing Mode {selectedMode + 1} | f = {naturalFrequencies[selectedMode]?.toFixed(2)} Hz
+          {t.showingMode} {selectedMode + 1} | f = {naturalFrequencies[selectedMode]?.toFixed(2)} Hz
         </div>
       )}
     </div>

@@ -1,18 +1,51 @@
 ---
+const pathname = Astro.url.pathname
+const lang = pathname.startsWith('/fr') ? 'fr' : 'en'
+
+const translations = {
+  en: {
+    home: 'Home',
+    projects: 'Projects',
+    blog: 'Blog',
+    consulting: 'Consulting',
+    books: 'Books',
+  },
+  fr: {
+    home: 'Accueil',
+    projects: 'Projets',
+    blog: 'Blog',
+    consulting: 'Consulting',
+    books: 'Livres',
+  },
+}
+
+const t = translations[lang as keyof typeof translations] || translations.en
+
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/consulting', label: 'Consulting' },
-  { href: '/books', label: 'Books' },
+  { href: lang === 'en' ? '/' : '/fr/', label: t.home },
+  { href: lang === 'en' ? '/projects' : '/fr/projects', label: t.projects },
+  { href: lang === 'en' ? '/blog' : '/fr/blog', label: t.blog },
+  { href: lang === 'en' ? '/consulting' : '/fr/consulting', label: t.consulting },
+  { href: lang === 'en' ? '/books' : '/fr/books', label: t.books },
 ]
 
-const pathname = Astro.url.pathname
+const currentLang = lang
+const otherLang = currentLang === 'en' ? 'fr' : 'en'
+
+// Simple language switcher logic: swap the lang prefix in the current path
+const getOtherLangPath = () => {
+  if (currentLang === 'en') {
+    return `/fr${pathname === '/' ? '' : pathname}`
+  } else {
+    const pathWithoutLang = pathname.replace(/^\/fr/, '')
+    return pathWithoutLang === '' ? '/' : pathWithoutLang
+  }
+}
 ---
 
 <header class="bg-[var(--color-bg-secondary)] border-b border-[var(--color-border)]">
   <div class="mx-auto max-w-5xl px-6 py-3 flex items-center justify-between">
-    <a href="/" class="group flex items-center gap-2 transition-colors">
+    <a href={lang === 'en' ? '/' : `/${lang}/`} class="group flex items-center gap-2 transition-colors">
       <span class="inline-flex items-center justify-center w-7 h-7 rounded bg-[var(--color-accent)] text-white text-xs font-bold font-mono leading-none">
         CA
       </span>
@@ -22,44 +55,64 @@ const pathname = Astro.url.pathname
     </a>
 
     <!-- Desktop nav -->
-    <nav class="hidden md:flex gap-1">
-      {navLinks.map(({ href, label }) => {
-        const isActive = pathname === href || (href !== '/' && pathname.startsWith(href))
-        return (
-          <a
-            href={href}
-            class:list={[
-              'px-3 py-1.5 rounded text-sm transition-colors',
-              isActive
-                ? 'text-[var(--color-accent)] bg-[var(--color-accent-light)] font-medium'
-                : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg)]',
-            ]}
-          >
-            {label}
-          </a>
-        )
-      })}
-    </nav>
+    <div class="hidden md:flex items-center gap-4">
+      <nav class="flex gap-1">
+        {navLinks.map(({ href, label }) => {
+          const isActive = pathname === href || (href !== '/' && href !== '/fr/' && pathname.startsWith(href))
+          return (
+            <a
+              href={href}
+              class:list={[
+                'px-3 py-1.5 rounded text-sm transition-colors',
+                isActive
+                  ? 'text-[var(--color-accent)] bg-[var(--color-accent-light)] font-medium'
+                  : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg)]',
+              ]}
+            >
+              {label}
+            </a>
+          )
+        })}
+      </nav>
 
-    <!-- Mobile hamburger -->
-    <button
-      id="menu-toggle"
-      class="md:hidden text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors p-1"
-      aria-label="Toggle menu"
-    >
-      <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <path d="M4 7h16M4 12h16M4 17h16" />
-      </svg>
-      <svg id="menu-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden">
-        <path d="M6 6l12 12M6 18L18 6" />
-      </svg>
-    </button>
+      <div class="w-px h-4 bg-[var(--color-border)]"></div>
+
+      <a
+        href={getOtherLangPath()}
+        class="text-xs font-mono font-medium px-2 py-1 rounded border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-all uppercase"
+      >
+        {otherLang}
+      </a>
+    </div>
+
+    <!-- Mobile header right -->
+    <div class="flex items-center gap-3 md:hidden">
+      <a
+        href={getOtherLangPath()}
+        class="text-xs font-mono font-medium px-2 py-1 rounded border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-all uppercase"
+      >
+        {otherLang}
+      </a>
+
+      <button
+        id="menu-toggle"
+        class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors p-1"
+        aria-label="Toggle menu"
+      >
+        <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+        <svg id="menu-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden">
+          <path d="M6 6l12 12M6 18L18 6" />
+        </svg>
+      </button>
+    </div>
   </div>
 
   <!-- Mobile menu -->
   <nav id="mobile-menu" class="md:hidden border-t border-[var(--color-border)] px-6 py-3 space-y-1 bg-[var(--color-bg-secondary)] hidden">
     {navLinks.map(({ href, label }) => {
-      const isActive = pathname === href || (href !== '/' && pathname.startsWith(href))
+      const isActive = pathname === href || (href !== '/' && href !== '/fr/' && pathname.startsWith(href))
       return (
         <a
           href={href}

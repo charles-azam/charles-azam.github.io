@@ -1,7 +1,9 @@
 ---
 title: "PrediBench: Testing AI Models on Prediction Markets"
+title_fr: "PrediBench : Tester les modèles d'IA sur les marchés de prédiction"
 date: "2025-09-24"
 description: "A live benchmark that tests AI models' ability to predict real-world events through prediction markets. Every day, we let AI models bet $1 on top events from Polymarket."
+description_fr: "Un benchmark en direct qui teste la capacité des modèles d'IA à prédire des événements réels via les marchés de prédiction. Chaque jour, nous laissons les modèles d'IA parier 1 $ sur les principaux événements de Polymarket."
 slug: "predibench"
 ---
 

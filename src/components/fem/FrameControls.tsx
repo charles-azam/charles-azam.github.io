@@ -8,6 +8,7 @@ interface FrameControlsProps {
   onChange: (config: FrameConfig) => void
   totalMass: number
   defaultExpanded?: boolean
+  lang?: string
 }
 
 function SectionSelect({
@@ -98,6 +99,7 @@ function StoryRow({
   bayWidth,
   tributaryDepth,
   onChange,
+  lang = 'en',
 }: {
   index: number
   story: StoryConfig
@@ -105,8 +107,17 @@ function StoryRow({
   bayWidth: number
   tributaryDepth: number
   onChange: (updated: StoryConfig) => void
+  lang?: string
 }) {
-  const levelLabel = index === numStories - 1 ? 'Roof' : `Level ${index + 1}`
+  const t = {
+    story: lang === 'fr' ? 'Niveau' : 'Story',
+    roof: lang === 'fr' ? 'Toit' : 'Roof',
+    level: lang === 'fr' ? 'Niveau' : 'Level',
+    columns: lang === 'fr' ? 'Poteaux (rigidité)' : 'Columns (stiffness)',
+    beam: lang === 'fr' ? 'Poutre (plancher)' : 'Beam (floor)',
+    floorMass: lang === 'fr' ? 'Masse du plancher' : 'Floor mass',
+  }
+  const levelLabel = index === numStories - 1 ? t.roof : `${t.level} ${index + 1}`
   const floorMass = story.floorLoadKgPerM2 * bayWidth * tributaryDepth
 
   return (
@@ -114,7 +125,7 @@ function StoryRow({
       {/* Story header */}
       <div className="flex items-center justify-between">
         <span className="text-[11px] font-semibold text-[var(--color-text)]">
-          Story {index + 1}
+          {t.story} {index + 1}
           <span className="text-[var(--color-text-muted)] font-normal ml-1.5">
             {'\u2192'} {levelLabel}
           </span>
@@ -129,13 +140,13 @@ function StoryRow({
       {/* Sections */}
       <div className="grid grid-cols-2 gap-2">
         <SectionSelect
-          label="Columns (stiffness)"
+          label={t.columns}
           sections={COLUMN_SECTIONS}
           selected={story.columnSection}
           onChange={(s) => onChange({ ...story, columnSection: s })}
         />
         <SectionSelect
-          label="Beam (floor)"
+          label={t.beam}
           sections={BEAM_SECTIONS}
           selected={story.beamSection}
           onChange={(s) => onChange({ ...story, beamSection: s })}
@@ -154,7 +165,7 @@ function StoryRow({
 
       {/* Floor mass slider */}
       <SliderControl
-        label="Floor mass"
+        label={t.floorMass}
         value={story.floorLoadKgPerM2}
         min={0}
         max={1200}
@@ -166,7 +177,17 @@ function StoryRow({
   )
 }
 
-export function FrameControls({ config, onChange, totalMass, defaultExpanded = false }: FrameControlsProps) {
+export function FrameControls({ config, onChange, totalMass, defaultExpanded = false, lang = 'en' }: FrameControlsProps) {
+  const t = {
+    title: lang === 'fr' ? 'Paramètres de la Structure' : 'Structure Parameters',
+    storyHeight: lang === 'fr' ? "Hauteur d'étage" : 'Story height',
+    bayWidth: lang === 'fr' ? 'Largeur de travée' : 'Bay width',
+    tributaryDepth: lang === 'fr' ? 'Profondeur tributaire' : 'Tributary depth',
+    floors: lang === 'fr' ? 'Étages' : 'Floors',
+    stories: lang === 'fr' ? 'niveaux' : 'stories',
+    removeFloor: lang === 'fr' ? 'Retirer un étage' : 'Remove floor',
+    addFloor: lang === 'fr' ? 'Ajouter un étage' : 'Add floor',
+  }
   const [collapsed, setCollapsed] = useState(!defaultExpanded)
   const numStories = config.stories.length
 
@@ -194,7 +215,7 @@ export function FrameControls({ config, onChange, totalMass, defaultExpanded = f
         onClick={() => setCollapsed(!collapsed)}
         className="w-full flex items-center justify-between px-4 py-2.5 text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider hover:text-[var(--color-text)] transition-colors cursor-pointer"
       >
-        <span>Structure Parameters</span>
+        <span>{t.title}</span>
         <span className="text-sm">{collapsed ? '\u25BC' : '\u25B2'}</span>
       </button>
 
@@ -203,7 +224,7 @@ export function FrameControls({ config, onChange, totalMass, defaultExpanded = f
           {/* Global geometry */}
           <div className="pt-3 grid grid-cols-1 sm:grid-cols-3 gap-3">
             <SliderControl
-              label="Story height"
+              label={t.storyHeight}
               value={config.storyHeight}
               min={2.5}
               max={4.5}
@@ -212,7 +233,7 @@ export function FrameControls({ config, onChange, totalMass, defaultExpanded = f
               onChange={(v) => onChange({ ...config, storyHeight: v })}
             />
             <SliderControl
-              label="Bay width"
+              label={t.bayWidth}
               value={config.bayWidth}
               min={3}
               max={6}
@@ -221,7 +242,7 @@ export function FrameControls({ config, onChange, totalMass, defaultExpanded = f
               onChange={(v) => onChange({ ...config, bayWidth: v })}
             />
             <SliderControl
-              label="Tributary depth"
+              label={t.tributaryDepth}
               value={config.tributaryDepth}
               min={0}
               max={8}
@@ -235,7 +256,7 @@ export function FrameControls({ config, onChange, totalMass, defaultExpanded = f
           <div className="border-t border-[var(--color-border)] pt-3">
             <div className="flex items-center justify-between mb-3">
               <span className="text-[10px] text-[var(--color-text-muted)] uppercase tracking-wider">
-                Floors ({numStories} stories)
+                {t.floors} ({numStories} {t.stories})
               </span>
               <div className="flex gap-1.5">
                 <button
@@ -243,14 +264,14 @@ export function FrameControls({ config, onChange, totalMass, defaultExpanded = f
                   disabled={numStories <= 2}
                   className="px-2 py-0.5 text-xs rounded border border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer transition-colors"
                 >
-                  Remove floor
+                  {t.removeFloor}
                 </button>
                 <button
                   onClick={addStory}
                   disabled={numStories >= 6}
                   className="px-2 py-0.5 text-xs rounded border border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer transition-colors"
                 >
-                  Add floor
+                  {t.addFloor}
                 </button>
               </div>
             </div>
@@ -268,6 +289,7 @@ export function FrameControls({ config, onChange, totalMass, defaultExpanded = f
                     bayWidth={config.bayWidth}
                     tributaryDepth={config.tributaryDepth}
                     onChange={(updated) => updateStory(displayIndex, updated)}
+                    lang={lang}
                   />
                 )
               })}

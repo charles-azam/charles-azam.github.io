@@ -1,18 +1,18 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'
-import { projects } from '../content/projects'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { projects } from '../../content/projects'
 ---
 
-<BaseLayout lang="en" title="Projects - Charles AZAM" description="Making AI work for complex engineering and technical problems.">
+<BaseLayout lang="fr" title="Projets - Charles AZAM" description="Mettre l'IA au service de problèmes d'ingénierie et techniques complexes.">
   <div class="mx-auto max-w-5xl px-6 py-12 animate-page-in">
     <p class="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3">
       Portfolio
     </p>
     <h1 class="font-[var(--font-display)] text-4xl text-[var(--color-text)] mb-3">
-      Projects
+      Projets
     </h1>
     <p class="text-[var(--color-text-muted)] mb-12 max-w-lg">
-      Making AI work for complex engineering and technical problems.
+      Mettre l'IA au service de problèmes d'ingénierie et techniques complexes.
     </p>
 
     <div class="space-y-6">
@@ -25,17 +25,17 @@ import { projects } from '../content/projects'
                 {project.role} ({project.period})
               </span>
             )}
-            {project.status && (
+            {(project.status_fr || project.status) && (
               <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--color-accent-light)] text-[var(--color-accent)]">
-                {project.status}
+                {project.status_fr || project.status}
               </span>
             )}
           </div>
-          <p class="text-sm text-[var(--color-text-muted)] italic mb-3">{project.tagline}</p>
-          <p class="text-sm mb-3 leading-relaxed">{project.description}</p>
-          {project.impact && (
+          <p class="text-sm text-[var(--color-text-muted)] italic mb-3">{project.tagline_fr || project.tagline}</p>
+          <p class="text-sm mb-3 leading-relaxed">{project.description_fr || project.description}</p>
+          {(project.impact_fr || project.impact) && (
             <p class="text-sm text-[var(--color-text-muted)] mb-3">
-              <span class="text-[var(--color-text)] font-medium">Impact:</span> {project.impact}
+              <span class="text-[var(--color-text)] font-medium">Impact :</span> {project.impact_fr || project.impact}
             </p>
           )}
           <div class="flex items-center justify-between flex-wrap gap-2 pt-3 border-t border-[var(--color-border)]">
@@ -45,12 +45,12 @@ import { projects } from '../content/projects'
             <div class="flex gap-3">
               {project.links.map((link) => (
                 <a
-                  href={link.url}
+                  href={link.url.startsWith('/') ? `/fr${link.url}` : link.url}
                   target={link.url.startsWith('/') ? undefined : '_blank'}
                   rel={link.url.startsWith('/') ? undefined : 'noopener noreferrer'}
                   class="text-sm font-mono text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] link-underline transition-colors"
                 >
-                  {link.label}
+                  {link.label_fr || link.label}
                 </a>
               ))}
             </div>

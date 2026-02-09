@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'
-import { FemHeroSection } from '../components/FemHeroSection'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { FemHeroSection } from '../../components/FemHeroSection'
 import { getCollection } from 'astro:content'
 
 const featuredProjects = [
@@ -8,19 +8,19 @@ const featuredProjects = [
     title: 'Jimmy Energy',
     tag: 'CIO',
     url: '/projects',
-    description: 'Led transformation of traditional engineering company to Git-based workflow.',
+    description: 'Direction de la transformation d’une entreprise d’ingénierie traditionnelle vers un flux de travail basé sur Git.',
   },
   {
     title: 'OmniAgents',
     tag: 'Open Source',
     url: 'https://github.com/charles-azam/OmniAgents',
-    description: 'Unified interface for building AI coding agents across multiple environments.',
+    description: 'Interface unifiée pour construire des agents de codage IA dans plusieurs environnements.',
   },
   {
     title: 'Predibench',
     tag: 'Live',
     url: 'https://predibench.com',
-    description: 'Live platform benchmarking AI models on real-world prediction markets.',
+    description: 'Plateforme en direct évaluant les modèles d’IA sur les marchés de prédiction réels.',
   },
 ]
 
@@ -29,28 +29,28 @@ const posts = (await getCollection('blog'))
   .slice(0, 3)
 ---
 
-<BaseLayout lang="en">
+<BaseLayout lang="fr">
   <div class="animate-page-in">
     <!-- Hero section -->
     <section class="mx-auto max-w-5xl px-6 pt-10 pb-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-        <!-- Intro text (static HTML, renders instantly) -->
+        <!-- Intro text -->
         <div class="lg:order-2 lg:pl-2">
           <p class="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3">
-            Scientific Engineer & AI Builder
+            Ingénieur Scientifique & Développeur IA
           </p>
           <h1 class="font-[var(--font-display)] text-5xl lg:text-[3.5rem] leading-[1.1] text-[var(--color-text)] mb-5">
             Charles Azam
           </h1>
           <p class="text-[15px] leading-relaxed mb-4 text-[var(--color-text)]">
-            The frame on the left is a real finite element solver running in your browser —
-            assembling stiffness matrices, solving eigenvalue problems, rendering mode shapes.
-            I bring the same engineering rigor to AI systems.
+            Le cadre à gauche est un véritable solveur d’éléments finis fonctionnant dans votre navigateur — 
+            assemblant des matrices de rigidité, résolvant des problèmes de valeurs propres, rendant des déformées modales. 
+            J’apporte la même rigueur d’ingénierie aux systèmes d’IA.
           </p>
           <p class="text-sm text-[var(--color-text-muted)] mb-6 leading-relaxed">
-            Currently building open-source tools for AI agents, prediction markets, and technical
-            search. Previously led engineering teams at Jimmy Energy, transforming traditional
-            workflows into code-driven systems.
+            Je construis actuellement des outils open-source pour les agents d’IA, les marchés de prédiction, 
+            et la recherche technique. J’ai précédemment dirigé des équipes d’ingénierie chez Jimmy Energy, 
+            transformant des flux de travail traditionnels en systèmes pilotés par le code.
           </p>
           <div class="flex gap-4">
             <a href="https://www.linkedin.com/in/charles-azam-a4223b135/" target="_blank" rel="noopener noreferrer" class="text-sm font-mono text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] link-underline transition-colors">LinkedIn</a>
@@ -61,14 +61,13 @@ const posts = (await getCollection('blog'))
 
         <!-- FEM Canvas (React island) -->
         <div class="lg:order-1" id="fem-container">
-          <!-- Skeleton placeholder (visible until React hydrates) -->
           <div id="fem-skeleton">
             <div class="border border-[var(--color-border)] rounded-t-lg bg-[var(--color-bg-secondary)] h-[380px] shadow-sm flex items-center justify-center">
-              <p class="text-xs font-mono text-[var(--color-text-muted)] animate-pulse">Loading FEM solver...</p>
+              <p class="text-xs font-mono text-[var(--color-text-muted)] animate-pulse">Chargement du solveur FEM...</p>
             </div>
             <div class="border border-t-0 border-[var(--color-border)] rounded-b-lg bg-[var(--color-bg-secondary)] h-[88px] shadow-sm"></div>
           </div>
-          <FemHeroSection client:only="react" />
+          <FemHeroSection client:only="react" lang="fr" />
         </div>
       </div>
     </section>
@@ -76,18 +75,18 @@ const posts = (await getCollection('blog'))
     <!-- Featured Projects -->
     <section class="mx-auto max-w-5xl px-6 py-12">
       <div class="flex items-baseline justify-between mb-8">
-        <h2 class="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Projects</h2>
+        <h2 class="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Projets</h2>
         <a
-          href="/projects"
+          href="/fr/projects"
           class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] link-underline transition-colors"
         >
-          View all
+          Tout voir
         </a>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         {featuredProjects.map((project) => (
           <a
-            href={project.url}
+            href={project.url.startsWith('/') ? `/fr${project.url}` : project.url}
             target={project.url.startsWith('/') ? undefined : '_blank'}
             rel={project.url.startsWith('/') ? undefined : 'noopener noreferrer'}
             class="group block p-5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-accent)] hover:shadow-md transition-all"
@@ -109,25 +108,25 @@ const posts = (await getCollection('blog'))
     <!-- Writing -->
     <section class="mx-auto max-w-5xl px-6 py-12">
       <div class="flex items-baseline justify-between mb-8">
-        <h2 class="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Writing</h2>
+        <h2 class="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Articles</h2>
         <a
-          href="/blog"
+          href="/fr/blog"
           class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] link-underline transition-colors"
         >
-          All posts
+          Tous les articles
         </a>
       </div>
       <div class="space-y-0 divide-y divide-[var(--color-border)]">
         {posts.map((post) => (
           <a
-            href={`/blog/${post.id.replace('.md', '')}`}
+            href={`/fr/blog/${post.id.replace('.md', '')}`}
             class="group flex items-baseline justify-between py-4 gap-4"
           >
             <span class="text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors font-medium">
-              {post.data.title}
+              {post.data.title_fr || post.data.title}
             </span>
             <span class="text-xs text-[var(--color-text-muted)] whitespace-nowrap font-mono shrink-0">
-              {new Date(post.data.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+              {new Date(post.data.date).toLocaleDateString('fr-FR', { month: 'short', year: 'numeric' })}
             </span>
           </a>
         ))}
@@ -137,7 +136,6 @@ const posts = (await getCollection('blog'))
 </BaseLayout>
 
 <script>
-  // Hide skeleton once React island has mounted
   const observer = new MutationObserver(() => {
     const container = document.getElementById('fem-container')
     if (container && container.querySelector('canvas')) {

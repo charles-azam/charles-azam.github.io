@@ -4,9 +4,18 @@ interface SeismicPanelProps {
   modalResult: ModalResult
   selectedMode: number
   onSelectMode: (mode: number) => void
+  lang?: string
 }
 
-export function SeismicPanel({ modalResult, selectedMode, onSelectMode }: SeismicPanelProps) {
+export function SeismicPanel({ modalResult, selectedMode, onSelectMode, lang = 'en' }: SeismicPanelProps) {
+  const t = {
+    title: lang === 'fr' ? 'Analyse Modale Sismique' : 'Seismic Modal Analysis',
+    massCaptured: lang === 'fr' ? 'de masse captée' : 'mass captured',
+    mode: lang === 'fr' ? 'Mode' : 'Mode',
+    description: lang === 'fr' 
+      ? "En génie parasismique, l'analyse modale révèle comment un bâtiment répond aux mouvements du sol. Une participation plus élevée = une contribution sismique plus forte. Les normes exigent de capter \u226590% de la masse totale."
+      : "In earthquake engineering, modal analysis reveals how a building responds to ground motion. Higher participation = stronger seismic contribution. Codes require capturing \u226590% of total mass.",
+  }
   const { frequencies, participation } = modalResult
   const { participationFactors, effectiveMassRatios } = participation
   const cumulativeMass = effectiveMassRatios.reduce((sum, r) => sum + r, 0)
@@ -15,10 +24,10 @@ export function SeismicPanel({ modalResult, selectedMode, onSelectMode }: Seismi
     <div className="border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-secondary)] p-4">
       <div className="flex items-center justify-between mb-3">
         <h3 className="text-sm font-semibold text-[var(--color-text)] uppercase tracking-wider">
-          Seismic Modal Analysis
+          {t.title}
         </h3>
         <span className="text-xs text-[var(--color-text-muted)]">
-          {(cumulativeMass * 100).toFixed(0)}% mass captured
+          {(cumulativeMass * 100).toFixed(0)}% {t.massCaptured}
         </span>
       </div>
 
@@ -27,7 +36,7 @@ export function SeismicPanel({ modalResult, selectedMode, onSelectMode }: Seismi
         <table className="w-full text-xs">
           <thead>
             <tr className="text-[var(--color-text-muted)] border-b border-[var(--color-border)]">
-              <th className="text-left py-1.5 pr-2">Mode</th>
+              <th className="text-left py-1.5 pr-2">{t.mode}</th>
               <th className="text-right py-1.5 px-2">f (Hz)</th>
               <th className="text-right py-1.5 px-2">T (s)</th>
               <th className="text-right py-1.5 px-2">{'\u03B3'}</th>
@@ -102,8 +111,7 @@ export function SeismicPanel({ modalResult, selectedMode, onSelectMode }: Seismi
       </div>
 
       <p className="mt-3 text-[10px] text-[var(--color-text-muted)] leading-relaxed italic">
-        In earthquake engineering, modal analysis reveals how a building responds to ground motion.
-        Higher participation = stronger seismic contribution. Codes require capturing {'\u2265'}90% of total mass.
+        {t.description}
       </p>
     </div>
   )
