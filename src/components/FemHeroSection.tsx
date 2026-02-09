@@ -55,6 +55,11 @@ export function FemHeroSection({ lang = 'en' }: { lang?: string }) {
     }
   }, [modalResult.frequencies.length, selectedMode])
 
+  // Remove skeleton placeholder on mount
+  useEffect(() => {
+    document.getElementById('fem-skeleton')?.remove()
+  }, [])
+
   // Close drawer on Escape
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {

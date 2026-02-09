@@ -137,16 +137,15 @@ const posts = (await getCollection('blog'))
 </BaseLayout>
 
 <script>
-  // Hide skeleton once React island has mounted
-  const observer = new MutationObserver(() => {
-    const container = document.getElementById('fem-container')
-    if (container && container.querySelector('canvas')) {
-      document.getElementById('fem-skeleton')?.remove()
-      observer.disconnect()
+  // Fallback: if React fails to mount after 8s, show error instead of infinite loader
+  setTimeout(() => {
+    const skeleton = document.getElementById('fem-skeleton')
+    if (skeleton) {
+      const msg = skeleton.querySelector('p')
+      if (msg) {
+        msg.classList.remove('animate-pulse')
+        msg.textContent = 'FEM solver could not load. Try refreshing the page.'
+      }
     }
-  })
-  const container = document.getElementById('fem-container')
-  if (container) {
-    observer.observe(container, { childList: true, subtree: true })
-  }
+  }, 8000)
 </script>
