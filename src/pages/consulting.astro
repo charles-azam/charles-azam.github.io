@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
-<BaseLayout lang="en" title="Consulting - Charles AZAM" description="Selective projects in AI and automation, particularly traditional industries modernizing technical workflows.">
+<BaseLayout lang="en" title="Consulting - Charles AZAM" description="On-site consulting, technical trainings, and AI transformation for engineering teams.">
   <div class="mx-auto max-w-3xl px-6 py-12 animate-page-in">
     <p class="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3">
       Services
@@ -11,54 +11,141 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       Consulting
     </h1>
     <p class="text-[var(--color-text-muted)] mb-12 max-w-lg">
-      Selective projects in AI and automation, particularly traditional industries modernizing technical workflows.
+      I help engineering teams ship better software, adopt AI effectively, and level up their technical practices.
     </p>
 
     <div class="space-y-10">
+
+      <!-- AI Transformation -->
       <section class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
-        <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Experience</h2>
-        <p class="mb-4 leading-relaxed">
-          <span class="text-[var(--color-text)] font-semibold">Jimmy Energy (CIO, 2022-2024)</span>
-          <br />
-          Led transition from legacy PLM to code-driven engineering platform. Understand both technical
-          challenges and organizational dynamics of AI adoption in traditional industries.
+        <div class="flex items-center gap-2 mb-1">
+          <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)]">AI Transformation</h2>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--color-accent-light)] text-[var(--color-accent)]">
+            Strategic
+          </span>
+        </div>
+        <p class="text-sm text-[var(--color-text-muted)] mb-5">
+          End-to-end guidance for companies integrating AI into their workflows.
         </p>
-        <p class="mb-4 leading-relaxed">
-          <span class="text-[var(--color-text)] font-semibold">Production focus:</span> Build live systems
-          (Predibench, Webportal, OmniAgents), not proof-of-concepts.
-        </p>
-        <ul class="space-y-1.5 text-sm text-[var(--color-text-muted)]">
+        <ul class="space-y-3">
           {[
-            'AI agent infrastructure',
-            'Engineering-as-Code transformations',
-            'RAG systems for technical domains',
-            'DevOps, CI/CD, cloud architecture',
-            'Team leadership and roadmapping',
+            {
+              title: 'Audit & Opportunity Mapping',
+              desc: 'Immersion in your workflows to identify where AI delivers real value — not where it sounds impressive.',
+            },
+            {
+              title: 'Implementation',
+              desc: 'Building production AI systems tailored to your specific domain and data, not off-the-shelf demos.',
+            },
+            {
+              title: 'Team Enablement',
+              desc: 'Training your engineers to own and evolve the AI systems after the engagement ends.',
+            },
           ].map((item) => (
-            <li class="flex items-center gap-2">
-              <span class="w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0" />
-              {item}
+            <li class="flex gap-3">
+              <span class="w-1 h-1 mt-2.5 rounded-full bg-[var(--color-accent)] shrink-0" />
+              <div>
+                <span class="text-[var(--color-text)] font-semibold text-sm">{item.title}</span>
+                <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.desc}</p>
+              </div>
             </li>
           ))}
         </ul>
       </section>
 
+      <!-- Trainings -->
       <section class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
-        <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Approach</h2>
-        <p class="text-[var(--color-text)] font-semibold mb-2">Understand the real problem</p>
-        <p class="mb-4 leading-relaxed">Immersion in workflows. Identify high-impact opportunities.</p>
-        <p class="leading-relaxed text-[var(--color-text-muted)]">
-          Most companies will try to sell you their very generalistic solution. But each company has a
-          very specific situation and to yield the best results, we need to understand the specific
-          situation and to tailor the solution to the specific situation.
+        <div class="flex items-center gap-2 mb-1">
+          <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)]">Trainings</h2>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--color-accent-light)] text-[var(--color-accent)]">
+            On-site or Remote
+          </span>
+        </div>
+        <p class="text-sm text-[var(--color-text-muted)] mb-5">
+          Intensive training sessions to help your team mature on programming practices and tools.
         </p>
+        <ul class="space-y-3 mb-6">
+          {[
+            {
+              title: 'Advanced Scientific Programming',
+              desc: 'Writing robust, testable, and performant numerical code. From prototyping to production-grade scientific software.',
+            },
+            {
+              title: 'Programming Workflow',
+              desc: 'Software architecture, testing strategies, Git workflows, code review, and DevOps methodology.',
+            },
+            {
+              title: 'Scientific Computing & Simulations',
+              desc: 'Finite elements, numerical solvers, and computational methods — bridging the gap between theory and implementation.',
+            },
+          ].map((item) => (
+            <li class="flex gap-3">
+              <span class="w-1 h-1 mt-2.5 rounded-full bg-[var(--color-accent)] shrink-0" />
+              <div>
+                <span class="text-[var(--color-text)] font-semibold text-sm">{item.title}</span>
+                <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.desc}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div class="p-4 rounded border border-[var(--color-border)] bg-[var(--color-bg)]">
+          <p class="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-2">Reference</p>
+          <p class="text-sm leading-relaxed">
+            <span class="text-[var(--color-text)] font-semibold">DAES — One-week intensive training</span>
+            <br />
+            <span class="text-[var(--color-text-muted)]">
+              Helped the team mature on programming tools and methods: software architecture, testing, and DevOps methodology.
+            </span>
+          </p>
+        </div>
       </section>
 
+      <!-- On-site Consultant -->
       <section class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
-        <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Availability</h2>
-        <p class="mb-4 leading-relaxed">
-          Primarily focused on open-source tools and hard technical problems. Consulting engagements
-          selective — projects aligned with making AI succeed at complex engineering tasks.
+        <div class="flex items-center gap-2 mb-1">
+          <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)]">On-site Consultant</h2>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--color-accent-light)] text-[var(--color-accent)]">
+            Embedded
+          </span>
+        </div>
+        <p class="text-sm text-[var(--color-text-muted)] mb-5">
+          I join your team directly, on-site, for the duration of the mission.
+        </p>
+        <ul class="space-y-3">
+          {[
+            {
+              title: 'On-demand CTO',
+              desc: 'Technical leadership, architecture decisions, and roadmapping for teams that need senior guidance without a full-time hire.',
+            },
+            {
+              title: 'Scientific Programming',
+              desc: 'Numerical methods, simulations, and computational engineering — turning math into production code.',
+            },
+            {
+              title: 'Backend & DevOps',
+              desc: 'Infrastructure, CI/CD pipelines, cloud architecture, and backend development.',
+            },
+            {
+              title: 'AI Engineering',
+              desc: 'Building production systems with LLMs — RAG pipelines, agent infrastructure, prompt engineering. Not model training.',
+            },
+          ].map((item) => (
+            <li class="flex gap-3">
+              <span class="w-1 h-1 mt-2.5 rounded-full bg-[var(--color-accent)] shrink-0" />
+              <div>
+                <span class="text-[var(--color-text)] font-semibold text-sm">{item.title}</span>
+                <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.desc}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- Contact -->
+      <section class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+        <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Get in touch</h2>
+        <p class="mb-4 leading-relaxed text-[var(--color-text-muted)]">
+          Each company has a specific situation. Let's talk about yours.
         </p>
         <a
           href="mailto:azamcharles0@gmail.com"

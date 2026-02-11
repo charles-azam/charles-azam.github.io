@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro'
 ---
 
-<BaseLayout lang="fr" title="Consulting - Charles AZAM" description="Projets sélectifs en IA et automatisation, particulièrement pour les industries traditionnelles modernisant leurs flux de travail techniques.">
+<BaseLayout lang="fr" title="Consulting - Charles AZAM" description="Transformation IA, formations techniques et consultant embarqué pour les équipes d'ingénierie.">
   <div class="mx-auto max-w-3xl px-6 py-12 animate-page-in">
     <p class="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3">
       Services
@@ -11,54 +11,141 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
       Consulting
     </h1>
     <p class="text-[var(--color-text-muted)] mb-12 max-w-lg">
-      Projets sélectifs en IA et automatisation, particulièrement pour les industries traditionnelles modernisant leurs flux de travail techniques.
+      J'aide les équipes d'ingénierie à livrer de meilleurs logiciels, adopter l'IA efficacement et monter en compétences sur leurs pratiques techniques.
     </p>
 
     <div class="space-y-10">
+
+      <!-- Transformation IA -->
       <section class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
-        <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Expérience</h2>
-        <p class="mb-4 leading-relaxed">
-          <span class="text-[var(--color-text)] font-semibold">Jimmy Energy (CIO, 2022-2024)</span>
-          <br />
-          Direction de la transition d’un PLM hérité vers une plateforme d’ingénierie pilotée par le code. 
-          Compréhension des défis techniques et des dynamiques organisationnelles de l’adoption de l’IA dans les industries traditionnelles.
+        <div class="flex items-center gap-2 mb-1">
+          <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)]">Transformation IA</h2>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--color-accent-light)] text-[var(--color-accent)]">
+            Stratégique
+          </span>
+        </div>
+        <p class="text-sm text-[var(--color-text-muted)] mb-5">
+          Accompagnement de bout en bout pour les entreprises intégrant l'IA dans leurs flux de travail.
         </p>
-        <p class="mb-4 leading-relaxed">
-          <span class="text-[var(--color-text)] font-semibold">Focus production :</span> Construction de systèmes 
-          en production (Predibench, Webportal, OmniAgents), pas seulement des preuves de concept.
-        </p>
-        <ul class="space-y-1.5 text-sm text-[var(--color-text-muted)]">
+        <ul class="space-y-3">
           {[
-            'Infrastructure d’agents IA',
-            'Transformations Engineering-as-Code',
-            'Systèmes RAG pour les domaines techniques',
-            'DevOps, CI/CD, architecture cloud',
-            'Leadership d’équipe et roadmapping',
+            {
+              title: 'Audit & cartographie des opportunités',
+              desc: 'Immersion dans vos flux de travail pour identifier où l\'IA apporte une vraie valeur — pas où elle paraît impressionnante.',
+            },
+            {
+              title: 'Implémentation',
+              desc: 'Construction de systèmes IA de production adaptés à votre domaine et vos données spécifiques, pas des démos génériques.',
+            },
+            {
+              title: 'Autonomisation de l\'équipe',
+              desc: 'Former vos ingénieurs pour qu\'ils maîtrisent et fassent évoluer les systèmes IA après la fin de la mission.',
+            },
           ].map((item) => (
-            <li class="flex items-center gap-2">
-              <span class="w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0" />
-              {item}
+            <li class="flex gap-3">
+              <span class="w-1 h-1 mt-2.5 rounded-full bg-[var(--color-accent)] shrink-0" />
+              <div>
+                <span class="text-[var(--color-text)] font-semibold text-sm">{item.title}</span>
+                <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.desc}</p>
+              </div>
             </li>
           ))}
         </ul>
       </section>
 
+      <!-- Formations -->
       <section class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
-        <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Approche</h2>
-        <p class="text-[var(--color-text)] font-semibold mb-2">Comprendre le vrai problème</p>
-        <p class="mb-4 leading-relaxed">Immersion dans les flux de travail. Identification des opportunités à fort impact.</p>
-        <p class="leading-relaxed text-[var(--color-text-muted)]">
-          La plupart des entreprises essaieront de vous vendre leur solution très généraliste. 
-          Mais chaque entreprise a une situation très spécifique et pour obtenir les meilleurs résultats, 
-          nous devons comprendre cette situation spécifique et adapter la solution en conséquence.
+        <div class="flex items-center gap-2 mb-1">
+          <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)]">Formations</h2>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--color-accent-light)] text-[var(--color-accent)]">
+            Sur site ou à distance
+          </span>
+        </div>
+        <p class="text-sm text-[var(--color-text-muted)] mb-5">
+          Sessions de formation intensives pour aider votre équipe à monter en maturité sur les pratiques et outils de programmation.
         </p>
+        <ul class="space-y-3 mb-6">
+          {[
+            {
+              title: 'Programmation scientifique avancée',
+              desc: 'Écrire du code numérique robuste, testable et performant. Du prototypage au logiciel scientifique de production.',
+            },
+            {
+              title: 'Workflow de programmation',
+              desc: 'Architecture logicielle, stratégies de test, workflows Git, revue de code et méthodologie DevOps.',
+            },
+            {
+              title: 'Calcul scientifique & simulations',
+              desc: 'Éléments finis, solveurs numériques et méthodes computationnelles — combler le fossé entre théorie et implémentation.',
+            },
+          ].map((item) => (
+            <li class="flex gap-3">
+              <span class="w-1 h-1 mt-2.5 rounded-full bg-[var(--color-accent)] shrink-0" />
+              <div>
+                <span class="text-[var(--color-text)] font-semibold text-sm">{item.title}</span>
+                <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.desc}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div class="p-4 rounded border border-[var(--color-border)] bg-[var(--color-bg)]">
+          <p class="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-2">Référence</p>
+          <p class="text-sm leading-relaxed">
+            <span class="text-[var(--color-text)] font-semibold">DAES — Formation intensive d'une semaine</span>
+            <br />
+            <span class="text-[var(--color-text-muted)]">
+              Accompagnement de l'équipe dans la montée en maturité sur les outils et méthodes de programmation : architecture logicielle, testing et méthodologie DevOps.
+            </span>
+          </p>
+        </div>
       </section>
 
+      <!-- Consultant sur site -->
       <section class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
-        <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Disponibilité</h2>
-        <p class="mb-4 leading-relaxed">
-          Principalement concentré sur les outils open-source et les problèmes techniques complexes. 
-          Engagements de conseil sélectifs — projets alignés sur la réussite de l’IA dans les tâches d’ingénierie complexes.
+        <div class="flex items-center gap-2 mb-1">
+          <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)]">Consultant sur site</h2>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--color-accent-light)] text-[var(--color-accent)]">
+            Embarqué
+          </span>
+        </div>
+        <p class="text-sm text-[var(--color-text-muted)] mb-5">
+          J'intègre votre équipe directement, sur site, pour la durée de la mission.
+        </p>
+        <ul class="space-y-3">
+          {[
+            {
+              title: 'CTO à la demande',
+              desc: 'Leadership technique, décisions d\'architecture et roadmapping pour les équipes qui ont besoin d\'un regard senior sans embauche permanente.',
+            },
+            {
+              title: 'Programmation scientifique',
+              desc: 'Méthodes numériques, simulations et ingénierie computationnelle — transformer les mathématiques en code de production.',
+            },
+            {
+              title: 'Backend & DevOps',
+              desc: 'Infrastructure, pipelines CI/CD, architecture cloud et développement backend.',
+            },
+            {
+              title: 'Ingénierie IA',
+              desc: 'Construction de systèmes de production avec des LLMs — pipelines RAG, infrastructure d\'agents, prompt engineering. Pas d\'entraînement de modèles.',
+            },
+          ].map((item) => (
+            <li class="flex gap-3">
+              <span class="w-1 h-1 mt-2.5 rounded-full bg-[var(--color-accent)] shrink-0" />
+              <div>
+                <span class="text-[var(--color-text)] font-semibold text-sm">{item.title}</span>
+                <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{item.desc}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- Contact -->
+      <section class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+        <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Contact</h2>
+        <p class="mb-4 leading-relaxed text-[var(--color-text-muted)]">
+          Chaque entreprise a une situation spécifique. Parlons de la vôtre.
         </p>
         <a
           href="mailto:azamcharles0@gmail.com"

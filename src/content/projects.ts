@@ -17,14 +17,14 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: 'Jimmy Energy',
-    role: 'CIO',
+    role: 'CIO — Comex member',
     period: '2022-2025',
     tagline: 'Engineering-as-Code transformation',
     tagline_fr: 'Transformation Engineering-as-Code',
     description:
-      'Transformed traditional engineering company to Git-based workflow. Replaced legacy PLM with custom Python tools (PyJimmy). Entire engineering team now works from unified codebase with version control, CI/CD, and AI integration.',
+      'As a director and Comex member, built and led the software team that transformed a traditional engineering company to a Git-based workflow. Replaced legacy PLM with custom Python tools (PyJimmy). Entire engineering team now works from unified codebase with version control, CI/CD, and AI integration.',
     description_fr:
-      "Transformation d'une entreprise d'ingénierie traditionnelle vers un flux de travail basé sur Git. Remplacement du PLM hérité par des outils Python personnalisés (PyJimmy). Toute l'équipe d'ingénierie travaille désormais à partir d'une base de code unifiée avec contrôle de version, CI/CD et intégration de l'IA.",
+      "En tant que directeur et membre du Comex, j'ai constitué et dirigé l'équipe logicielle qui a transformé une entreprise d'ingénierie traditionnelle vers un flux de travail basé sur Git. Remplacement du PLM hérité par des outils Python personnalisés (PyJimmy). Toute l'équipe d'ingénierie travaille désormais à partir d'une base de code unifiée avec contrôle de version, CI/CD et intégration de l'IA.",
     impact:
       'Engineers spend time engineering instead of managing files. Clean, versioned data enables AI workflows.',
     impact_fr:
@@ -37,13 +37,14 @@ export const projects: Project[] = [
     tagline: 'Unified interface for AI coding agents',
     tagline_fr: 'Interface unifiée pour les agents de codage IA',
     description:
-      'Unified interface for AI coding agents across execution environments (Local, Docker, E2B) and frameworks (smolagents, Pydantic-AI, LangChain).',
+      'Unified interface for AI coding agents across execution environments (Local, Docker, E2B) and frameworks (smolagents, Pydantic-AI, LangChain). No longer actively developed — the exploration led to rebuilding OpenHands from scratch to understand agent internals.',
     description_fr:
-      "Interface unifiée pour les agents de codage IA à travers les environnements d'exécution (Local, Docker, E2B) et les frameworks (smolagents, Pydantic-AI, LangChain).",
+      "Interface unifiée pour les agents de codage IA à travers les environnements d'exécution (Local, Docker, E2B) et les frameworks (smolagents, Pydantic-AI, LangChain). Plus maintenu activement — l'exploration a mené à la reconstruction d'OpenHands from scratch pour comprendre les mécanismes internes des agents.",
     stack: 'Python, Docker, E2B',
-    links: [{ label: 'GitHub', url: 'https://github.com/charles-azam/OmniAgents' }],
-    status: 'Active development',
-    status_fr: 'Développement actif',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/charles-azam/OmniAgents' },
+      { label: 'Article', url: '/blog/rebuilt-openhands' },
+    ],
   },
   {
     title: 'Predibench',
@@ -62,13 +63,13 @@ export const projects: Project[] = [
   },
   {
     title: 'Webportal',
-    tagline: 'Web interface for AI agents',
-    tagline_fr: "Interface web pour les agents d'IA",
+    tagline: 'Web browsing for AI agents via VLM parsing',
+    tagline_fr: "Navigation web pour agents IA via parsing VLM",
     description:
-      'Web interface for AI agents. Built at HuggingFace x Anthropic hackathon (3rd place).',
+      'A web parser using a VLM to analyze pages and backend requests, providing a digested format to LLMs for autonomous web browsing. Built at HuggingFace x Anthropic hackathon (3rd place).',
     description_fr:
-      "Interface web pour les agents d'IA. Construit lors du hackathon HuggingFace x Anthropic (3ème place).",
-    stack: 'Firebase, Web APIs',
+      "Un parseur web utilisant un VLM pour analyser les pages et les requêtes backend, fournissant un format digéré aux LLMs pour la navigation web autonome. Construit lors du hackathon HuggingFace x Anthropic (3ème place).",
+    stack: 'Firebase, Web APIs, VLM',
     links: [
       { label: 'Platform', label_fr: 'Plateforme', url: 'https://webportal-468213.web.app' },
       { label: 'GitHub', url: 'https://github.com/aymeric-roucher/webportal' },
@@ -76,25 +77,23 @@ export const projects: Project[] = [
   },
   {
     title: 'DeepDraft',
-    tagline: 'AI tool for technical documentation',
-    tagline_fr: "Outil d'IA pour la documentation technique",
+    tagline: 'Forcing AI agents to follow scientific reasoning',
+    tagline_fr: "Forcer les agents IA à suivre un raisonnement scientifique",
     description:
-      'AI tool for technical documentation — design docs, reports, diagrams, plans. Deep search specialized in scientific questions.',
+      'The objective was to force agents to follow a rigorous scientific reasoning process to answer questions. If rebuilt today, would be based on an open-source CLI agent like Mistral Vibe or Codex.',
     description_fr:
-      "Outil d'IA pour la documentation technique — documents de conception, rapports, diagrammes, plans. Recherche approfondie spécialisée dans les questions scientifiques.",
+      "L'objectif était de forcer les agents à suivre un processus de raisonnement scientifique rigoureux pour répondre aux questions. Si c'était à refaire aujourd'hui, serait basé sur un agent CLI open-source comme Mistral Vibe ou Codex.",
     stack: 'Python, RAG, LLM agents',
     links: [{ label: 'Website', label_fr: 'Site web', url: 'https://deepdraft.dev' }],
-    status: 'Work in progress',
-    status_fr: 'En cours',
   },
   {
     title: 'Pyforge',
     tagline: 'Minimalist Python library for engineering-as-code',
     tagline_fr: "Bibliothèque Python minimaliste pour l'engineering-as-code",
     description:
-      'Version control for engineering artifacts — models, simulations, docs. Born from Jimmy Energy transformation.',
+      'Version control for engineering artifacts — models, simulations, docs. An example of engineering-as-code: treating engineering data with the same rigor as software.',
     description_fr:
-      "Contrôle de version pour les artefacts d'ingénierie — modèles, simulations, docs. Né de la transformation de Jimmy Energy.",
+      "Contrôle de version pour les artefacts d'ingénierie — modèles, simulations, docs. Un exemple d'engineering-as-code : traiter les données d'ingénierie avec la même rigueur que le logiciel.",
     stack: 'Python, Git',
     links: [{ label: 'GitHub', url: 'https://github.com/charles-azam/pyforge' }],
   },
@@ -103,12 +102,10 @@ export const projects: Project[] = [
     tagline: 'AI agent for engineering project scaffolding',
     tagline_fr: "Agent d'IA pour le scaffolding de projets d'ingénierie",
     description:
-      'AI agent that scaffolds engineering projects following Pyforge conventions. Uses Aider to programmatically generate code.',
+      "My first project with AI agents. Used Aider to programmatically generate code for engineering projects. With today's knowledge, would simply build a tool-using agent directly instead of relying on Aider's approach.",
     description_fr:
-      "Agent d'IA qui génère la structure de projets d'ingénierie suivant les conventions Pyforge. Utilise Aider pour générer du code par programmation.",
+      "Mon premier projet avec des agents IA. Utilisait Aider pour générer du code par programmation pour des projets d'ingénierie. Avec les connaissances d'aujourd'hui, je construirais simplement un agent avec des outils directement plutôt que de m'appuyer sur l'approche d'Aider.",
     stack: 'Python, Aider, Pyforge',
     links: [{ label: 'GitHub', url: 'https://github.com/charles-azam/aiengineer' }],
-    status: 'Experimental',
-    status_fr: 'Expérimental',
   },
 ]
