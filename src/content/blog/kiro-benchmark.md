@@ -1,4 +1,11 @@
-# I benchmarked 4 CLI coding agents on an NP-hard optimization problem I solved by hand 8 years ago. One of them beat me.
+---
+title: "I benchmarked 4 CLI coding agents on an NP-hard optimization problem I solved by hand 8 years ago. One of them beat me."
+title_fr: "J'ai benchmarké 4 agents CLI sur un problème d'optimisation NP-difficile que j'avais résolu à la main il y a 8 ans. L'un d'eux m'a battu."
+date: "2026-02-08"
+description: "Claude Code, Codex, Gemini CLI, and Mistral tackle a fiber network optimization problem. Claude Code beat my 8-year-old C++ solution by 62 points."
+description_fr: "Claude Code, Codex, Gemini CLI et Mistral s'attaquent à un problème d'optimisation de réseau fibre. Claude Code a battu ma solution C++ vieille de 8 ans de 62 points."
+slug: "kiro-benchmark"
+---
 
 **TL;DR:** I gave an unpublished fiber network optimization problem to Claude Code, Codex, Gemini CLI, and Mistral. The score is total fiber length (lower is better). A good human solution in 30 minutes: ~40,000. My best after days of C++: 34,123. Given one hour, Claude Code hit **34,061** -- beating me by 62 points. A 7-word prompt hint improved every agent by 18-30%. About 15% of all trials produced completely invalid outputs.
 
@@ -64,7 +71,7 @@ Four agents, five conditions, three trials each = **60 total trials**.
 
 ### Best scores
 
-![Best score per agent](fig2_best_scores.png)
+![Best score per agent](../../assets/blog/kiro/fig2_best_scores.png)
 
 | Agent | Best score | Condition | vs. my C++ (34,123) | vs. human 30min (~40k) |
 |---|---|---|---|---|
@@ -77,7 +84,7 @@ Claude's 34,061 beat my multi-day C++ solution by 62 points. On a problem where 
 
 ### All trials
 
-![All trial scores](fig1_all_trials.png)
+![All trial scores](../../assets/blog/kiro/fig1_all_trials.png)
 
 All 60 trials across 5 conditions. The X markers are invalid solutions (constraint violations = automatic 999,999,999 penalty). 9 invalid out of 60 total. The purple markers (1-hour trials) and green markers (Go trials) show the effect of changing the rules -- Claude's lowest point on the entire chart is that single purple dot at 34,061.
 
@@ -133,7 +140,7 @@ With one hour, Mistral improved to 54,321 (-41% relative to its base average), b
 
 ## The prompt engineering effect
 
-![Effect of prompt engineering](fig3_prompt_effect.png)
+![Effect of prompt engineering](../../assets/blog/kiro/fig3_prompt_effect.png)
 
 Adding the target hint ("best solution is around 32,000") helped every agent:
 
@@ -154,7 +161,7 @@ But the "keep improving" prompt without a target score was a mixed bag. For Mist
 
 I told agents they *must* write Go. The rationale: Go compiles to native code, so the solver should run faster, leaving more room for optimization iterations within the same 30-minute window.
 
-![Best score by condition](fig5_time_and_language.png)
+![Best score by condition](../../assets/blog/kiro/fig5_time_and_language.png)
 
 | Agent | Best (Python 30min) | Best (Go 30min) | Invalid trials (Go) |
 |---|---|---|---|
