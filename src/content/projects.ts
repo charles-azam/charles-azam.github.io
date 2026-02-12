@@ -89,7 +89,7 @@ export const projects: Project[] = [
   },
   {
     title: 'Jimmy Energy',
-    role: 'CIO — Comex member',
+    role: 'Head of Software — Comex member',
     period: '2022-2025',
     tagline: 'Engineering-as-Code transformation',
     tagline_fr: 'Transformation Engineering-as-Code',
