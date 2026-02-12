@@ -1,5 +1,5 @@
 ---
-title: "I Forked 4 Coding Agents to Run the Same Model. The Best Scored 2x the Worst."
+title: "I Forked 4 cli coding agents to Run the Same Model. The scaffolding explained a 2x gap."
 title_fr: "J'ai forké 4 agents de codage pour exécuter le même modèle. Le meilleur a scoré 2x le pire."
 date: "2026-02-10"
 description: "Deep dive into the architecture of Codex, Gemini CLI, Mistral Vibe, and OpenCode. Same model, 2x performance gap — the scaffolding is what matters."
