@@ -119,6 +119,19 @@ export const projects: Project[] = [
     ],
   },
   {
+    title: 'HuggingFace x Anthropic Hackathon — Travel Booking Agent',
+    tagline: 'AI agent that books real travel through a browser (3rd place)',
+    tagline_fr: 'Agent IA qui réserve de vrais voyages via un navigateur (3ème place)',
+    description:
+      'A travel booking agent using smolagents and browser-use. Won 3rd place at the HuggingFace x Anthropic hackathon.',
+    description_fr:
+      'Un agent de réservation de voyage utilisant smolagents et browser-use. 3ème place au hackathon HuggingFace x Anthropic.',
+    stack: 'Python, smolagents, browser-use',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/charles-azam/hackathon-huggingface' },
+    ],
+  },
+  {
     title: 'DeepDraft',
     tagline: 'Forcing AI agents to follow scientific reasoning',
     tagline_fr: "Forcer les agents IA à suivre un raisonnement scientifique",
