@@ -48,12 +48,8 @@ export function FemHeroSection({ lang = 'en' }: { lang?: string }) {
     [debouncedConfig],
   )
 
-  // Reset selected mode if it exceeds available modes
-  useEffect(() => {
-    if (selectedMode >= modalResult.frequencies.length) {
-      setSelectedMode(0)
-    }
-  }, [modalResult.frequencies.length, selectedMode])
+  // Clamp selected mode to available range (derived, no effect needed)
+  const safeSelectedMode = selectedMode >= modalResult.frequencies.length ? 0 : selectedMode
 
   // Remove skeleton placeholder on mount
   useEffect(() => {
@@ -77,12 +73,12 @@ export function FemHeroSection({ lang = 'en' }: { lang?: string }) {
         <FemCanvas
           model={model}
           modalResult={modalResult}
-          selectedMode={selectedMode}
+          selectedMode={safeSelectedMode}
           excitationMode={excitationMode}
           excitationFrequency={excitationFrequency}
           amplitudeFactor={amplitudeFactor}
         />
-        <TechnicalOverlay model={model} modalResult={modalResult} selectedMode={selectedMode} />
+        <TechnicalOverlay model={model} modalResult={modalResult} selectedMode={safeSelectedMode} />
       </div>
 
       {/* Controls inside the white box */}
@@ -90,7 +86,7 @@ export function FemHeroSection({ lang = 'en' }: { lang?: string }) {
         <div className="flex items-center gap-3">
           <ModeSelector
             numModes={Math.min(NUM_MODES, modalResult.frequencies.length)}
-            selectedMode={selectedMode}
+            selectedMode={safeSelectedMode}
             frequencies={modalResult.frequencies}
             onSelectMode={setSelectedMode}
             lang={lang}
@@ -112,7 +108,7 @@ export function FemHeroSection({ lang = 'en' }: { lang?: string }) {
           excitationFrequency={excitationFrequency}
           onFrequencyChange={setExcitationFrequency}
           naturalFrequencies={modalResult.frequencies}
-          selectedMode={selectedMode}
+          selectedMode={safeSelectedMode}
           amplitudeFactor={amplitudeFactor}
           onAmplitudeChange={setAmplitudeFactor}
           lang={lang}
@@ -144,7 +140,7 @@ export function FemHeroSection({ lang = 'en' }: { lang?: string }) {
             <div className="p-5 space-y-5">
               <SeismicPanel
                 modalResult={modalResult}
-                selectedMode={selectedMode}
+                selectedMode={safeSelectedMode}
                 onSelectMode={setSelectedMode}
                 lang={lang}
               />

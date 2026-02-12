@@ -3,27 +3,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 import { FemHeroSection } from '../../components/FemHeroSection'
 import { getCollection } from 'astro:content'
 
-const featuredProjects = [
-  {
-    title: 'Jimmy Energy',
-    tag: 'CIO',
-    url: '/projects',
-    description: 'Direction de la transformation d’une entreprise d’ingénierie traditionnelle vers un flux de travail basé sur Git.',
-  },
-  {
-    title: 'OmniAgents',
-    tag: 'Open Source',
-    url: 'https://github.com/charles-azam/OmniAgents',
-    description: 'Interface unifiée pour construire des agents de codage IA dans plusieurs environnements.',
-  },
-  {
-    title: 'Predibench',
-    tag: 'Live',
-    url: 'https://predibench.com',
-    description: 'Plateforme en direct évaluant les modèles d’IA sur les marchés de prédiction réels.',
-  },
-]
-
 const posts = (await getCollection('blog'))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
   .slice(0, 3)
@@ -72,36 +51,97 @@ const posts = (await getCollection('blog'))
       </div>
     </section>
 
-    <!-- Featured Projects -->
-    <section class="mx-auto max-w-5xl px-6 py-12">
-      <div class="flex items-baseline justify-between mb-8">
-        <h2 class="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Projets</h2>
-        <a
-          href="/fr/projects"
-          class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] link-underline transition-colors"
-        >
-          Tout voir
-        </a>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {featuredProjects.map((project) => (
+    <!-- About -->
+    <section class="mx-auto max-w-5xl px-6 py-10">
+      <div class="flex items-start gap-5 p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+        <img
+          src="/headshot.jpg"
+          alt="Charles Azam"
+          class="w-20 h-20 rounded-full object-cover shrink-0 border-2 border-[var(--color-border)]"
+        />
+        <div>
+          <p class="text-sm leading-relaxed text-[var(--color-text)]">
+            Ingénieur en calcul scientifique devenu directeur technique (CIO). Après des années à concevoir des systèmes nucléaires et à diriger des équipes d'ingénierie, j'aide aujourd'hui les entreprises à moderniser leurs flux de travail techniques et à intégrer l'IA là où elle apporte vraiment de la valeur. Je suis convaincu que la meilleure ingénierie est pilotée par le code, versionnée et construite pour durer.
+          </p>
           <a
-            href={project.url.startsWith('/') ? `/fr${project.url}` : project.url}
-            target={project.url.startsWith('/') ? undefined : '_blank'}
-            rel={project.url.startsWith('/') ? undefined : 'noopener noreferrer'}
-            class="group block p-5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-accent)] hover:shadow-md transition-all"
+            href="/fr/consulting"
+            class="inline-flex items-center gap-1.5 mt-3 text-sm font-mono text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] link-underline transition-colors"
           >
-            <div class="flex items-center gap-2 mb-3">
-              <h3 class="font-semibold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
-                {project.title}
-              </h3>
-              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--color-accent-light)] text-[var(--color-accent)]">
-                {project.tag}
-              </span>
-            </div>
-            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{project.description}</p>
+            Comment je peux vous aider &rarr;
           </a>
-        ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Étude de cas -->
+    <section class="mx-auto max-w-5xl px-6 pb-10">
+      <div class="p-6 rounded-lg border border-[var(--color-accent)]/30 bg-[var(--color-accent-light)]">
+        <p class="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-2">Étude de cas</p>
+        <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-1">Jimmy Energy</h2>
+        <p class="text-xs font-mono text-[var(--color-text-muted)] mb-4">Directeur (CIO) & membre du Comex — 2022–2025</p>
+
+        <p class="text-sm leading-relaxed mb-4">
+          Jimmy Energy construit des micro-réacteurs nucléaires pour décarboner la chaleur industrielle. À mon arrivée, l'équipe d'ingénierie s'appuyait sur un PLM hérité et des workflows basés sur des fichiers — une mise à jour majeure du design prenait des mois.
+        </p>
+
+        <p class="text-sm font-semibold text-[var(--color-text)] mb-2">Ce que nous avons construit</p>
+        <ul class="space-y-2 mb-4">
+          {[
+            'Remplacement du PLM hérité par un système Python (PyJimmy) où tous les systèmes sont décrits en code',
+            'Synchronisation de toutes les équipes via GitHub, avec contrôle qualité par pull requests',
+            'Automatisation de la vérification des exigences réglementaires avec GitHub Actions',
+            "Construction d'un système RAG sur 1 million de PDFs techniques pour la recherche de connaissances",
+          ].map((item) => (
+            <li class="flex gap-3 text-sm">
+              <span class="w-1 h-1 mt-2.5 rounded-full bg-[var(--color-accent)] shrink-0" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <p class="text-sm font-semibold text-[var(--color-text)] mb-2">Résultats</p>
+        <ul class="space-y-2 mb-5">
+          {[
+            "Une mise à jour majeure du design prend désormais des jours au lieu des mois attendus dans l'industrie",
+            'Des résultats plus sûrs — les vérifications automatisées et les relations codées en Python éliminent les erreurs de copier-coller',
+            "Les ingénieurs consacrent leur temps à l'ingénierie plutôt qu'à la gestion de fichiers",
+            "Des données propres et versionnées permettent des workflows IA dans toute l'organisation",
+          ].map((item) => (
+            <li class="flex gap-3 text-sm">
+              <span class="w-1 h-1 mt-2.5 rounded-full bg-[var(--color-accent)] shrink-0" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="p-4 rounded border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+          <p class="text-sm italic text-[var(--color-text-muted)] leading-relaxed mb-2">
+            "A big update in their design takes them days instead of the many months expected in their industry. And the result is much safer, because the checks are automated and the relationships coded in Python prevent copy-pasting errors."
+          </p>
+          <a
+            href="https://www.linkedin.com/feed/update/urn:li:activity:7240316043074666498/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs font-mono text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] link-underline transition-colors"
+          >
+            Lire le post LinkedIn complet &rarr;
+          </a>
+        </div>
+
+        <p class="text-xs font-mono text-[var(--color-text-muted)] mt-4">Python, Git, AWS, GitHub Actions</p>
+      </div>
+    </section>
+
+    <!-- Hackathon -->
+    <section class="mx-auto max-w-5xl px-6 pb-10">
+      <div class="flex items-center gap-4 p-5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+        <span class="text-2xl shrink-0">&#127942;</span>
+        <p class="text-sm leading-relaxed text-[var(--color-text)]">
+          <span class="font-semibold">3e place</span> au
+          <span class="font-semibold">Hackathon Agentique HuggingFace x Anthropic 2025</span>
+          — construction d'un agent de réservation de voyage et d'un outil de navigation web pour agents IA.
+          <a href="/fr/projects" class="font-mono text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] link-underline transition-colors">Voir tous les projets &rarr;</a>
+        </p>
       </div>
     </section>
 
