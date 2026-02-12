@@ -243,7 +243,7 @@ All four codebases are open source:
 - [Mistral Vibe](https://github.com/mistralai/mistral-vibe) (Python 3.12+, ~19K LOC)
 - [OpenCode](https://github.com/opencodeco/opencode) (TypeScript/Bun monorepo)
 
-The forks with GLM-4.7 support: [codex-zai](https://github.com/charles-azam/codex-zai), [gemini-cli-zai](https://github.com/charles-azam/gemini-cli-zai), [mistral-vibe-zai](https://github.com/charles-azam/mistral-vibe-zai).
+The forks with GLM-4.7 support: [codex-zai](https://github.com/charles-azam/codex-zai), [gemini-cli-zai](https://github.com/charles-azam/gemini-cli-zai), [mistral-vibe-zai](https://github.com/charles-azam/mistral-vibe-zai). **Update:** Since GLM-5 was released at the time of writing, I updated the forks to be compatible with GLM-5.
 
 The source code I used to run the benchmark: [My benchmarking repository](https://github.com/charles-azam/CLIArena)
 
