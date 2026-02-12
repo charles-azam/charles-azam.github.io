@@ -7,13 +7,27 @@ interface Props {
   title?: string
   description?: string
   lang?: string
+  image?: string
 }
 
 const {
   title = 'Charles AZAM',
   description = 'I build AI systems for complex engineering and technical problems.',
   lang = 'en',
+  image = '/headshot.jpg',
 } = Astro.props
+
+const siteBase = 'https://charles-azam.github.io'
+const pathname = Astro.url.pathname
+const canonicalURL = `${siteBase}${pathname}`
+const imageURL = `${siteBase}${image}`
+
+// Compute hreflang alternate
+const alternateLang = lang === 'en' ? 'fr' : 'en'
+const alternatePath = lang === 'en'
+  ? `/fr${pathname === '/' ? '' : pathname}`
+  : pathname.replace(/^\/fr/, '') || '/'
+const alternateURL = `${siteBase}${alternatePath}`
 ---
 
 <!doctype html>
@@ -24,6 +38,24 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang={lang} href={canonicalURL} />
+    <link rel="alternate" hreflang={alternateLang} href={alternateURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={imageURL} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageURL} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

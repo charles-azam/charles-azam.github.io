@@ -3,27 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import { FemHeroSection } from '../components/FemHeroSection'
 import { getCollection } from 'astro:content'
 
-const featuredProjects = [
-  {
-    title: 'Jimmy Energy',
-    tag: 'CIO',
-    url: '/projects',
-    description: 'Led transformation of traditional engineering company to Git-based workflow.',
-  },
-  {
-    title: 'OmniAgents',
-    tag: 'Open Source',
-    url: 'https://github.com/charles-azam/OmniAgents',
-    description: 'Unified interface for building AI coding agents across multiple environments.',
-  },
-  {
-    title: 'Predibench',
-    tag: 'Live',
-    url: 'https://predibench.com',
-    description: 'Live platform benchmarking AI models on real-world prediction markets.',
-  },
-]
-
 const posts = (await getCollection('blog'))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
   .slice(0, 3)
@@ -48,8 +27,8 @@ const posts = (await getCollection('blog'))
             I bring the same engineering rigor to AI systems.
           </p>
           <p class="text-sm text-[var(--color-text-muted)] mb-6 leading-relaxed">
-            Currently building open-source tools for AI agents, prediction markets, and technical
-            search. Previously led engineering teams at Jimmy Energy, transforming traditional
+            Currently building a company in stealth, while offering consulting and training
+            to engineering teams. Previously Director at Jimmy Energy, transforming traditional
             workflows into code-driven systems.
           </p>
           <div class="flex gap-4">
@@ -73,36 +52,97 @@ const posts = (await getCollection('blog'))
       </div>
     </section>
 
-    <!-- Featured Projects -->
-    <section class="mx-auto max-w-5xl px-6 py-12">
-      <div class="flex items-baseline justify-between mb-8">
-        <h2 class="font-[var(--font-display)] text-2xl text-[var(--color-text)]">Projects</h2>
-        <a
-          href="/projects"
-          class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] link-underline transition-colors"
-        >
-          View all
-        </a>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {featuredProjects.map((project) => (
+    <!-- About -->
+    <section class="mx-auto max-w-5xl px-6 py-10">
+      <div class="flex items-start gap-5 p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+        <img
+          src="/headshot.jpg"
+          alt="Charles Azam"
+          class="w-20 h-20 rounded-full object-cover shrink-0 border-2 border-[var(--color-border)]"
+        />
+        <div>
+          <p class="text-sm leading-relaxed text-[var(--color-text)]">
+            I'm a scientific computing engineer turned CIO, currently building my own company. After years designing nuclear systems and leading engineering teams, I offer training and consulting services to bootstrap the venture. I believe the best engineering is code-driven, version-controlled, and built to last.
+          </p>
           <a
-            href={project.url}
-            target={project.url.startsWith('/') ? undefined : '_blank'}
-            rel={project.url.startsWith('/') ? undefined : 'noopener noreferrer'}
-            class="group block p-5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-accent)] hover:shadow-md transition-all"
+            href="/consulting"
+            class="inline-flex items-center gap-1.5 mt-3 text-sm font-mono text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] link-underline transition-colors"
           >
-            <div class="flex items-center gap-2 mb-3">
-              <h3 class="font-semibold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">
-                {project.title}
-              </h3>
-              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--color-accent-light)] text-[var(--color-accent)]">
-                {project.tag}
-              </span>
-            </div>
-            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{project.description}</p>
+            How I can help &rarr;
           </a>
-        ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Study -->
+    <section class="mx-auto max-w-5xl px-6 pb-10">
+      <div class="p-6 rounded-lg border border-[var(--color-accent)]/30 bg-[var(--color-accent-light)]">
+        <p class="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-2">Case Study</p>
+        <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-1">Jimmy Energy</h2>
+        <p class="text-xs font-mono text-[var(--color-text-muted)] mb-4">CIO & Comex member — 2022–2025</p>
+
+        <p class="text-sm leading-relaxed mb-4">
+          Jimmy Energy builds micro nuclear reactors to decarbonise industrial heat. When I joined, the engineering team relied on a legacy PLM and file-based workflows — a big design update took months.
+        </p>
+
+        <p class="text-sm font-semibold text-[var(--color-text)] mb-2">What we built</p>
+        <ul class="space-y-2 mb-4">
+          {[
+            'Replaced the legacy PLM with a Python-based system (PyJimmy) where all systems are described in code',
+            'Synchronized all teams via GitHub, with quality checks through pull requests',
+            'Automated verification of regulatory requirements with GitHub Actions',
+            'Built a RAG system on 1 million technical PDFs for knowledge retrieval',
+          ].map((item) => (
+            <li class="flex gap-3 text-sm">
+              <span class="w-1 h-1 mt-2.5 rounded-full bg-[var(--color-accent)] shrink-0" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <p class="text-sm font-semibold text-[var(--color-text)] mb-2">Results</p>
+        <ul class="space-y-2 mb-5">
+          {[
+            'A big design update now takes days instead of the months expected in the industry',
+            'Safer outcomes — automated checks and Python-coded relationships prevent copy-pasting errors',
+            'Engineers spend time engineering instead of managing files',
+            'Clean, versioned data enables AI workflows across the organisation',
+          ].map((item) => (
+            <li class="flex gap-3 text-sm">
+              <span class="w-1 h-1 mt-2.5 rounded-full bg-[var(--color-accent)] shrink-0" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="p-4 rounded border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+          <p class="text-sm italic text-[var(--color-text-muted)] leading-relaxed mb-2">
+            "A big update in their design takes them days instead of the many months expected in their industry. And the result is much safer, because the checks are automated and the relationships coded in Python prevent copy-pasting errors."
+          </p>
+          <a
+            href="https://www.linkedin.com/feed/update/urn:li:activity:7240316043074666498/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs font-mono text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] link-underline transition-colors"
+          >
+            Read the full LinkedIn post &rarr;
+          </a>
+        </div>
+
+        <p class="text-xs font-mono text-[var(--color-text-muted)] mt-4">Python, Git, AWS, GitHub Actions</p>
+      </div>
+    </section>
+
+    <!-- Hackathon -->
+    <section class="mx-auto max-w-5xl px-6 pb-10">
+      <div class="flex items-center gap-4 p-5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+        <span class="text-2xl shrink-0">&#127942;</span>
+        <p class="text-sm leading-relaxed text-[var(--color-text)]">
+          <span class="font-semibold">3rd place</span> at the
+          <span class="font-semibold">HuggingFace x Anthropic Agentic Hackathon 2025</span>
+          — built a travel booking agent and a web browsing tool for AI agents.
+          <a href="/projects" class="font-mono text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] link-underline transition-colors">See all projects &rarr;</a>
+        </p>
       </div>
     </section>
 

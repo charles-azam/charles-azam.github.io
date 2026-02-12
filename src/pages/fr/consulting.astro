@@ -141,17 +141,77 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
         </ul>
       </section>
 
+      <!-- Étude de cas -->
+      <section class="p-6 rounded-lg border border-[var(--color-accent)]/30 bg-[var(--color-accent-light)]">
+        <p class="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-2">Étude de cas</p>
+        <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-1">Jimmy Energy</h2>
+        <p class="text-xs font-mono text-[var(--color-text-muted)] mb-4">Directeur (CIO) & membre du Comex — 2022–2025</p>
+
+        <p class="text-sm leading-relaxed mb-4">
+          Jimmy Energy construit des micro-réacteurs nucléaires pour décarboner la chaleur industrielle. À mon arrivée, l'équipe d'ingénierie s'appuyait sur un PLM hérité et des workflows basés sur des fichiers — une mise à jour majeure du design prenait des mois.
+        </p>
+
+        <p class="text-sm font-semibold text-[var(--color-text)] mb-2">Ce que nous avons construit</p>
+        <ul class="space-y-2 mb-4">
+          {[
+            'Remplacement du PLM hérité par un système Python (PyJimmy) où tous les systèmes sont décrits en code',
+            'Synchronisation de toutes les équipes via GitHub, avec contrôle qualité par pull requests',
+            'Automatisation de la vérification des exigences réglementaires avec GitHub Actions',
+            'Construction d\'un système RAG sur 1 million de PDFs techniques pour la recherche de connaissances',
+          ].map((item) => (
+            <li class="flex gap-3 text-sm">
+              <span class="w-1 h-1 mt-2.5 rounded-full bg-[var(--color-accent)] shrink-0" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <p class="text-sm font-semibold text-[var(--color-text)] mb-2">Résultats</p>
+        <ul class="space-y-2 mb-5">
+          {[
+            'Une mise à jour majeure du design prend désormais des jours au lieu des mois attendus dans l\'industrie',
+            'Des résultats plus sûrs — les vérifications automatisées et les relations codées en Python éliminent les erreurs de copier-coller',
+            'Les ingénieurs consacrent leur temps à l\'ingénierie plutôt qu\'à la gestion de fichiers',
+            'Des données propres et versionnées permettent des workflows IA dans toute l\'organisation',
+          ].map((item) => (
+            <li class="flex gap-3 text-sm">
+              <span class="w-1 h-1 mt-2.5 rounded-full bg-[var(--color-accent)] shrink-0" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="p-4 rounded border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
+          <p class="text-sm italic text-[var(--color-text-muted)] leading-relaxed mb-2">
+            "A big update in their design takes them days instead of the many months expected in their industry. And the result is much safer, because the checks are automated and the relationships coded in Python prevent copy-pasting errors."
+          </p>
+          <a
+            href="https://www.linkedin.com/feed/update/urn:li:activity:7240316043074666498/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs font-mono text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] link-underline transition-colors"
+          >
+            Lire le post LinkedIn complet &rarr;
+          </a>
+        </div>
+
+        <p class="text-xs font-mono text-[var(--color-text-muted)] mt-4">Python, Git, AWS, GitHub Actions</p>
+      </section>
+
       <!-- Contact -->
       <section class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
         <h2 class="font-[var(--font-display)] text-xl text-[var(--color-text)] mb-4">Contact</h2>
-        <p class="mb-4 leading-relaxed text-[var(--color-text-muted)]">
+        <p class="mb-6 leading-relaxed text-[var(--color-text-muted)]">
           Chaque entreprise a une situation spécifique. Parlons de la vôtre.
         </p>
         <a
           href="mailto:azamcharles0@gmail.com"
-          class="inline-flex items-center gap-2 font-mono text-sm text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] link-underline transition-colors"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-accent)] text-white font-medium text-sm hover:bg-[var(--color-accent-hover)] transition-colors"
         >
-          azamcharles0@gmail.com
+          Discutons
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+            <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638l-3.96-3.96a.75.75 0 111.06-1.06l5.25 5.25a.75.75 0 010 1.06l-5.25 5.25a.75.75 0 11-1.06-1.06l3.96-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+          </svg>
         </a>
       </section>
     </div>
