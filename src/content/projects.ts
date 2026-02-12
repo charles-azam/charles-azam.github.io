@@ -1,3 +1,10 @@
+export interface Subproject {
+  title: string
+  description: string
+  description_fr?: string
+  url: string
+}
+
 export interface Project {
   title: string
   role?: string
@@ -10,27 +17,46 @@ export interface Project {
   impact_fr?: string
   stack: string
   links: { label: string; label_fr?: string; url: string }[]
+  subprojects?: Subproject[]
   status?: string
   status_fr?: string
 }
 
 export const projects: Project[] = [
   {
-    title: 'Jimmy Energy',
-    role: 'CIO — Comex member',
-    period: '2022-2025',
-    tagline: 'Engineering-as-Code transformation',
-    tagline_fr: 'Transformation Engineering-as-Code',
+    title: 'CLIArena',
+    tagline: 'Benchmarking CLI coding agents — and forking them',
+    tagline_fr: 'Benchmarking des agents de codage CLI — et leurs forks',
     description:
-      'As a director and Comex member, built and led the software team that transformed a traditional engineering company to a Git-based workflow. Replaced legacy PLM with custom Python tools (PyJimmy). Entire engineering team now works from unified codebase with version control, CI/CD, and AI integration.',
+      'Read the codebases of Codex, Gemini CLI, Mistral Vibe, and OpenCode, then forked three of them to run GLM-4.7 on Terminal-Bench 2.0. Same model, 2x performance gap — the scaffolding is what matters. Also benchmarked all four agents on an unpublished NP-hard optimization problem; Claude Code beat my 8-year-old C++ solution. Forks now updated to support GLM-5.',
     description_fr:
-      "En tant que directeur et membre du Comex, j'ai constitué et dirigé l'équipe logicielle qui a transformé une entreprise d'ingénierie traditionnelle vers un flux de travail basé sur Git. Remplacement du PLM hérité par des outils Python personnalisés (PyJimmy). Toute l'équipe d'ingénierie travaille désormais à partir d'une base de code unifiée avec contrôle de version, CI/CD et intégration de l'IA.",
-    impact:
-      'Engineers spend time engineering instead of managing files. Clean, versioned data enables AI workflows.',
-    impact_fr:
-      "Les ingénieurs consacrent leur temps à l'ingénierie plutôt qu'à la gestion de fichiers. Des données propres et versionnées permettent des flux de travail IA.",
-    stack: 'Python, Git, AWS, GitHub Actions',
-    links: [{ label: 'Website', label_fr: 'Site web', url: 'https://www.jimmy-energy.eu' }],
+      "Lecture des codebases de Codex, Gemini CLI, Mistral Vibe et OpenCode, puis fork de trois d'entre eux pour exécuter GLM-4.7 sur Terminal-Bench 2.0. Même modèle, écart de performance 2x — c'est le scaffolding qui compte. Benchmark des quatre agents sur un problème d'optimisation NP-difficile non publié ; Claude Code a battu ma solution C++ vieille de 8 ans. Forks désormais mis à jour pour supporter GLM-5.",
+    stack: 'Python, Rust, TypeScript, Docker, Harbor',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/charles-azam/CLIArena' },
+      { label: 'Deep Dive Article', label_fr: 'Article Deep Dive', url: '/blog/deepdive-benchmark' },
+      { label: 'KIRO Article', label_fr: 'Article KIRO', url: '/blog/kiro-benchmark' },
+    ],
+    subprojects: [
+      {
+        title: 'codex-zai',
+        description: 'Fork of OpenAI Codex with GLM-5 support. Hardest fork — full Responses API translation across 52 Rust crates.',
+        description_fr: "Fork d'OpenAI Codex avec support GLM-5. Fork le plus difficile — traduction complète de l'API Responses à travers 52 crates Rust.",
+        url: 'https://github.com/charles-azam/codex-zai',
+      },
+      {
+        title: 'gemini-cli-zai',
+        description: 'Fork of Gemini CLI with GLM-5 support. 812-line content generator bridging Google and OpenAI protocol formats.',
+        description_fr: 'Fork de Gemini CLI avec support GLM-5. Générateur de contenu de 812 lignes reliant les formats de protocole Google et OpenAI.',
+        url: 'https://github.com/charles-azam/gemini-cli-zai',
+      },
+      {
+        title: 'mistral-vibe-zai',
+        description: 'Fork of Mistral Vibe with GLM-5 support. Easiest fork — clean adapter pattern, 13 files changed, one commit.',
+        description_fr: 'Fork de Mistral Vibe avec support GLM-5. Fork le plus simple — pattern adapter propre, 13 fichiers modifiés, un commit.',
+        url: 'https://github.com/charles-azam/mistral-vibe-zai',
+      },
+    ],
   },
   {
     title: 'OmniAgents',
@@ -60,6 +86,23 @@ export const projects: Project[] = [
       { label: 'GitHub', url: 'https://github.com/charles-azam/predibench' },
       { label: 'Article', url: '/blog/predibench' },
     ],
+  },
+  {
+    title: 'Jimmy Energy',
+    role: 'CIO — Comex member',
+    period: '2022-2025',
+    tagline: 'Engineering-as-Code transformation',
+    tagline_fr: 'Transformation Engineering-as-Code',
+    description:
+      'As a director and Comex member, built and led the software team that transformed a traditional engineering company to a Git-based workflow. Replaced legacy PLM with custom Python tools (PyJimmy). Entire engineering team now works from unified codebase with version control, CI/CD, and AI integration.',
+    description_fr:
+      "En tant que directeur et membre du Comex, j'ai constitué et dirigé l'équipe logicielle qui a transformé une entreprise d'ingénierie traditionnelle vers un flux de travail basé sur Git. Remplacement du PLM hérité par des outils Python personnalisés (PyJimmy). Toute l'équipe d'ingénierie travaille désormais à partir d'une base de code unifiée avec contrôle de version, CI/CD et intégration de l'IA.",
+    impact:
+      'Engineers spend time engineering instead of managing files. Clean, versioned data enables AI workflows.',
+    impact_fr:
+      "Les ingénieurs consacrent leur temps à l'ingénierie plutôt qu'à la gestion de fichiers. Des données propres et versionnées permettent des flux de travail IA.",
+    stack: 'Python, Git, AWS, GitHub Actions',
+    links: [{ label: 'Website', label_fr: 'Site web', url: 'https://www.jimmy-energy.eu' }],
   },
   {
     title: 'Webportal',
