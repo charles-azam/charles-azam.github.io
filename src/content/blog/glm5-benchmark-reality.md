@@ -1,6 +1,6 @@
 ---
-title: "GLM-5 topped the coding benchmarks. Then I actually used it."
-title_fr: "GLM-5 a dominé les benchmarks de codage. Puis je l'ai vraiment utilisé."
+title: "GLM-5's benchmark scores don't survive real-world testing"
+title_fr: "Les scores de GLM-5 sur les benchmarks ne résistent pas à l'usage réel"
 date: "2026-02-14"
 description: "Zhipu AI's GLM-5 leads SWE-bench and LiveCodeBench. I tested it on an unpublished NP-hard optimization problem and 89 coding tasks. The best-case is competitive. The typical case is not."
 description_fr: "Le GLM-5 de Zhipu AI domine SWE-bench et LiveCodeBench. Je l'ai testé sur un problème d'optimisation NP-difficile inédit et 89 tâches de codage. Le meilleur cas est compétitif. Le cas typique ne l'est pas."
