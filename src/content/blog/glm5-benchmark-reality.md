@@ -14,7 +14,7 @@ Original repository: [CLIArena](https://github.com/charles-azam/CLIArena)
 
 ## The pitch
 
-GLM-5, from Zhipu AI, is an open-source (MIT) model claiming [77.8% on SWE-bench Verified and 56.2% on Terminal-Bench 2.0](https://zhipuai.cn/). Its API is Anthropic/OpenAI-compatible, so you can plug it into existing agent frameworks. And Zhipu AI's Coding Plan subscription ($60/month, extremely generous token limits) makes it cheap to burn tokens at scale -- ideal for systematic testing.
+GLM-5, from Zhipu AI, is an open-source (MIT) model claiming [77.8% on SWE-bench Verified and 56.2% on Terminal-Bench 2.0](https://z.ai/). Its API is Anthropic/OpenAI-compatible, so you can plug it into existing agent frameworks. And Zhipu AI's Coding Plan subscription ($60/month, extremely generous token limits) makes it cheap to burn tokens at scale -- ideal for systematic testing.
 
 I ran two benchmarks: KIRO, an unpublished NP-hard fiber optic network optimization problem that I'm certain is not in any training data, and Terminal-Bench, a public 89-task coding benchmark. I wanted to see if the numbers hold up.
 
