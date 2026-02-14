@@ -1,6 +1,6 @@
 ---
-title: "GLM-5's benchmark scores don't survive real-world testing"
-title_fr: "Les scores de GLM-5 sur les benchmarks ne résistent pas à l'usage réel"
+title: "GLM-5 topped the coding benchmarks. Then I actually used it."
+title_fr: "GLM-5 a dominé les benchmarks de codage. Puis je l'ai vraiment utilisé."
 date: "2026-02-14"
 description: "Zhipu AI's GLM-5 leads SWE-bench and LiveCodeBench. I tested it on an unpublished NP-hard optimization problem and 89 coding tasks. The best-case is competitive. The typical case is not."
 description_fr: "Le GLM-5 de Zhipu AI domine SWE-bench et LiveCodeBench. Je l'ai testé sur un problème d'optimisation NP-difficile inédit et 89 tâches de codage. Le meilleur cas est compétitif. Le cas typique ne l'est pas."
@@ -26,16 +26,9 @@ In a [previous article](https://charlesazam.com/blog/kiro-benchmark/), I benchma
 
 The key results from that benchmark, now including the GLM-5 results from this article:
 
-| Agent | Best score | vs. my C++ (34,123) |
-|---|---|---|
-| Claude Code (Opus 4.6) | 34,061 | -0.2% |
-| Codex (GPT-5.3-Codex xhigh) | 37,586 | +10% |
-| **Claude Code + GLM-5** | **40,943** | **+20%** |
-| Gemini CLI (Gemini-3-Pro-Preview) | 41,119 | +20% |
-| **Mistral Vibe + GLM-5** | **46,764** | **+37%** |
-| Mistral (Devstral-2) | 53,616 | +57% |
+![Where GLM-5 lands: best KIRO score per agent](../../assets/blog/glm5-benchmark-reality/glm5_ranking.png)
 
-Claude Code beat my multi-day C++ solution. 15% of trials produced invalid output. Four agents, five conditions, three trials each, 60 total runs. GLM-5 slots into the middle of the pack -- competitive but not at the top.
+Claude Code (Opus 4.6) beat my multi-day C++ solution. 15% of trials produced invalid output. Four agents, five conditions, three trials each, 60 total runs. GLM-5 slots into the middle of the pack -- competitive but not at the top.
 
 ## How I tested GLM-5
 
@@ -47,11 +40,6 @@ GLM-5's API compatibility made testing easy. I ran it through two agent framewor
 Same five conditions as before (base, +keep improving, +target hint, Go, one hour), three trials each, same Docker containers via [Harbor](https://github.com/laude-institute/harbor). I also ran both agents on [Terminal-Bench](https://github.com/laude-institute/terminal-bench), an 89-task coding benchmark covering everything from building POV-Ray to COBOL modernization to cracking 7z hashes.
 
 ## The headline numbers look fine
-
-| Agent | Best KIRO score | vs. my C++ |
-|---|---|---|
-| Claude Code + GLM-5 | **40,943** | +20% |
-| Mistral Vibe + GLM-5 | **46,764** | +37% |
 
 Claude Code + GLM-5 lands right next to Gemini CLI (41,119). Mistral Vibe + GLM-5 comfortably beats Devstral-2 (53,616). On Terminal-Bench, Mistral Vibe + GLM-5 solved 43 out of 89 tasks (48.3%). These are respectable numbers. If I stopped here, I'd write "GLM-5 is competitive."
 
@@ -69,7 +57,11 @@ I didn't stop here.
 
 **On Terminal-Bench, nearly a quarter of tasks timed out.** Claude Code + GLM-5 timed out on 24 of 88 tasks (27%). Mistral Vibe + GLM-5 timed out on 21 of 89 (24%).
 
+![GLM-5 reliability: failure and timeout rates](../../assets/blog/glm5-benchmark-reality/glm5_reliability.png)
+
 ### Why my Terminal-Bench scores differ from Zhipu AI's
+
+![Terminal-Bench: official benchmarks vs. real-world testing](../../assets/blog/glm5-benchmark-reality/glm5_tb_gap.png)
 
 Zhipu AI [reports 56.2% on Terminal-Bench with Claude Code](https://zhipuai.cn/) -- or 61.1% on their verified dataset. I got 40.4%. That's a massive gap for the same model on the same benchmark. The difference comes down to testing conditions, and reading the footnotes of their blog post explains most of it:
 
@@ -117,11 +109,9 @@ Zhipu AI reports 56-61% on Terminal-Bench. I got 40%. Both numbers are real -- t
 
 When I pick a model for real work, I don't care about the best score on the best day. I care about the worst score on a normal day. By that metric, GLM-5 has a way to go.
 
-## Another reason why it failed: fine-tuning
+## Another reason why it failed
 
-In a [separate article](https://charlesazam.com/blog/deepdive-benchmark/), I found that agents handle file editing in wildly different ways: custom patch DSLs, SEARCH/REPLACE blocks, 9-strategy fuzzy matching cascades, LLM-based self-correction fallbacks. Each format works well for the model fine-tuned on it -- Codex's patches are trained into GPT, Claude Code's edit tool is trained into Claude. A general-purpose model like GLM-5 sees these formats cold in the system prompt. When it produces a slightly malformed edit, the agent retries, tokens burn, and the clock runs out. 
-
-It is clear to me now that models can't be differentiated from their agents, they are fine-tuned on them.
+In a [separate article](https://charlesazam.com/blog/deepdive-benchmark/), I found that agents handle file editing in wildly different ways: custom patch DSLs, SEARCH/REPLACE blocks, 9-strategy fuzzy matching cascades, LLM-based self-correction fallbacks. Each format works well for the model fine-tuned on it -- Codex's patches are trained into GPT, Claude Code's edit tool is trained into Claude. A general-purpose model like GLM-5 sees these formats cold in the system prompt. When it produces a slightly malformed edit, the agent retries, tokens burn, and the clock runs out.
 
 GLM-5 is open-source (MIT License, weights on HuggingFace) -- which means this is fixable. The agent scaffolding is the fine-tuning surface. Generate trajectories through your own agent loop, fine-tune the model on them. The reason native models work so well in their native agents isn't just model quality -- it's that the model has been trained on the exact interface it uses in production. The gap between 40% and 60% on Terminal-Bench might not require a better model -- just one fine-tuned on the agent it runs in.
 
@@ -153,10 +143,7 @@ All task definitions, verifiers, trajectories, and raw results: [CLIArena](https
 
 ### Terminal-Bench
 
-| Agent | Solved | Failed | Timed out | Pass rate |
-|---|---|---|---|---|
-| Mistral Vibe + GLM-5 | 43 | 25 | 21 | 48.3% |
-| Claude Code + GLM-5 | 36 | 28 | 24 | 40.4% |
+![Terminal-Bench task outcomes](../../assets/blog/glm5-benchmark-reality/glm5_tb_outcomes.png)
 
 ---
 
